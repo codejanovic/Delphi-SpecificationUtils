@@ -8,6 +8,7 @@ type
     function IsEmpty: boolean;
     function Length: Integer;
     function ByteLength: Integer;
+    function Characters: TArray<Char>;
 
     function Equals(const AValue: string): boolean;
     function EqualsCaseSensitive(const AValue: string): boolean;
@@ -43,6 +44,15 @@ uses
 function TSpecificationStringHelper.ByteLength: Integer;
 begin
   Result := System.SysUtils.ByteLength(Self);
+end;
+
+function TSpecificationStringHelper.Characters: TArray<Char>;
+var
+  I: Integer;
+begin
+  SetLength(Result, Self.Length);
+  for I := 1 to Self.Length do
+    Result[i-1] := Self[i];
 end;
 
 function TSpecificationStringHelper.Contains(const AValue: string): boolean;

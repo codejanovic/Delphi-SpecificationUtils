@@ -111,6 +111,7 @@
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.Length.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.IsEmpty.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.Helper.Strings.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Helper.Strings.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

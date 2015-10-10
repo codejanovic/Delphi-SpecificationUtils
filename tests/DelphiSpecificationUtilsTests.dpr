@@ -32,7 +32,8 @@ uses
   Delphi.SpecificationUtils.Strings in '..\Delphi.SpecificationUtils.Strings.pas',
   Tests.Delphi.SpecificationUtils.Strings.Length in 'Tests.Delphi.SpecificationUtils.Strings.Length.pas',
   Tests.Delphi.SpecificationUtils.Strings.IsEmpty in 'Tests.Delphi.SpecificationUtils.Strings.IsEmpty.pas',
-  Delphi.SpecificationUtils.Helper.Strings in '..\Delphi.SpecificationUtils.Helper.Strings.pas';
+  Delphi.SpecificationUtils.Helper.Strings in '..\Delphi.SpecificationUtils.Helper.Strings.pas',
+  Tests.Delphi.SpecificationUtils.Helper.Strings in 'Tests.Delphi.SpecificationUtils.Helper.Strings.pas';
 
 var
   runner : ITestRunner;
