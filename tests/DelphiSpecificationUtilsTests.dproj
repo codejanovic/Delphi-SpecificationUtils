@@ -99,6 +99,14 @@
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.ContainsAny.CaseInsensitive.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.EqualsAny.CaseSensitive.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.Strings.CaseInsensitive.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.StartsWith.CaseSensitive.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.StartsWith.CaseInsensitive.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.StartsWithAny.CaseSensitive.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.EndsWith.CaseInsensitive.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.EndsWith.CaseSensitive.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.EndsWithAny.CaseSensitive.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.StartsWithAny.CaseInsensitive.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.EndsWithAny.CaseInsensitive.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -126,6 +134,12 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment>
+                <DeployFile LocalName="Win32\Debug\DelphiSpecificationUtilsTests.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>DelphiSpecificationUtilsTests.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="bin\DelphiSpecificationUtilsTests.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>DelphiSpecificationUtilsTests.exe</RemoteName>
@@ -137,12 +151,6 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                     <Platform Name="iOSSimulator">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Win32\Debug\DelphiSpecificationUtilsTests.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>DelphiSpecificationUtilsTests.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

@@ -39,6 +39,38 @@ type
     function IsSatisfiedBy(const item: String): Boolean; override;
   end;
 
+  TStringCIStartsWith = class(TSpecificationBase<String>)
+  protected
+    fSubstring: String;
+  public
+    constructor Create(const ASubString: String);
+    function IsSatisfiedBy(const item: String): Boolean; override;
+  end;
+
+  TStringCIStartsWithAny = class(TSpecificationBase<String>)
+  protected
+    fSubstrings: TStringArray;
+  public
+    constructor Create(const ASubStrings: TStringArray);
+    function IsSatisfiedBy(const item: String): Boolean; override;
+  end;
+
+  TStringCIEndsWith = class(TSpecificationBase<String>)
+  protected
+    fSubstring: String;
+  public
+    constructor Create(const ASubString: String);
+    function IsSatisfiedBy(const item: String): Boolean; override;
+  end;
+
+  TStringCIEndsWithAny = class(TSpecificationBase<String>)
+  protected
+    fSubstrings: TStringArray;
+  public
+    constructor Create(const ASubStrings: TStringArray);
+    function IsSatisfiedBy(const item: String): Boolean; override;
+  end;
+
 implementation
 
 uses
@@ -103,4 +135,61 @@ begin
       Exit(True);
 end;
 
+{ TStringCIStartsWith }
+
+constructor TStringCIStartsWith.Create(const ASubString: String);
+begin
+  fSubstring := ASubString;
+end;
+
+function TStringCIStartsWith.IsSatisfiedBy(const item: String): Boolean;
+begin
+  Result := item.StartsWith(fSubstring, true);
+end;
+
+{ TStringCIStartsWithAny }
+
+constructor TStringCIStartsWithAny.Create(const ASubStrings: TStringArray);
+begin
+  fSubstrings := ASubStrings;
+end;
+
+function TStringCIStartsWithAny.IsSatisfiedBy(const item: String): Boolean;
+var
+  LSubstring: String;
+begin
+  Result := False;
+  for LSubstring in fSubstrings do
+    if TStringCIStartsWith.Create(LSubstring).IsSatisfiedBy(item) then
+      Exit(True);
+end;
+
+{ TStringCIEndsWithAny }
+
+constructor TStringCIEndsWithAny.Create(const ASubStrings: TStringArray);
+begin
+  fSubstrings := ASubStrings;
+end;
+
+function TStringCIEndsWithAny.IsSatisfiedBy(const item: String): Boolean;
+var
+  LSubstring: String;
+begin
+  Result := False;
+  for LSubstring in fSubstrings do
+    if TStringCIEndsWith.Create(LSubstring).IsSatisfiedBy(item) then
+      Exit(True);
+end;
+
+{ TStringCIEndsWith }
+
+constructor TStringCIEndsWith.Create(const ASubString: String);
+begin
+  fSubstring := ASubString;
+end;
+
+function TStringCIEndsWith.IsSatisfiedBy(const item: String): Boolean;
+begin
+  Result := item.EndsWith(fSubstring, true);
+end;
 end.
