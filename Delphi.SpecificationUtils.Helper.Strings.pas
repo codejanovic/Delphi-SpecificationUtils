@@ -10,6 +10,20 @@ type
     function ByteLength: Integer;
     function Characters: TArray<Char>;
 
+    function Concat(const AValue: String): string;
+
+    function Remove(const AValue: String): String;
+    function RemoveCaseSensitive(const AValue: String): String;
+    function RemoveAll(const AValue: String): String;
+    function RemoveAllCaseSensitive(const AValue: String): String;
+    function RemoveByRegex(const AExpression: String): String;
+
+    function Replace(const AOldValue: String; const ANewValue: String): String;
+    function ReplaceCaseSensitive(const AOldValue: String; const ANewValue: String): String;
+    function ReplaceAll(const AOldValue: String; const ANewValue: String): String;
+    function ReplaceAllCaseSensitive(const AOldValue: String; const ANewValue: String): String;
+    function ReplaceByRegex(const AExpression: String; const ANewValue: String): String;
+
     function Equals(const AValue: string): boolean;
     function EqualsCaseSensitive(const AValue: string): boolean;
     function EqualsAny(const AValues: TArray<string>): boolean;
@@ -37,9 +51,16 @@ uses
   Delphi.SpecificationUtils.Strings.CaseSensitive,
   Delphi.SpecificationUtils.Strings.CaseInsensitive,
   Delphi.SpecificationUtils.Strings,
-  System.SysUtils;
+  System.SysUtils,
+  System.RegularExpressions;
 
 { TSpecificationStringHelper }
+
+function TSpecificationStringHelper.Concat(const AValue: String): string;
+begin
+  Result := Self;
+  Result := Result + AValue;
+end;
 
 function TSpecificationStringHelper.ByteLength: Integer;
 begin
@@ -123,6 +144,59 @@ end;
 function TSpecificationStringHelper.Length: Integer;
 begin
   Result := System.Length(Self);
+end;
+
+function TSpecificationStringHelper.Remove(const AValue: String): String;
+begin
+  Result := Self.Replace(AValue, '');
+end;
+
+function TSpecificationStringHelper.RemoveAll(const AValue: String): String;
+begin
+  Result := Self.ReplaceAll(AValue, '');
+end;
+
+function TSpecificationStringHelper.RemoveAllCaseSensitive(const AValue: String): String;
+begin
+  Result := Self.ReplaceAllCaseSensitive(AValue, '');
+end;
+
+function TSpecificationStringHelper.RemoveByRegex(const AExpression: String): String;
+begin
+  Result := Self.ReplaceByRegex(AExpression, '');
+end;
+
+function TSpecificationStringHelper.RemoveCaseSensitive(const AValue: String): String;
+begin
+  Result := Self.ReplaceCaseSensitive(AValue, '');
+end;
+
+function TSpecificationStringHelper.Replace(const AOldValue, ANewValue: String): String;
+begin
+  Result := System.SysUtils.StringReplace(Self, AOldValue, ANewValue, [rfIgnoreCase]);
+end;
+
+function TSpecificationStringHelper.ReplaceAll(const AOldValue, ANewValue: String): String;
+begin
+  Result := System.SysUtils.StringReplace(Self, AOldValue, ANewValue, [rfReplaceAll, rfIgnoreCase]);
+end;
+
+function TSpecificationStringHelper.ReplaceAllCaseSensitive(const AOldValue, ANewValue: String): String;
+begin
+  Result := System.SysUtils.StringReplace(Self, AOldValue, ANewValue, [rfReplaceAll]);
+end;
+
+function TSpecificationStringHelper.ReplaceByRegex(const AExpression, ANewValue: String): String;
+var
+  LRegex: TRegEx;
+begin
+  LRegex.Create(AExpression, [roMultiLine]);
+  Result := LRegex.Replace(Self, ANewValue);
+end;
+
+function TSpecificationStringHelper.ReplaceCaseSensitive(const AOldValue, ANewValue: String): String;
+begin
+  Result := System.SysUtils.StringReplace(Self, AOldValue, ANewValue, []);
 end;
 
 function TSpecificationStringHelper.StartsWith(const AValue: string): boolean;
