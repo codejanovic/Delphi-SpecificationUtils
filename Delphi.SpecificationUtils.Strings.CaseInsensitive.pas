@@ -3,8 +3,7 @@ unit Delphi.SpecificationUtils.Strings.CaseInsensitive;
 interface
 
 uses
-  Spring.DesignPatterns,
-  Delphi.SpecificationUtils;
+  Spring.DesignPatterns;
 
 type
   TStringCIContains = class(TSpecificationBase<String>)
@@ -25,17 +24,17 @@ type
 
   TStringCIContainsAny = class(TSpecificationBase<String>)
   protected
-    fSubstrings: TStringArray;
+    fSubstrings: TArray<string>;
   public
-    constructor Create(const ASubStrings: TStringArray);
+    constructor Create(const ASubStrings: TArray<string>);
     function IsSatisfiedBy(const item: String): Boolean; override;
   end;
 
   TStringCIEqualsAny = class(TSpecificationBase<String>)
   protected
-    fValues: TStringArray;
+    fValues: TArray<String>;
   public
-    constructor Create(const AValues: TStringArray);
+    constructor Create(const AValues: TArray<String>);
     function IsSatisfiedBy(const item: String): Boolean; override;
   end;
 
@@ -49,9 +48,9 @@ type
 
   TStringCIStartsWithAny = class(TSpecificationBase<String>)
   protected
-    fSubstrings: TStringArray;
+    fSubstrings: TArray<String>;
   public
-    constructor Create(const ASubStrings: TStringArray);
+    constructor Create(const ASubStrings: TArray<String>);
     function IsSatisfiedBy(const item: String): Boolean; override;
   end;
 
@@ -65,9 +64,9 @@ type
 
   TStringCIEndsWithAny = class(TSpecificationBase<String>)
   protected
-    fSubstrings: TStringArray;
+    fSubstrings: TArray<String>;
   public
-    constructor Create(const ASubStrings: TStringArray);
+    constructor Create(const ASubStrings: TArray<String>);
     function IsSatisfiedBy(const item: String): Boolean; override;
   end;
 
@@ -103,7 +102,7 @@ end;
 
 { TStringContainsAnyCaseInsensitive }
 
-constructor TStringCIContainsAny.Create(const ASubStrings: TStringArray);
+constructor TStringCIContainsAny.Create(const ASubStrings: TArray<string>);
 begin
   fSubstrings := ASubStrings;
 end;
@@ -120,7 +119,7 @@ end;
 
 { TStringEqualsAnyCaseInsensitive }
 
-constructor TStringCIEqualsAny.Create(const AValues: TStringArray);
+constructor TStringCIEqualsAny.Create(const AValues: TArray<String>);
 begin
   fValues := AValues;
 end;
@@ -149,7 +148,7 @@ end;
 
 { TStringCIStartsWithAny }
 
-constructor TStringCIStartsWithAny.Create(const ASubStrings: TStringArray);
+constructor TStringCIStartsWithAny.Create(const ASubStrings: TArray<String>);
 begin
   fSubstrings := ASubStrings;
 end;
@@ -166,7 +165,7 @@ end;
 
 { TStringCIEndsWithAny }
 
-constructor TStringCIEndsWithAny.Create(const ASubStrings: TStringArray);
+constructor TStringCIEndsWithAny.Create(const ASubStrings: TArray<String>);
 begin
   fSubstrings := ASubStrings;
 end;

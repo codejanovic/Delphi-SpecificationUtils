@@ -30,6 +30,11 @@ type
     function IsSatisfiedBy(const item: String): Boolean; override;
   end;
 
+  TStringIsEmpty = class(TSpecificationBase<String>)
+  public
+    function IsSatisfiedBy(const item: String): Boolean; override;
+  end;
+
 implementation
 
 uses
@@ -69,6 +74,13 @@ end;
 function TStringHasLengthLessThan.IsSatisfiedBy(const item: String): Boolean;
 begin
   Result := Length(item) < fMaxLength;
+end;
+
+{ TStringIsEmpty }
+
+function TStringIsEmpty.IsSatisfiedBy(const item: String): Boolean;
+begin
+  Result := item.Trim.IsEmpty;
 end;
 
 end.

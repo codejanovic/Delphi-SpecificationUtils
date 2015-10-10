@@ -33,7 +33,7 @@ uses
 
 procedure TTestStringCIStartsWithAny.SetupSpecification(const ASubstrings: String);
 var
-  LStringArray: TStringArray;
+  LStringArray: TArray<string>;
   LStringList: TStringList;
   LString: String;
   I: Integer;

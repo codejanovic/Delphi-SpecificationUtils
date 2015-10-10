@@ -34,7 +34,7 @@ uses
 
 procedure TTestStringContainsAnyCaseSensitive.SetupSpecification(const ASubstring: String);
 var
-  LStringArray: TStringArray;
+  LStringArray: TArray<String>;
   LStringList: TStringList;
   LString: String;
   I: Integer;

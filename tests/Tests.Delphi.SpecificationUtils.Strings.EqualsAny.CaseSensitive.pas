@@ -29,7 +29,7 @@ uses
 
 procedure TTestStringEqualsAnyCasenSensitive.SetupSpecification(const AStringsToEqual: String);
 var
-  LStringArray: TStringArray;
+  LStringArray: TArray<string>;
   LStringList: TStringList;
   LString: String;
   I: Integer;
