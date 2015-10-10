@@ -10,6 +10,10 @@ type
     function ByteLength: Integer;
     function Characters: TArray<Char>;
 
+    function IsBoolean: boolean;
+    function IsInteger: boolean;
+    function IsFloat: boolean;
+
     function Concat(const AValue: String): string;
 
     function Remove(const AValue: String): String;
@@ -136,9 +140,24 @@ begin
   Result := TStringCSEquals.Create(AValue).IsSatisfiedBy(Self);
 end;
 
+function TSpecificationStringHelper.IsBoolean: boolean;
+begin
+  Result := TStringIsBoolean.Create.IsSatisfiedBy(Self);
+end;
+
 function TSpecificationStringHelper.IsEmpty: boolean;
 begin
   Result := TStringIsEmpty.Create.IsSatisfiedBy(Self);
+end;
+
+function TSpecificationStringHelper.IsFloat: boolean;
+begin
+  Result := TStringIsFloat.Create.IsSatisfiedBy(Self);
+end;
+
+function TSpecificationStringHelper.IsInteger: boolean;
+begin
+  Result := TStringIsInteger.Create.IsSatisfiedBy(Self);
 end;
 
 function TSpecificationStringHelper.Length: Integer;
