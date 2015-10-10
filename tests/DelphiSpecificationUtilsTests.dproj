@@ -107,6 +107,8 @@
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.EndsWithAny.CaseSensitive.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.StartsWithAny.CaseInsensitive.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.EndsWithAny.CaseInsensitive.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Strings.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.Length.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

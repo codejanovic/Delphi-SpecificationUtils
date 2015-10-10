@@ -28,7 +28,9 @@ uses
   Tests.Delphi.SpecificationUtils.Strings.EndsWith.CaseSensitive in 'Tests.Delphi.SpecificationUtils.Strings.EndsWith.CaseSensitive.pas',
   Tests.Delphi.SpecificationUtils.Strings.EndsWithAny.CaseSensitive in 'Tests.Delphi.SpecificationUtils.Strings.EndsWithAny.CaseSensitive.pas',
   Tests.Delphi.SpecificationUtils.Strings.StartsWithAny.CaseInsensitive in 'Tests.Delphi.SpecificationUtils.Strings.StartsWithAny.CaseInsensitive.pas',
-  Tests.Delphi.SpecificationUtils.Strings.EndsWithAny.CaseInsensitive in 'Tests.Delphi.SpecificationUtils.Strings.EndsWithAny.CaseInsensitive.pas';
+  Tests.Delphi.SpecificationUtils.Strings.EndsWithAny.CaseInsensitive in 'Tests.Delphi.SpecificationUtils.Strings.EndsWithAny.CaseInsensitive.pas',
+  Delphi.SpecificationUtils.Strings in '..\Delphi.SpecificationUtils.Strings.pas',
+  Tests.Delphi.SpecificationUtils.Strings.Length in 'Tests.Delphi.SpecificationUtils.Strings.Length.pas';
 
 var
   runner : ITestRunner;
