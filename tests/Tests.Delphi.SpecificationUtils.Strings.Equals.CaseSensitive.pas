@@ -13,8 +13,9 @@ type
     procedure SetupSpecification(const AStringToEqual: String);
   public
     [TestCase('test1','House,House')]
-    [TestCase('test2','Cat,Cat')]
-    [TestCase('test3','Dog,Dog')]
+    [TestCase('test2','House,  House  ')]
+    [TestCase('test3','Cat,Cat')]
+    [TestCase('test4','Dog,Dog')]
     procedure TestLeftEqualsRight(const ALeft: String; const ARight: String);
     [TestCase('test1','House,house')]
     [TestCase('test2','house,House')]

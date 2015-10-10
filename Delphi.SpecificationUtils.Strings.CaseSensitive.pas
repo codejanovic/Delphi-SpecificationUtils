@@ -128,12 +128,12 @@ end;
 
 constructor TStringCSEquals.Create(const AValue: String);
 begin
-  fValue := AValue;
+  fValue := AValue.Trim;
 end;
 
 function TStringCSEquals.IsSatisfiedBy(const item: String): Boolean;
 begin
-  Result := item = fValue;
+  Result := item.Trim = fValue;
 end;
 
 { TStringCSStartsWith }

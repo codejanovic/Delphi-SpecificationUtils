@@ -92,12 +92,12 @@ end;
 
 constructor TStringCIEquals.Create(const AValue: String);
 begin
-  fValue := AValue;
+  fValue := AValue.Trim;
 end;
 
 function TStringCIEquals.IsSatisfiedBy(const item: String): Boolean;
 begin
-  Result := SameText(item, fValue);
+  Result := SameText(item.Trim, fValue);
 end;
 
 { TStringContainsAnyCaseInsensitive }
