@@ -150,11 +150,8 @@ begin
 end;
 
 function TStringMatchesRegex.IsSatisfiedBy(const item: String): Boolean;
-var
-  LRegEx: TRegEx;
 begin
-  LRegEx.Create(fExpression, fOptions);
-  Result := LRegEx.IsMatch(item);
+  Result := TRegEx.IsMatch(item, fExpression, fOptions);
 end;
 
 { TStringIsInteger }

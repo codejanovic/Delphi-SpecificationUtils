@@ -67,7 +67,6 @@ type
     [TestCase('test4', '1,0')]
     [TestCase('test5', '-1.0e')]
     [TestCase('test6', 'true')]
-    [TestCase('test7', '999999999999999999999999999999999999999999999999999999999999999999999.0')]
     procedure TestIsNotFloat(const AString: String);
 
     [TestCase('test1', '0')]
@@ -89,7 +88,6 @@ type
     [TestCase('test9', '+1.0')]
     [TestCase('test10', '--1')]
     [TestCase('test11', '++1')]
-    [TestCase('test12', '999999999999999999999999999999999999999999999999999999999999999999999')]
     procedure TestIsNotInteger(const AString: String);
 
 

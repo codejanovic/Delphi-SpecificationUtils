@@ -14,6 +14,10 @@ type
     function IsInteger: boolean;
     function IsFloat: boolean;
 
+    function TryToBool(out OValue: boolean): boolean;
+    function TryToInteger(out OValue: Integer): boolean;
+    function TryToFloat(out OValue: Extended): boolean;
+
     function Concat(const AValue: String): string;
 
     function Remove(const AValue: String): String;
@@ -236,6 +240,30 @@ end;
 function TSpecificationStringHelper.StartsWithCaseSensitive(const AValue: string): boolean;
 begin
   Result := TStringCIStartsWith.Create(Avalue).IsSatisfiedBy(Self);
+end;
+
+function TSpecificationStringHelper.TryToBool(out OValue: boolean): boolean;
+begin
+  if not Self.IsBoolean then
+    Exit(false);
+
+  Result := TryStrToBool(Self, OValue);
+end;
+
+function TSpecificationStringHelper.TryToFloat(out OValue: Extended): boolean;
+begin
+  if not Self.IsFloat then
+    Exit(false);
+
+  Result := TryStrToFloat(Self, OValue);
+end;
+
+function TSpecificationStringHelper.TryToInteger(out OValue: Integer): boolean;
+begin
+  if not Self.IsInteger then
+    Exit(false);
+
+  Result := TryStrToInt(Self, OValue);
 end;
 
 end.
