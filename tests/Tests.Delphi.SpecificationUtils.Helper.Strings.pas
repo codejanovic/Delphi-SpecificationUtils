@@ -64,7 +64,7 @@ type
     [TestCase('test1', '1.0.0')]
     [TestCase('test2', '--1')]
     [TestCase('test3', '++1')]
-    [TestCase('test4', '1,0')]
+    [TestCase('test4', '1,0', ';')]
     [TestCase('test5', '-1.0e')]
     [TestCase('test6', 'true')]
     procedure TestIsNotFloat(const AString: String);
@@ -80,7 +80,7 @@ type
     [TestCase('test1', '1.0.0')]
     [TestCase('test2', '--1')]
     [TestCase('test3', '++1')]
-    [TestCase('test4', '1,0')]
+    [TestCase('test4', '1,0', ';')]
     [TestCase('test5', '-1.0e')]
     [TestCase('test6', 'true')]
     [TestCase('test7', '1.0')]
