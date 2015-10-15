@@ -35,7 +35,6 @@ procedure TTestStringCIEndsWithAny.SetupSpecification(const ASubstrings: String)
 var
   LStringArray: TArray<string>;
   LStringList: TStringList;
-  LString: String;
   I: Integer;
 begin
   LStringList := TStringList.Create;

@@ -33,7 +33,6 @@ procedure TTestStringCSStartsWithAny.SetupSpecification(const ASubstrings: Strin
 var
   LStringArray: TArray<string>;
   LStringList: TStringList;
-  LString: String;
   I: Integer;
 begin
   LStringList := TStringList.Create;
