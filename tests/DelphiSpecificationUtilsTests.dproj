@@ -112,6 +112,10 @@
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.IsEmpty.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.Helper.Strings.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Helper.Strings.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Helper.TGUID.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.TGUID.pas"/>
+        <DCCReference Include="Tests.Helper.SysUtilsAccess.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Helper.TGUID.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

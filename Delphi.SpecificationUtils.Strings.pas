@@ -77,7 +77,16 @@ type
     function IsSatisfiedBy(const item: String): Boolean; override;
   end;
 
-
+  TStringIsGUID = class(TSpecificationBase<String>)
+  protected
+    fRegExSpec: ISpecification<String>;
+  protected const
+    fRegExExpression = '(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}(\}){0,1}';
+    fRegExOptions = [roSingleLine];
+  public
+    constructor Create;
+    function IsSatisfiedBy(const item: String): Boolean; override;
+  end;
 
 implementation
 
@@ -174,6 +183,18 @@ begin
 end;
 
 function TStringIsFloat.IsSatisfiedBy(const item: String): Boolean;
+begin
+  Result := fRegExSpec.IsSatisfiedBy(item.Trim);
+end;
+
+{ TStringIsGUID }
+
+constructor TStringIsGUID.Create;
+begin
+   fRegExSpec := TStringMatchesRegEx.Create(fRegExExpression, fRegExOptions);
+end;
+
+function TStringIsGUID.IsSatisfiedBy(const item: String): Boolean;
 begin
   Result := fRegExSpec.IsSatisfiedBy(item.Trim);
 end;
