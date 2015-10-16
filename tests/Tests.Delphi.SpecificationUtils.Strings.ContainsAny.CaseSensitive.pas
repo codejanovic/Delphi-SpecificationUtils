@@ -36,7 +36,6 @@ procedure TTestStringContainsAnyCaseSensitive.SetupSpecification(const ASubstrin
 var
   LStringArray: TArray<String>;
   LStringList: TStringList;
-  LString: String;
   I: Integer;
 begin
   LStringList := TStringList.Create;

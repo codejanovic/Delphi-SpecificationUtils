@@ -33,7 +33,11 @@ uses
   Tests.Delphi.SpecificationUtils.Strings.Length in 'Tests.Delphi.SpecificationUtils.Strings.Length.pas',
   Tests.Delphi.SpecificationUtils.Strings.IsEmpty in 'Tests.Delphi.SpecificationUtils.Strings.IsEmpty.pas',
   Delphi.SpecificationUtils.Helper.Strings in '..\Delphi.SpecificationUtils.Helper.Strings.pas',
-  Tests.Delphi.SpecificationUtils.Helper.Strings in 'Tests.Delphi.SpecificationUtils.Helper.Strings.pas';
+  Tests.Delphi.SpecificationUtils.Helper.Strings in 'Tests.Delphi.SpecificationUtils.Helper.Strings.pas',
+  Delphi.SpecificationUtils.Helper.TGUID in '..\Delphi.SpecificationUtils.Helper.TGUID.pas',
+  Delphi.SpecificationUtils.TGUID in '..\Delphi.SpecificationUtils.TGUID.pas',
+  Tests.Helper.SysUtilsAccess in 'Tests.Helper.SysUtilsAccess.pas',
+  Tests.Delphi.SpecificationUtils.Helper.TGUID in 'Tests.Delphi.SpecificationUtils.Helper.TGUID.pas';
 
 var
   runner : ITestRunner;
