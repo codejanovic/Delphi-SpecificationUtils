@@ -294,7 +294,6 @@ end;
 function TSpecificationStringHelper.ToArray(const ASeparator: Char): TArray<String>;
 var
   LStringList: TStringList;
-  LSingleString: String;
   I: Integer;
 begin
   LStringList := TStringList.Create;

@@ -37,7 +37,15 @@ uses
   Delphi.SpecificationUtils.Helper.TGUID in '..\Delphi.SpecificationUtils.Helper.TGUID.pas',
   Delphi.SpecificationUtils.TGUID in '..\Delphi.SpecificationUtils.TGUID.pas',
   Tests.Helper.SysUtilsAccess in 'Tests.Helper.SysUtilsAccess.pas',
-  Tests.Delphi.SpecificationUtils.Helper.TGUID in 'Tests.Delphi.SpecificationUtils.Helper.TGUID.pas';
+  Tests.Delphi.SpecificationUtils.Helper.TGUID in 'Tests.Delphi.SpecificationUtils.Helper.TGUID.pas',
+  Delphi.SpecificationUtils.Arrays in '..\Delphi.SpecificationUtils.Arrays.pas',
+  Tests.Delphi.SpecificationUtils.Arrays.Length in 'Tests.Delphi.SpecificationUtils.Arrays.Length.pas',
+  Tests.Delphi.SpecificationUtils.Arrays.IsEmpty in 'Tests.Delphi.SpecificationUtils.Arrays.IsEmpty.pas',
+  Tests.Delphi.SpecificationUtils.Arrays.Contains in 'Tests.Delphi.SpecificationUtils.Arrays.Contains.pas',
+  Tests.Delphi.SpecificationUtils.Arrays.ContainsAny in 'Tests.Delphi.SpecificationUtils.Arrays.ContainsAny.pas',
+  Tests.Delphi.SpecificationUtils.Arrays.Equals in 'Tests.Delphi.SpecificationUtils.Arrays.Equals.pas',
+  Tests.Delphi.SpecificationUtils.Arrays.EqualsInSequence in 'Tests.Delphi.SpecificationUtils.Arrays.EqualsInSequence.pas',
+  Tests.Delphi.SpecificationUtils.Arrays.EqualsInLength in 'Tests.Delphi.SpecificationUtils.Arrays.EqualsInLength.pas';
 
 var
   runner : ITestRunner;

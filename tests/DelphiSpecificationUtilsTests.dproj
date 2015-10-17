@@ -73,6 +73,7 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <DCC_Warnings>error</DCC_Warnings>
         <DCC_DcuOutput>bin/dcu</DCC_DcuOutput>
         <DCC_ExeOutput>bin</DCC_ExeOutput>
         <Manifest_File>None</Manifest_File>
@@ -116,6 +117,14 @@
         <DCCReference Include="..\Delphi.SpecificationUtils.TGUID.pas"/>
         <DCCReference Include="Tests.Helper.SysUtilsAccess.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Helper.TGUID.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Arrays.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Arrays.Length.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Arrays.IsEmpty.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Arrays.Contains.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Arrays.ContainsAny.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Arrays.Equals.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Arrays.EqualsInSequence.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Arrays.EqualsInLength.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
