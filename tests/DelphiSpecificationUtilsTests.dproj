@@ -125,6 +125,12 @@
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Arrays.Equals.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Arrays.EqualsInSequence.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Arrays.EqualsInLength.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Boolean.Helper.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Helper.DateTime.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.DateTime.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Helper.DateTime.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.DateTime.Types.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Helper.Integer.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

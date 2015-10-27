@@ -2,6 +2,9 @@ unit Delphi.SpecificationUtils.Helper.Strings;
 
 interface
 
+uses
+  System.SysUtils;
+
 type
   TSpecificationStringHelper = record helper for String
   public
@@ -25,6 +28,10 @@ type
     function TryToGUID(out OValue: TGUID): Boolean;
     function ToArray: TArray<String>; overload;
     function ToArray(const ASeparator: Char): TArray<String>; overload;
+    function ToDate: TDateTime; overload;
+    function ToDate(const AFormatSettings: TFormatSettings): TDateTime; overload;
+    function ToDateTime: TDateTime; overload;
+    function ToDateTime(const AFormatSettings: TFormatSettings): TDateTime; overload;
 
     function Concat(const AValue: String): string;
     function ConcatLeft(const AValue: String): string;
@@ -73,7 +80,6 @@ uses
   Delphi.SpecificationUtils.Strings.CaseSensitive,
   Delphi.SpecificationUtils.Strings.CaseInsensitive,
   Delphi.SpecificationUtils.Strings,
-  System.SysUtils,
   System.RegularExpressions, System.Classes;
 
 { TSpecificationStringHelper }
@@ -309,6 +315,16 @@ begin
   end;
 end;
 
+function TSpecificationStringHelper.ToDate: TDateTime;
+begin
+  Result := System.SysUtils.StrToDate(Self);
+end;
+
+function TSpecificationStringHelper.ToDateTime: TDateTime;
+begin
+  Result := System.SysUtils.StrToDateTime(Self);
+end;
+
 function TSpecificationStringHelper.Trim: String;
 begin
   Result := System.SysUtils.Trim(Self);
@@ -394,6 +410,16 @@ begin
 
   for LSingleValue in AValue do
     Result := Result.RemoveAllCaseSensitive(LSingleValue);
+end;
+
+function TSpecificationStringHelper.ToDate(const AFormatSettings: TFormatSettings): TDateTime;
+begin
+  Result := System.SysUtils.StrToDate(Self, AFormatSettings);
+end;
+
+function TSpecificationStringHelper.ToDateTime(const AFormatSettings: TFormatSettings): TDateTime;
+begin
+  Result := System.SysUtils.StrToDateTime(Self, AFormatSettings);
 end;
 
 end.
