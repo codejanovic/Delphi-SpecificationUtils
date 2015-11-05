@@ -35,7 +35,7 @@ implementation
 
 procedure TTestStringCSStartsWith.SetupSpecification(const ASubstring: String);
 begin
-  fStringCSStartsWithSpec := TStringCSStartsWith.Create(ASubstring);
+  fStringCSStartsWithSpec := TStringStartsWith.Create(ASubstring);
 end;
 
 procedure TTestStringCSStartsWith.TestDoesNotStartsWithSubstring(const AString,ASubString: string);

@@ -20,7 +20,7 @@ uses
   Tests.Delphi.SpecificationUtils.Strings.ContainsAny.CaseSensitive in 'Tests.Delphi.SpecificationUtils.Strings.ContainsAny.CaseSensitive.pas',
   Tests.Delphi.SpecificationUtils.Strings.ContainsAny.CaseInsensitive in 'Tests.Delphi.SpecificationUtils.Strings.ContainsAny.CaseInsensitive.pas',
   Tests.Delphi.SpecificationUtils.Strings.EqualsAny.CaseSensitive in 'Tests.Delphi.SpecificationUtils.Strings.EqualsAny.CaseSensitive.pas',
-  Delphi.SpecificationUtils.Strings.CaseInsensitive in '..\Delphi.SpecificationUtils.Strings.CaseInsensitive.pas',
+  Delphi.SpecificationUtils.Strings.IgnoreCase in '..\Delphi.SpecificationUtils.Strings.IgnoreCase.pas',
   Tests.Delphi.SpecificationUtils.Strings.StartsWith.CaseSensitive in 'Tests.Delphi.SpecificationUtils.Strings.StartsWith.CaseSensitive.pas',
   Tests.Delphi.SpecificationUtils.Strings.StartsWith.CaseInsensitive in 'Tests.Delphi.SpecificationUtils.Strings.StartsWith.CaseInsensitive.pas',
   Tests.Delphi.SpecificationUtils.Strings.StartsWithAny.CaseSensitive in 'Tests.Delphi.SpecificationUtils.Strings.StartsWithAny.CaseSensitive.pas',

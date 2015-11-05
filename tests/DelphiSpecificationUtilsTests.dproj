@@ -99,7 +99,7 @@
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.ContainsAny.CaseSensitive.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.ContainsAny.CaseInsensitive.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.EqualsAny.CaseSensitive.pas"/>
-        <DCCReference Include="..\Delphi.SpecificationUtils.Strings.CaseInsensitive.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Strings.IgnoreCase.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.StartsWith.CaseSensitive.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.StartsWith.CaseInsensitive.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.StartsWithAny.CaseSensitive.pas"/>

@@ -3,7 +3,7 @@ unit Tests.Delphi.SpecificationUtils.Strings.StartsWithAny.CaseInsensitive;
 interface
 uses
   DUnitX.TestFramework, Spring.DesignPatterns, Delphi.SpecificationUtils,
-  Delphi.SpecificationUtils.Strings.CaseInsensitive;
+  Delphi.SpecificationUtils.Strings.IgnoreCase;
 
 type
 
@@ -45,7 +45,7 @@ begin
   finally
     LStringList.Free;
   end;
-  fStringCIStartsWithSpec := TStringCIStartsWithAny.Create(LStringArray);
+  fStringCIStartsWithSpec := TStringStartsWithAnyIgnoreCase.Create(LStringArray);
 end;
 
 procedure TTestStringCIStartsWithAny.TestDoesNotStartsWithSubstring(const AString,ASubStrings: string);

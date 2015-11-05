@@ -37,48 +37,48 @@ type
     function ConcatLeft(const AValue: String): string;
     function ConcatRight(const AValue: String): string;
 
+    function RemoveIgnoreCase(const AValue: String): String; overload;
+    function RemoveIgnoreCase(const AValue: TArray<String>): String; overload;
     function Remove(const AValue: String): String; overload;
     function Remove(const AValue: TArray<String>): String; overload;
-    function RemoveCaseSensitive(const AValue: String): String; overload;
-    function RemoveCaseSensitive(const AValue: TArray<String>): String; overload;
+    function RemoveAllIgnoreCase(const AValue: String): String; overload;
+    function RemoveAllIgnoreCase(const AValue: TArray<String>): String; overload;
     function RemoveAll(const AValue: String): String; overload;
     function RemoveAll(const AValue: TArray<String>): String; overload;
-    function RemoveAllCaseSensitive(const AValue: String): String; overload;
-    function RemoveAllCaseSensitive(const AValue: TArray<String>): String; overload;
     function RemoveByRegex(const AExpression: String): String;
 
+    function ReplaceIgnoreCase(const AOldValue: String; const ANewValue: String): String;
     function Replace(const AOldValue: String; const ANewValue: String): String;
-    function ReplaceCaseSensitive(const AOldValue: String; const ANewValue: String): String;
+    function ReplaceAllIgnoreCase(const AOldValue: String; const ANewValue: String): String;
     function ReplaceAll(const AOldValue: String; const ANewValue: String): String;
-    function ReplaceAllCaseSensitive(const AOldValue: String; const ANewValue: String): String;
     function ReplaceByRegex(const AExpression: String; const ANewValue: String): String;
 
+    function EqualsIgnoreCase(const AValue: string): boolean;
     function Equals(const AValue: string): boolean;
-    function EqualsCaseSensitive(const AValue: string): boolean;
+    function EqualsAnyIgnoreCase(const AValues: TArray<string>): boolean;
     function EqualsAny(const AValues: TArray<string>): boolean;
-    function EqualsAnyCaseSensitive(const AValues: TArray<string>): boolean;
 
+    function ContainsIgnoreCase(const AValue: string): boolean;
     function Contains(const AValue: string): boolean;
-    function ContainsCaseSensitive(const AValue: string): boolean;
+    function ContainsAnyIgnoreCase(const AValues: TArray<string>): boolean;
     function ContainsAny(const AValues: TArray<string>): boolean;
-    function ContainsAnyCaseSensitive(const AValues: TArray<string>): boolean;
 
+    function StartsWithIgnoreCase(const AValue: string): boolean;
     function StartsWith(const AValue: string): boolean;
-    function StartsWithCaseSensitive(const AValue: string): boolean;
+    function StartsWithAnyIgnoreCase(const AValues: TArray<string>): boolean;
     function StartsWithAny(const AValues: TArray<string>): boolean;
-    function StartsWithAnyCaseSensitive(const AValues: TArray<string>): boolean;
 
+    function EndsWithIgnoreCase(const AValue: string): boolean;
     function EndsWith(const AValue: string): boolean;
-    function EndsWithCaseSensitive(const AValue: string): boolean;
+    function EndsWithAnyIgnoreCase(const AValues: TArray<string>): boolean;
     function EndsWithAny(const AValues: TArray<string>): boolean;
-    function EndsWithAnyCaseSensitive(const AValues: TArray<string>): boolean;
   end;
 
 implementation
 
 uses
   Delphi.SpecificationUtils.Strings.CaseSensitive,
-  Delphi.SpecificationUtils.Strings.CaseInsensitive,
+  Delphi.SpecificationUtils.Strings.IgnoreCase,
   Delphi.SpecificationUtils.Strings,
   System.RegularExpressions, System.Classes;
 
@@ -114,64 +114,64 @@ begin
     Result[i-1] := Self[i];
 end;
 
-function TSpecificationStringHelper.Contains(const AValue: string): boolean;
+function TSpecificationStringHelper.ContainsIgnoreCase(const AValue: string): boolean;
 begin
-  Result := TStringCIContains.Create(AValue).IsSatisfiedBy(Self);
+  Result := TStringContainsIgnoreCase.Create(AValue).IsSatisfiedBy(Self);
+end;
+
+function TSpecificationStringHelper.ContainsAnyIgnoreCase(const AValues: TArray<string>): boolean;
+begin
+  Result := TStringContainsAnyIgnoreCase.Create(AValues).IsSatisfiedBy(Self);
 end;
 
 function TSpecificationStringHelper.ContainsAny(const AValues: TArray<string>): boolean;
 begin
-  Result := TStringCIContainsAny.Create(AValues).IsSatisfiedBy(Self);
+  Result := TStringContainsAny.Create(AValues).IsSatisfiedBy(Self);
 end;
 
-function TSpecificationStringHelper.ContainsAnyCaseSensitive(const AValues: TArray<string>): boolean;
+function TSpecificationStringHelper.Contains(const AValue: string): boolean;
 begin
-  Result := TStringCSContainsAny.Create(AValues).IsSatisfiedBy(Self);
+  Result := TStringContains.Create(AValue).IsSatisfiedBy(Self);
 end;
 
-function TSpecificationStringHelper.ContainsCaseSensitive(const AValue: string): boolean;
+function TSpecificationStringHelper.EndsWithIgnoreCase(const AValue: string): boolean;
 begin
-  Result := TStringCSContains.Create(AValue).IsSatisfiedBy(Self);
+  Result := TStringEndsWithIgnoreCase.Create(Avalue).IsSatisfiedBy(Self);
 end;
 
-function TSpecificationStringHelper.EndsWith(const AValue: string): boolean;
+function TSpecificationStringHelper.EndsWithAnyIgnoreCase(const AValues: TArray<string>): boolean;
 begin
-  Result := TStringCIEndsWith.Create(Avalue).IsSatisfiedBy(Self);
+  Result := TStringEndsWithAnyIgnoreCase.Create(AValues).IsSatisfiedBy(Self);
 end;
 
 function TSpecificationStringHelper.EndsWithAny(const AValues: TArray<string>): boolean;
 begin
-  Result := TStringCIEndsWithAny.Create(AValues).IsSatisfiedBy(Self);
+  Result := TStringEndsWithAny.Create(AValues).IsSatisfiedBy(Self);
 end;
 
-function TSpecificationStringHelper.EndsWithAnyCaseSensitive(const AValues: TArray<string>): boolean;
+function TSpecificationStringHelper.EndsWith(const AValue: string): boolean;
 begin
-  Result := TStringCSEndsWithAny.Create(AValues).IsSatisfiedBy(Self);
+  Result := TStringEndsWith.Create(Avalue).IsSatisfiedBy(Self);
 end;
 
-function TSpecificationStringHelper.EndsWithCaseSensitive(const AValue: string): boolean;
+function TSpecificationStringHelper.EqualsIgnoreCase(const AValue: string): boolean;
 begin
-  Result := TStringCSEndsWith.Create(Avalue).IsSatisfiedBy(Self);
+  Result := TStringEqualsIgnoreCase.Create(AValue).IsSatisfiedBy(Self);
 end;
 
-function TSpecificationStringHelper.Equals(const AValue: string): boolean;
+function TSpecificationStringHelper.EqualsAnyIgnoreCase(const AValues: TArray<string>): boolean;
 begin
-  Result := TStringCIEquals.Create(AValue).IsSatisfiedBy(Self);
+  Result := TStringEqualsAnyIgnoreCase.Create(AValues).IsSatisfiedBy(Self);
 end;
 
 function TSpecificationStringHelper.EqualsAny(const AValues: TArray<string>): boolean;
 begin
-  Result := TStringCIEqualsAny.Create(AValues).IsSatisfiedBy(Self);
+  Result := TStringEqualsAny.Create(AValues).IsSatisfiedBy(Self);
 end;
 
-function TSpecificationStringHelper.EqualsAnyCaseSensitive(const AValues: TArray<string>): boolean;
+function TSpecificationStringHelper.Equals(const AValue: string): boolean;
 begin
-  Result := TStringCSEqualsAny.Create(AValues).IsSatisfiedBy(Self);
-end;
-
-function TSpecificationStringHelper.EqualsCaseSensitive(const AValue: string): boolean;
-begin
-  Result := TStringCSEquals.Create(AValue).IsSatisfiedBy(Self);
+  Result := TStringEquals.Create(AValue).IsSatisfiedBy(Self);
 end;
 
 function TSpecificationStringHelper.IncludeTrailingPathDelimiter: String;
@@ -209,9 +209,14 @@ begin
   Result := System.Length(Self);
 end;
 
-function TSpecificationStringHelper.Remove(const AValue: String): String;
+function TSpecificationStringHelper.RemoveIgnoreCase(const AValue: String): String;
 begin
-  Result := Self.Replace(AValue, '');
+  Result := Self.ReplaceIgnoreCase(AValue, '');
+end;
+
+function TSpecificationStringHelper.RemoveAllIgnoreCase(const AValue: String): String;
+begin
+  Result := Self.ReplaceAllIgnoreCase(AValue, '');
 end;
 
 function TSpecificationStringHelper.RemoveAll(const AValue: String): String;
@@ -219,42 +224,37 @@ begin
   Result := Self.ReplaceAll(AValue, '');
 end;
 
-function TSpecificationStringHelper.RemoveAllCaseSensitive(const AValue: String): String;
-begin
-  Result := Self.ReplaceAllCaseSensitive(AValue, '');
-end;
-
 function TSpecificationStringHelper.RemoveByRegex(const AExpression: String): String;
 begin
   Result := Self.ReplaceByRegex(AExpression, '');
 end;
 
-function TSpecificationStringHelper.RemoveCaseSensitive(const AValue: TArray<String>): String;
+function TSpecificationStringHelper.Remove(const AValue: TArray<String>): String;
 var
   LSingleValue: String;
 begin
   Result := Self;
 
   for LSingleValue in AValue do
-    Result := Result.RemoveCaseSensitive(LSingleValue);
+    Result := Result.Remove(LSingleValue);
 end;
 
-function TSpecificationStringHelper.RemoveCaseSensitive(const AValue: String): String;
+function TSpecificationStringHelper.Remove(const AValue: String): String;
 begin
-  Result := Self.ReplaceCaseSensitive(AValue, '');
+  Result := Self.Replace(AValue, '');
 end;
 
-function TSpecificationStringHelper.Replace(const AOldValue, ANewValue: String): String;
+function TSpecificationStringHelper.ReplaceIgnoreCase(const AOldValue, ANewValue: String): String;
 begin
   Result := System.SysUtils.StringReplace(Self, AOldValue, ANewValue, [rfIgnoreCase]);
 end;
 
-function TSpecificationStringHelper.ReplaceAll(const AOldValue, ANewValue: String): String;
+function TSpecificationStringHelper.ReplaceAllIgnoreCase(const AOldValue, ANewValue: String): String;
 begin
   Result := System.SysUtils.StringReplace(Self, AOldValue, ANewValue, [rfReplaceAll, rfIgnoreCase]);
 end;
 
-function TSpecificationStringHelper.ReplaceAllCaseSensitive(const AOldValue, ANewValue: String): String;
+function TSpecificationStringHelper.ReplaceAll(const AOldValue, ANewValue: String): String;
 begin
   Result := System.SysUtils.StringReplace(Self, AOldValue, ANewValue, [rfReplaceAll]);
 end;
@@ -267,29 +267,29 @@ begin
   Result := LRegex.Replace(Self, ANewValue);
 end;
 
-function TSpecificationStringHelper.ReplaceCaseSensitive(const AOldValue, ANewValue: String): String;
+function TSpecificationStringHelper.Replace(const AOldValue, ANewValue: String): String;
 begin
   Result := System.SysUtils.StringReplace(Self, AOldValue, ANewValue, []);
 end;
 
 function TSpecificationStringHelper.StartsWith(const AValue: string): boolean;
 begin
-  Result := TStringCIStartsWith.Create(Avalue).IsSatisfiedBy(Self);
+  Result := TStringStartsWithIgnoreCase.Create(Avalue).IsSatisfiedBy(Self);
+end;
+
+function TSpecificationStringHelper.StartsWithAnyIgnoreCase(const AValues: TArray<string>): boolean;
+begin
+  Result := TStringStartsWithAnyIgnoreCase.Create(AValues).IsSatisfiedBy(Self);
 end;
 
 function TSpecificationStringHelper.StartsWithAny(const AValues: TArray<string>): boolean;
 begin
-  Result := TStringCIStartsWithAny.Create(AValues).IsSatisfiedBy(Self);
+  Result := TStringStartsWithAny.Create(AValues).IsSatisfiedBy(Self);
 end;
 
-function TSpecificationStringHelper.StartsWithAnyCaseSensitive(const AValues: TArray<string>): boolean;
+function TSpecificationStringHelper.StartsWithIgnoreCase(const AValue: string): boolean;
 begin
-  Result := TStringCSStartsWithAny.Create(AValues).IsSatisfiedBy(Self);
-end;
-
-function TSpecificationStringHelper.StartsWithCaseSensitive(const AValue: string): boolean;
-begin
-  Result := TStringCIStartsWith.Create(Avalue).IsSatisfiedBy(Self);
+  Result := TStringStartsWithIgnoreCase.Create(Avalue).IsSatisfiedBy(Self);
 end;
 
 function TSpecificationStringHelper.ToArray: TArray<String>;
@@ -382,14 +382,24 @@ begin
   Result := TryStrToInt(Self, OValue);
 end;
 
-function TSpecificationStringHelper.Remove(const AValue: TArray<String>): String;
+function TSpecificationStringHelper.RemoveIgnoreCase(const AValue: TArray<String>): String;
 var
   LSingleValue: String;
 begin
   Result := Self;
 
   for LSingleValue in AValue do
-    Result := Result.Remove(LSingleValue);
+    Result := Result.RemoveIgnoreCase(LSingleValue);
+end;
+
+function TSpecificationStringHelper.RemoveAllIgnoreCase(const AValue: TArray<String>): String;
+var
+  LSingleValue: String;
+begin
+  Result := Self;
+
+  for LSingleValue in AValue do
+    Result := Result.RemoveAllIgnoreCase(LSingleValue);
 end;
 
 function TSpecificationStringHelper.RemoveAll(const AValue: TArray<String>): String;
@@ -400,16 +410,6 @@ begin
 
   for LSingleValue in AValue do
     Result := Result.RemoveAll(LSingleValue);
-end;
-
-function TSpecificationStringHelper.RemoveAllCaseSensitive(const AValue: TArray<String>): String;
-var
-  LSingleValue: String;
-begin
-  Result := Self;
-
-  for LSingleValue in AValue do
-    Result := Result.RemoveAllCaseSensitive(LSingleValue);
 end;
 
 function TSpecificationStringHelper.ToDate(const AFormatSettings: TFormatSettings): TDateTime;

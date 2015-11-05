@@ -28,7 +28,7 @@ implementation
 
 uses
   Delphi.SpecificationUtils,
-  Delphi.SpecificationUtils.Strings.CaseInsensitive;
+  Delphi.SpecificationUtils.Strings.IgnoreCase;
 
 
 { TMyTestObject }
@@ -36,7 +36,7 @@ uses
 
 procedure TTestStringContainsCaseInsensitive.SetupSpecification(const ASubstring: String);
 begin
-  fStringCaseInsensitiveContainsSpec := TStringCIContains.Create(ASubstring);
+  fStringCaseInsensitiveContainsSpec := TStringContainsIgnoreCase.Create(ASubstring);
 end;
 
 procedure TTestStringContainsCaseInsensitive.TestContainsSubstring(const AString: string; const ASubString: string);

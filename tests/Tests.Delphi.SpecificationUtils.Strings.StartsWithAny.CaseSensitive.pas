@@ -43,7 +43,7 @@ begin
   finally
     LStringList.Free;
   end;
-  fStringCSStartsWithSpec := TStringCSStartsWithAny.Create(LStringArray);
+  fStringCSStartsWithSpec := TStringStartsWithAny.Create(LStringArray);
 end;
 
 procedure TTestStringCSStartsWithAny.TestDoesNotStartsWithSubstring(const AString,ASubStrings: string);

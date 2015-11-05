@@ -103,7 +103,9 @@ uses
   System.DateUtils,
   Delphi.SpecificationUtils.Helper.Strings,
   System.SysUtils,
-  Spring, Delphi.SpecificationUtils.Helper.Integer;
+  Spring,
+  Delphi.SpecificationUtils.Helper.Integer,
+  Spring.ResourceStrings;
 
 const
   TDayOfWeekToInteger: Array[TDayOfWeek] of Integer = (
@@ -311,7 +313,7 @@ end;
 
 constructor DayOfWeek.CreateFromDate(const AValue: TDateTime);
 begin
-  Create(DayOfWeek(AValue));
+  CreateFromInteger(System.DateUtils.DayOfTheWeek(AValue));
 end;
 
 constructor DayOfWeek.CreateFromInteger(const AValue: Integer);

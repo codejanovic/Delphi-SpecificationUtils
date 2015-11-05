@@ -32,7 +32,7 @@ implementation
 
 procedure TTestStringContainsSensitive.SetupSpecification(const ASubstring: String);
 begin
-  fStringCaseSensitiveContainsSpec := TStringCSContains.Create(ASubstring);
+  fStringCaseSensitiveContainsSpec := TStringContains.Create(ASubstring);
 end;
 
 procedure TTestStringContainsSensitive.TestContainsSubstring(const AString: string; const ASubString: string);

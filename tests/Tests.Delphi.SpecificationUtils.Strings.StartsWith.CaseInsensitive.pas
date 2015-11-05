@@ -5,7 +5,7 @@ uses
   DUnitX.TestFramework,
   Spring.DesignPatterns,
   Delphi.SpecificationUtils,
-  Delphi.SpecificationUtils.Strings.CaseInsensitive;
+  Delphi.SpecificationUtils.Strings.IgnoreCase;
 
 type
 
@@ -33,7 +33,7 @@ implementation
 
 procedure TTestStringCIStartsWith.SetupSpecification(const ASubstring: String);
 begin
-  fStringCIStartsWithSpec := TStringCIStartsWith.Create(ASubstring);
+  fStringCIStartsWithSpec := TStringStartsWithIgnoreCase.Create(ASubstring);
 end;
 
 procedure TTestStringCIStartsWith.TestDoesNotStartsWithSubstring(const AString,ASubString: string);

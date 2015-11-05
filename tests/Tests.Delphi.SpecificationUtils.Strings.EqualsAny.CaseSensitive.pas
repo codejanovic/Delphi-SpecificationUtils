@@ -41,7 +41,7 @@ begin
   finally
     LStringList.Free;
   end;
-  fStringEqualsAnyCaseSensitiveSpec := TStringCSEqualsAny.Create(LStringArray);
+  fStringEqualsAnyCaseSensitiveSpec := TStringEqualsAny.Create(LStringArray);
 end;
 
 procedure TTestStringEqualsAnyCasenSensitive.TestLeftEqualsAnyOfRight(const ALeft,ARights: String);
