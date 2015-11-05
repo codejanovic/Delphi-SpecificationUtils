@@ -51,9 +51,9 @@ type
     function DaysInLeapYear: Integer;
     function DaysNotInLeapYear: Integer;
 
-    function MonthAsEnum: TMonth;
-    function MonthAsInteger: Integer;
-    function MonthAsString: String;
+    function ToEnum: TMonth;
+    function ToInteger: Integer;
+    function ToString: String;
 
     class operator Implicit(const value: TDateTime): Month;
     class operator Implicit(const value: Integer): Month;
@@ -79,9 +79,9 @@ type
     constructor CreateFromInteger(const AValue: Integer);
     constructor CreateFromString(const AValue: String);
 
-    function DayOfWeekEnum: TDayOfWeek;
-    function DayOfWeekAsInteger: Integer;
-    function DayOfWeekAsString: String;
+    function ToEnum: TDayOfWeek;
+    function ToInteger: Integer;
+    function ToString: String;
     function Equals(const AValue: TDayOfWeek): boolean;
 
     class operator Implicit(const value: TDateTime): DayOfWeek;
@@ -250,17 +250,17 @@ end;
 
 class operator Month.Implicit(const value: Month): Integer;
 begin
-  Result := value.MonthAsInteger;
+  Result := value.ToInteger;
 end;
 
 class operator Month.Implicit(const value: Month): TMonth;
 begin
-  Result := value.MonthAsEnum;
+  Result := value.ToEnum;
 end;
 
 class operator Month.Implicit(const value: Month): String;
 begin
-  Result := value.MonthAsString;
+  Result := value.ToString;
 end;
 
 class function Month.IntegerToMonth(const AValue: Integer): TMonth;
@@ -273,17 +273,17 @@ begin
       Exit(LCurrent);
 end;
 
-function Month.MonthAsEnum: TMonth;
+function Month.ToEnum: TMonth;
 begin
   Result := fMonth;
 end;
 
-function Month.MonthAsInteger: Integer;
+function Month.ToInteger: Integer;
 begin
   Result := fMonthAsInteger;
 end;
 
-function Month.MonthAsString: String;
+function Month.ToString: String;
 begin
   Result := fMonthAsString;
 end;
@@ -324,7 +324,7 @@ begin
   Create(StringToDayOfWeek(AValue));
 end;
 
-function DayOfWeek.DayOfWeekEnum: TDayOfWeek;
+function DayOfWeek.ToEnum: TDayOfWeek;
 begin
   Result := fDayOfWeek;
 end;
@@ -339,12 +339,12 @@ begin
   Result := fDayOfWeek = AValue;
 end;
 
-function DayOfWeek.DayOfWeekAsInteger: Integer;
+function DayOfWeek.ToInteger: Integer;
 begin
   Result := fDayAsInteger;
 end;
 
-function DayOfWeek.DayOfWeekAsString: String;
+function DayOfWeek.ToString: String;
 begin
   Result := fDayAsString;
 end;
@@ -371,7 +371,7 @@ end;
 
 class operator DayOfWeek.Implicit(const value: DayOfWeek): TDayOfWeek;
 begin
-  Result := Value.DayOfWeekEnum;
+  Result := Value.ToEnum;
 end;
 
 class operator DayOfWeek.Implicit(const value: DayOfWeek): Integer;
@@ -381,7 +381,7 @@ end;
 
 class operator DayOfWeek.Implicit(const value: DayOfWeek): String;
 begin
-  Result := Value.DayOfWeekAsString;
+  Result := Value.ToString;
 end;
 
 class function DayOfWeek.IntegerToDayOfWeek(const AValue: Integer): TDayOfWeek;
