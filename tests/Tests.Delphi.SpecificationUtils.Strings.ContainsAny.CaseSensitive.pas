@@ -2,7 +2,7 @@ unit Tests.Delphi.SpecificationUtils.Strings.ContainsAny.CaseSensitive;
 
 interface
 uses
-  DUnitX.TestFramework, Spring.DesignPatterns, Delphi.SpecificationUtils, Delphi.SpecificationUtils.Strings.CaseSensitive;
+  DUnitX.TestFramework, Spring.DesignPatterns, Delphi.SpecificationUtils.Strings.CaseSensitive;
 
 type
 
@@ -26,8 +26,7 @@ type
 implementation
 
 uses
-  System.Classes,
-  Spring.Collections;
+  System.Classes;
 
 
 { TTestStringContainsAnyCaseSensitive }

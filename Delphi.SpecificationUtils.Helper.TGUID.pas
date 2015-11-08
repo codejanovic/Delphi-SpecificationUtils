@@ -35,7 +35,7 @@ end;
 
 function TSpecificationGUIDHelper.Equals(const AValue: TGUID): boolean;
 begin
-  Result := TGUIDIsEqual.Create(AValue).IsSatisfiedBy(Self);
+  Result := TGUIDEquals.Create(AValue).IsSatisfiedBy(Self);
 end;
 
 function TSpecificationGUIDHelper.ToString: String;

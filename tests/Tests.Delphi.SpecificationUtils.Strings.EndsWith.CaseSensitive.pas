@@ -3,7 +3,7 @@ unit Tests.Delphi.SpecificationUtils.Strings.EndsWith.CaseSensitive;
 interface
 uses
   DUnitX.TestFramework, Spring.DesignPatterns,
-  Delphi.SpecificationUtils,
+
   Delphi.SpecificationUtils.Strings.CaseSensitive;
 
 type

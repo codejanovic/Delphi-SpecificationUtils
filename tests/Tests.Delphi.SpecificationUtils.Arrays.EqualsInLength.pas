@@ -38,7 +38,7 @@ uses
 
 procedure TTestArrayIsEqualInLength.Setup;
 begin
-  fAreEqualInLength := TArrayAreEqualInLength<String>.Create(fSetup.ToArray);
+  fAreEqualInLength := TArrayEqualsInLength<String>.Create(fSetup.ToArray);
 end;
 
 procedure TTestArrayIsEqualInLength.TestAreEqualInLength(const AValues: String);

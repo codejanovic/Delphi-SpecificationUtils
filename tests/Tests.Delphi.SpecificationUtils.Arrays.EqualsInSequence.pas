@@ -39,7 +39,7 @@ uses
 
 procedure TTestArrayEqualsInSequence.Setup;
 begin
-  fAreEqualInSequence := TArrayAreEqualInSequence<String>.Create(fSetup.ToArray, TEqualityComparer<string>.Default);
+  fAreEqualInSequence := TArrayEqualsInSequence<String>.Create(fSetup.ToArray, TEqualityComparer<string>.Default);
 end;
 
 procedure TTestArrayEqualsInSequence.TestAreEqualInSequence(const AValues: String);

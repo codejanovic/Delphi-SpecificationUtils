@@ -91,10 +91,9 @@ type
 implementation
 
 uses
-  System.SysUtils, System.Rtti,
-  Delphi.SpecificationUtils.Strings.IgnoreCase,
-  Spring.Collections;
-
+  System.SysUtils, 
+  System.Rtti;
+  
 { TStringHasLength }
 
 constructor TStringHasLength.Create(const ALength: Integer);

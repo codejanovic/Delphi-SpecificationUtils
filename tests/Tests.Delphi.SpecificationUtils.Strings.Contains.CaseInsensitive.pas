@@ -27,7 +27,6 @@ type
 implementation
 
 uses
-  Delphi.SpecificationUtils,
   Delphi.SpecificationUtils.Strings.IgnoreCase;
 
 

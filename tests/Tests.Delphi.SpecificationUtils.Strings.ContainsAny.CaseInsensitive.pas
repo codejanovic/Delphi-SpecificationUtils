@@ -2,7 +2,7 @@ unit Tests.Delphi.SpecificationUtils.Strings.ContainsAny.CaseInsensitive;
 
 interface
 uses
-  DUnitX.TestFramework, Spring.DesignPatterns, Delphi.SpecificationUtils, Delphi.SpecificationUtils.Strings.IgnoreCase;
+  DUnitX.TestFramework, Spring.DesignPatterns, Delphi.SpecificationUtils.Strings.IgnoreCase;
 
 type
 
@@ -27,8 +27,7 @@ type
 implementation
 
 uses
-  System.Classes,
-  Spring.Collections;
+  System.Classes;
 
 
 { TTestStringContaintAnyCaseInsensitive }

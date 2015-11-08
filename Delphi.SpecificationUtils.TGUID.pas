@@ -6,7 +6,7 @@ uses
   Spring.DesignPatterns;
 
 type
-  TGUIDIsEqual = class(TSpecificationBase<TGUID>)
+  TGUIDEquals = class(TSpecificationBase<TGUID>)
   protected
     fValue: TGUID;
   public
@@ -19,14 +19,14 @@ implementation
 uses
   System.SysUtils;
 
-{ TGUIDIsEqual }
+{ TGUIDEquals }
 
-constructor TGUIDIsEqual.Create(const AValue: TGUID);
+constructor TGUIDEquals.Create(const AValue: TGUID);
 begin
   fValue := AValue;
 end;
 
-function TGUIDIsEqual.IsSatisfiedBy(const item: TGUID): Boolean;
+function TGUIDEquals.IsSatisfiedBy(const item: TGUID): Boolean;
 begin
   Result := System.SysUtils.IsEqualGUID(fValue, item);
 end;

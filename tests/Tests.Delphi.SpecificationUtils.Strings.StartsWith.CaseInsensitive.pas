@@ -4,7 +4,7 @@ interface
 uses
   DUnitX.TestFramework,
   Spring.DesignPatterns,
-  Delphi.SpecificationUtils,
+
   Delphi.SpecificationUtils.Strings.IgnoreCase;
 
 type

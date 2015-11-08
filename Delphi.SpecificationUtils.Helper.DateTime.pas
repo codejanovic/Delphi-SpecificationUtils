@@ -4,7 +4,6 @@ interface
 
 uses
   System.SysUtils,
-  Spring.Collections,
   Delphi.SpecificationUtils.DateTime.Types;
 
 type
@@ -55,8 +54,7 @@ implementation
 
 uses
   System.DateUtils,
-  Delphi.SpecificationUtils.DateTime,
-  System.Generics.Collections;
+  Delphi.SpecificationUtils.DateTime;
 
 { TSpecificationDateTimeHelper }
 
