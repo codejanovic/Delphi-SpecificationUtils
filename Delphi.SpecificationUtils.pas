@@ -42,6 +42,24 @@ type
     function IsInteger: TSpecification<String>;
     function IsFloat: TSpecification<String>;
     function IsGUID: TSpecification<String>;
+
+    function ContainsAny(const ASubStrings: TArray<String>): TSpecification<String>;
+    function EqualsAny(const AValues: TArray<String>): TSpecification<String>;
+    function Contains(const ASubString: String): TSpecification<String>;
+    function Equals(const AValue: String): TSpecification<String>;
+    function StartsWith(const ASubString: String): TSpecification<String>;
+    function StartsWithAny(const ASubStrings: TArray<String>): TSpecification<String>;
+    function EndsWithAny(const ASubStrings: TArray<String>): TSpecification<String>;
+    function EndsWith(const ASubString: String): TSpecification<String>;
+
+    function ContainsIgnoreCase(const ASubString: String): TSpecification<String>;
+    function EqualsIgnoreCase(const AValue: String): TSpecification<String>;
+    function ContainsAnyIgnoreCase(const ASubStrings: TArray<string>): TSpecification<String>;
+    function EqualsAnyIgnoreCase(const AValues: TArray<String>): TSpecification<String>;
+    function StartsWithIgnoreCase(const ASubString: String): TSpecification<String>;
+    function StartsWithAnyIgnoreCase(const ASubStrings: TArray<String>): TSpecification<String>;
+    function EndsWithAnyIgnoreCase(const ASubStrings: TArray<String>): TSpecification<String>;
+    function EndsWithIgnoreCase(const ASubString: String): TSpecification<String>;
   end;
 
   IGUIDSpecifications = interface(IInvokable)
