@@ -16,9 +16,9 @@ implementation
 function TSpecificationBooleanHelper.ToInteger: Integer;
 begin
   if Self then
-    Result := 0
+    Result := -1
   else
-    Result := -1;
+    Result := 0;
 end;
 
 function TSpecificationBooleanHelper.ToString: String;
