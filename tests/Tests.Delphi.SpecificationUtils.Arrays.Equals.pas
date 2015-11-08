@@ -38,7 +38,7 @@ uses
 
 procedure TTestArrayEqualsSpec.Setup;
 begin
-  fAreEqual := TArrayAreEqual<string>.Create(fSetup.ToArray, TEqualityComparer<String>.Default);
+  fAreEqual := TArrayEquals<string>.Create(fSetup.ToArray, TEqualityComparer<String>.Default);
 end;
 
 procedure TTestArrayEqualsSpec.TestAreEqual(const AValues: String);

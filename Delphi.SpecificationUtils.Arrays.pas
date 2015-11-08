@@ -23,7 +23,7 @@ type
     function IsSatisfiedBy(const item: TArray<T>): Boolean; override;
   end;
 
-  TArrayAreEqualInLength<T> = class(TSpecificationBase<TArray<T>>)
+  TArrayEqualsInLength<T> = class(TSpecificationBase<TArray<T>>)
   protected
     fArray: TArray<T>;
   public
@@ -31,7 +31,7 @@ type
     function IsSatisfiedBy(const item: TArray<T>): Boolean; override;
   end;
 
-  TArrayAreEqualInSequence<T> = class(TSpecificationBase<TArray<T>>)
+  TArrayEqualsInSequence<T> = class(TSpecificationBase<TArray<T>>)
   protected
     fEqualityComparer: IEqualityComparer<T>;
     fArray: TArray<T>;
@@ -41,7 +41,7 @@ type
     function IsSatisfiedBy(const item: TArray<T>): Boolean; override;
   end;
 
-  TArrayAreEqual<T> = class(TSpecificationBase<TArray<T>>)
+  TArrayEquals<T> = class(TSpecificationBase<TArray<T>>)
   protected
     fEqualityComparer: IEqualityComparer<T>;
     fArray: TArray<T>;
@@ -100,15 +100,15 @@ end;
 
 { TArrayIsEqual<T> }
 
-constructor TArrayAreEqualInSequence<T>.Create(const AArray: TArray<T>; const AValue: IEqualityComparer<T>);
+constructor TArrayEqualsInSequence<T>.Create(const AArray: TArray<T>; const AValue: IEqualityComparer<T>);
 begin
   Guard.CheckNotNull(AValue, 'missing EqualityComparer');
   fEqualityComparer := AValue;
   fArray := AArray;
-  fIsEqualInLength := TArrayAreEqualInLength<T>.Create(AArray);
+  fIsEqualInLength := TArrayEqualsInLength<T>.Create(AArray);
 end;
 
-function TArrayAreEqualInSequence<T>.IsSatisfiedBy(const item: TArray<T>): Boolean;
+function TArrayEqualsInSequence<T>.IsSatisfiedBy(const item: TArray<T>): Boolean;
 var
   I: Integer;
   LLeft,
@@ -131,15 +131,15 @@ end;
 
 { TArrayIsEqual<T> }
 
-constructor TArrayAreEqual<T>.Create(const AArray: TArray<T>; const AValue: IEqualityComparer<T>);
+constructor TArrayEquals<T>.Create(const AArray: TArray<T>; const AValue: IEqualityComparer<T>);
 begin
   Guard.CheckNotNull(AValue, 'missing EqualityComparer');
   fEqualityComparer := AValue;
   fArray := AArray;
-  fIsEqualInLength := TArrayAreEqualInLength<T>.Create(AArray);
+  fIsEqualInLength := TArrayEqualsInLength<T>.Create(AArray);
 end;
 
-function TArrayAreEqual<T>.IsSatisfiedBy(const item: TArray<T>): Boolean;
+function TArrayEquals<T>.IsSatisfiedBy(const item: TArray<T>): Boolean;
 var
   LItem: T;
 begin
@@ -156,12 +156,12 @@ end;
 
 { TArrayIsEqualInLength<T> }
 
-constructor TArrayAreEqualInLength<T>.Create(const AArray: TArray<T>);
+constructor TArrayEqualsInLength<T>.Create(const AArray: TArray<T>);
 begin
   fArray := AArray;
 end;
 
-function TArrayAreEqualInLength<T>.IsSatisfiedBy(const item: TArray<T>): Boolean;
+function TArrayEqualsInLength<T>.IsSatisfiedBy(const item: TArray<T>): Boolean;
 begin
   Result := Length(fArray) = Length(item);
 end;
