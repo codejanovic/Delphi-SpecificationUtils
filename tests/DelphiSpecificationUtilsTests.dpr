@@ -53,7 +53,11 @@ uses
   Delphi.SpecificationUtils.DateTime.Types in '..\Delphi.SpecificationUtils.DateTime.Types.pas',
   Delphi.SpecificationUtils.Helper.Integer in '..\Delphi.SpecificationUtils.Helper.Integer.pas',
   Tests.Delphi.SpecificationUtils.Helper.Integer in 'Tests.Delphi.SpecificationUtils.Helper.Integer.pas',
-  Tests.Delphi.SpecificationUtils.Helper.Boolean in 'Tests.Delphi.SpecificationUtils.Helper.Boolean.pas';
+  Tests.Delphi.SpecificationUtils.Helper.Boolean in 'Tests.Delphi.SpecificationUtils.Helper.Boolean.pas',
+  Delphi.SpecificationUtils.Arrays.Factory in '..\Delphi.SpecificationUtils.Arrays.Factory.pas',
+  Delphi.SpecificationUtils.Strings.Factory in '..\Delphi.SpecificationUtils.Strings.Factory.pas',
+  Delphi.SpecificationUtils.TGUID.Factory in '..\Delphi.SpecificationUtils.TGUID.Factory.pas',
+  Delphi.SpecificationUtils.DateTime.Factory in '..\Delphi.SpecificationUtils.DateTime.Factory.pas';
 
 var
   runner : ITestRunner;

@@ -67,6 +67,42 @@ type
     function Equals(const AValue: TGUID): TSpecification<TGUID>;
   end;
 
+  TSpecificationUtils = class
+  public
+    class function ArraySpecifications<T>: IArraySpecifications<T>;   
+    class function DateTimeSpecifications: IDateTimeSpecifications;
+    class function StringSpecifications: IStringSpecifications;
+    class function GUIDSpecifications: IGUIDSpecifications;
+  end;
+
 implementation
+
+uses
+  Delphi.SpecificationUtils.Arrays.Factory,
+  Delphi.SpecificationUtils.Strings.Factory,
+  Delphi.SpecificationUtils.TGUID.Factory,
+  Delphi.SpecificationUtils.DateTime.Factory;
+
+{ TSpecificationUtils }
+
+class function TSpecificationUtils.DateTimeSpecifications: IDateTimeSpecifications;
+begin
+  Result := TDateTimeSpecificationsFactory.Create;
+end;
+
+class function TSpecificationUtils.GUIDSpecifications: IGUIDSpecifications;
+begin
+  Result := TGUIDSpecificationsFactory.Create;
+end;
+
+class function TSpecificationUtils.StringSpecifications: IStringSpecifications;
+begin
+  Result := TStringSpecificationsFactory.Create;
+end;
+
+class function TSpecificationUtils.ArraySpecifications<T>: IArraySpecifications<T>;
+begin
+  Result := TArraySpecificationsFactory<T>.Create;
+end;
 
 end.
