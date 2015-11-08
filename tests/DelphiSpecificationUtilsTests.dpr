@@ -46,12 +46,14 @@ uses
   Tests.Delphi.SpecificationUtils.Arrays.Equals in 'Tests.Delphi.SpecificationUtils.Arrays.Equals.pas',
   Tests.Delphi.SpecificationUtils.Arrays.EqualsInSequence in 'Tests.Delphi.SpecificationUtils.Arrays.EqualsInSequence.pas',
   Tests.Delphi.SpecificationUtils.Arrays.EqualsInLength in 'Tests.Delphi.SpecificationUtils.Arrays.EqualsInLength.pas',
-  Delphi.SpecificationUtils.Boolean.Helper in '..\Delphi.SpecificationUtils.Boolean.Helper.pas',
+  Delphi.SpecificationUtils.Helper.Boolean in '..\Delphi.SpecificationUtils.Helper.Boolean.pas',
   Delphi.SpecificationUtils.Helper.DateTime in '..\Delphi.SpecificationUtils.Helper.DateTime.pas',
   Delphi.SpecificationUtils.DateTime in '..\Delphi.SpecificationUtils.DateTime.pas',
   Tests.Delphi.SpecificationUtils.Helper.DateTime in 'Tests.Delphi.SpecificationUtils.Helper.DateTime.pas',
   Delphi.SpecificationUtils.DateTime.Types in '..\Delphi.SpecificationUtils.DateTime.Types.pas',
-  Delphi.SpecificationUtils.Helper.Integer in '..\Delphi.SpecificationUtils.Helper.Integer.pas';
+  Delphi.SpecificationUtils.Helper.Integer in '..\Delphi.SpecificationUtils.Helper.Integer.pas',
+  Tests.Delphi.SpecificationUtils.Helper.Integer in 'Tests.Delphi.SpecificationUtils.Helper.Integer.pas',
+  Tests.Delphi.SpecificationUtils.Helper.Boolean in 'Tests.Delphi.SpecificationUtils.Helper.Boolean.pas';
 
 var
   runner : ITestRunner;
