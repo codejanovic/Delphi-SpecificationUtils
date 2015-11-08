@@ -2,7 +2,7 @@ unit Tests.Delphi.SpecificationUtils.Strings.StartsWithAny.CaseSensitive;
 
 interface
 uses
-  DUnitX.TestFramework, Spring.DesignPatterns, Delphi.SpecificationUtils,
+  DUnitX.TestFramework, Spring.DesignPatterns,
   Delphi.SpecificationUtils.Strings.CaseSensitive;
 
 type

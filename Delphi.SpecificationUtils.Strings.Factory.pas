@@ -6,7 +6,6 @@ interface
 uses
   Delphi.SpecificationUtils,
   Spring.DesignPatterns,
-  System.Generics.Defaults,
   System.RegularExpressions;
 
 type

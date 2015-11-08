@@ -2,7 +2,7 @@ unit Tests.Delphi.SpecificationUtils.Strings.Equals.CaseInsensitive;
 
 interface
 uses
-  DUnitX.TestFramework, Spring.DesignPatterns, Delphi.SpecificationUtils, Delphi.SpecificationUtils.Strings.IgnoreCase;
+  DUnitX.TestFramework, Spring.DesignPatterns, Delphi.SpecificationUtils.Strings.IgnoreCase;
 
 type
 
