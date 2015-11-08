@@ -43,7 +43,7 @@ begin
   finally
     LStringList.Free;
   end;
-  fStringCSEndsWithSpec := TStringCSEndsWithAny.Create(LStringArray);
+  fStringCSEndsWithSpec := TStringEndsWithAny.Create(LStringArray);
 end;
 
 procedure TTestStringCSEndsWithAny.TestDoesNotEndsWithSubstring(const AString,ASubStrings: string);

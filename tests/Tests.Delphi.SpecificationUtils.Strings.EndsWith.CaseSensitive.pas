@@ -33,7 +33,7 @@ implementation
 
 procedure TTestStringCSEndsWith.SetupSpecification(const ASubstring: String);
 begin
-  fStringCSEndsWithSpec := TStringCSEndsWith.Create(ASubstring);
+  fStringCSEndsWithSpec := TStringEndsWith.Create(ASubstring);
 end;
 
 procedure TTestStringCSEndsWith.TestDoesNotEndsWithSubstring(const AString,ASubString: string);

@@ -49,25 +49,14 @@ type
     function IncreaseSecond: TDateTime; overload;
     function IncreaseSecond(const ANumber: Integer): TDateTime; overload;
 
-//    function DecreaseDay: TDateTime; overload;
-//    function DecreaseDay(const ANumber: Integer): TDateTime; overload;
-//    function DecreaseMonth: TDateTime; overload;
-//    function DecreaseMonth(const ANumber: Integer): TDateTime; overload;
-//    function DecreaseYear: TDateTime; overload;
-//    function DecreaseYear(const ANumber: Integer): TDateTime; overload;
-//    function DecreaseHour: TDateTime; overload;
-//    function DecreaseHour(const ANumber: Integer): TDateTime; overload;
-//    function DecreaseMinute: TDateTime; overload;
-//    function DecreaseMinute(const ANumber: Integer): TDateTime; overload;
-//    function DecreaseSecond: TDateTime; overload;
-//    function DecreaseSecond(const ANumber: Integer): TDateTime; overload;
   end;
 
 implementation
 
 uses
   System.DateUtils,
-  Delphi.SpecificationUtils.DateTime, System.Generics.Collections;
+  Delphi.SpecificationUtils.DateTime,
+  System.Generics.Collections;
 
 { TSpecificationDateTimeHelper }
 
@@ -77,19 +66,13 @@ begin
 end;
 
 function TSpecificationDateTimeHelper.DayOfWeek: TDayOfWeek;
+var
+  LDayOfWeek: Delphi.SpecificationUtils.DateTime.Types.DayOfWeek;
 begin
-  case System.DateUtils.DayOfTheWeek(Self) of
-    1: Result := TDayOfWeek.Monday;
-    2: Result := TDayOfWeek.Tuesday;
-    3: Result := TDayOfWeek.Wednesday;
-    4: Result := TDayOfWeek.Thursday;
-    5: Result := TDayOfWeek.Friday;
-    6: Result := TDayOfWeek.Saturday;
-    7: Result := TDayOfWeek.Sunday;
-    else
-      Result := TDayOfWeek.UnknownDay;
-  end;
+  LDayOfWeek.CreateFromDate(Self);
+  Result := LDayOfWeek.ToEnum;
 end;
+
 
 function TSpecificationDateTimeHelper.Hour: Integer;
 begin
@@ -197,23 +180,11 @@ begin
 end;
 
 function TSpecificationDateTimeHelper.MonthOfYear: TMonth;
+var
+  LMonth: Delphi.SpecificationUtils.DateTime.Types.Month;
 begin
-  case Self.Month of
-    1: Result := TMonth.January;
-    2: Result := TMonth.February;
-    3: Result := TMonth.March;
-    4: Result := TMonth.April;
-    5: Result := TMonth.May;
-    6: Result := TMonth.June;
-    7: Result := TMonth.July;
-    8: Result := TMonth.August;
-    9: Result := TMonth.September;
-    10: Result := TMonth.October;
-    11: Result := TMonth.November;
-    12: Result := TMonth.December;
-    else
-      Result := TMonth.UnknownMonth;
-  end;
+  LMonth.CreateFromInteger(Self.Month);
+  Result := LMonth.ToEnum;
 end;
 
 class function TSpecificationDateTimeHelper.Now: TDateTime;

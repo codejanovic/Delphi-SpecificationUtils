@@ -1,4 +1,4 @@
-unit Delphi.SpecificationUtils.Strings.CaseInsensitive;
+unit Delphi.SpecificationUtils.Strings.IgnoreCase;
 
 interface
 
@@ -6,7 +6,7 @@ uses
   Spring.DesignPatterns;
 
 type
-  TStringCIContains = class(TSpecificationBase<String>)
+  TStringContainsIgnoreCase = class(TSpecificationBase<String>)
   protected
     fSubstring: String;
   public
@@ -14,7 +14,7 @@ type
     function IsSatisfiedBy(const item: String): Boolean; override;
   end;
 
-  TStringCIEquals = class(TSpecificationBase<String>)
+  TStringEqualsIgnoreCase = class(TSpecificationBase<String>)
   protected
     fValue: String;
   public
@@ -22,7 +22,7 @@ type
     function IsSatisfiedBy(const item: String): Boolean; override;
   end;
 
-  TStringCIContainsAny = class(TSpecificationBase<String>)
+  TStringContainsAnyIgnoreCase = class(TSpecificationBase<String>)
   protected
     fSubstrings: TArray<string>;
   public
@@ -30,7 +30,7 @@ type
     function IsSatisfiedBy(const item: String): Boolean; override;
   end;
 
-  TStringCIEqualsAny = class(TSpecificationBase<String>)
+  TStringEqualsAnyIgnoreCase = class(TSpecificationBase<String>)
   protected
     fValues: TArray<String>;
   public
@@ -38,7 +38,7 @@ type
     function IsSatisfiedBy(const item: String): Boolean; override;
   end;
 
-  TStringCIStartsWith = class(TSpecificationBase<String>)
+  TStringStartsWithIgnoreCase = class(TSpecificationBase<String>)
   protected
     fSubstring: String;
   public
@@ -46,7 +46,7 @@ type
     function IsSatisfiedBy(const item: String): Boolean; override;
   end;
 
-  TStringCIStartsWithAny = class(TSpecificationBase<String>)
+  TStringStartsWithAnyIgnoreCase = class(TSpecificationBase<String>)
   protected
     fSubstrings: TArray<String>;
   public
@@ -54,7 +54,7 @@ type
     function IsSatisfiedBy(const item: String): Boolean; override;
   end;
 
-  TStringCIEndsWith = class(TSpecificationBase<String>)
+  TStringEndsWithIgnoreCase = class(TSpecificationBase<String>)
   protected
     fSubstring: String;
   public
@@ -62,7 +62,7 @@ type
     function IsSatisfiedBy(const item: String): Boolean; override;
   end;
 
-  TStringCIEndsWithAny = class(TSpecificationBase<String>)
+  TStringEndsWithAnyIgnoreCase = class(TSpecificationBase<String>)
   protected
     fSubstrings: TArray<String>;
   public
@@ -78,116 +78,116 @@ uses
 
 { TStringContainsCaseInsensitive }
 
-constructor TStringCIContains.Create(const ASubString: String);
+constructor TStringContainsIgnoreCase.Create(const ASubString: String);
 begin
   fSubstring := ASubString;
 end;
 
-function TStringCIContains.IsSatisfiedBy(const item: String): Boolean;
+function TStringContainsIgnoreCase.IsSatisfiedBy(const item: String): Boolean;
 begin
   Result := ContainsText(item, fSubstring);
 end;
 
 { TStringEqualsCaseInsensitive }
 
-constructor TStringCIEquals.Create(const AValue: String);
+constructor TStringEqualsIgnoreCase.Create(const AValue: String);
 begin
   fValue := AValue.Trim;
 end;
 
-function TStringCIEquals.IsSatisfiedBy(const item: String): Boolean;
+function TStringEqualsIgnoreCase.IsSatisfiedBy(const item: String): Boolean;
 begin
   Result := SameText(item.Trim, fValue);
 end;
 
 { TStringContainsAnyCaseInsensitive }
 
-constructor TStringCIContainsAny.Create(const ASubStrings: TArray<string>);
+constructor TStringContainsAnyIgnoreCase.Create(const ASubStrings: TArray<string>);
 begin
   fSubstrings := ASubStrings;
 end;
 
-function TStringCIContainsAny.IsSatisfiedBy(const item: String): Boolean;
+function TStringContainsAnyIgnoreCase.IsSatisfiedBy(const item: String): Boolean;
 var
   LSubstring: String;
 begin
   Result := False;
   for LSubstring in fSubstrings do
-    if TStringCIContains.Create(LSubstring).IsSatisfiedBy(item) then
+    if TStringContainsIgnoreCase.Create(LSubstring).IsSatisfiedBy(item) then
       Exit(True);
 end;
 
 { TStringEqualsAnyCaseInsensitive }
 
-constructor TStringCIEqualsAny.Create(const AValues: TArray<String>);
+constructor TStringEqualsAnyIgnoreCase.Create(const AValues: TArray<String>);
 begin
   fValues := AValues;
 end;
 
-function TStringCIEqualsAny.IsSatisfiedBy(const item: String): Boolean;
+function TStringEqualsAnyIgnoreCase.IsSatisfiedBy(const item: String): Boolean;
 var
   LValue: String;
 begin
   Result := False;
   for LValue in fValues do
-    if TStringCIEquals.Create(LValue).IsSatisfiedBy(item) then
+    if TStringEqualsIgnoreCase.Create(LValue).IsSatisfiedBy(item) then
       Exit(True);
 end;
 
 { TStringCIStartsWith }
 
-constructor TStringCIStartsWith.Create(const ASubString: String);
+constructor TStringStartsWithIgnoreCase.Create(const ASubString: String);
 begin
   fSubstring := ASubString;
 end;
 
-function TStringCIStartsWith.IsSatisfiedBy(const item: String): Boolean;
+function TStringStartsWithIgnoreCase.IsSatisfiedBy(const item: String): Boolean;
 begin
   Result := item.StartsWith(fSubstring, true);
 end;
 
 { TStringCIStartsWithAny }
 
-constructor TStringCIStartsWithAny.Create(const ASubStrings: TArray<String>);
+constructor TStringStartsWithAnyIgnoreCase.Create(const ASubStrings: TArray<String>);
 begin
   fSubstrings := ASubStrings;
 end;
 
-function TStringCIStartsWithAny.IsSatisfiedBy(const item: String): Boolean;
+function TStringStartsWithAnyIgnoreCase.IsSatisfiedBy(const item: String): Boolean;
 var
   LSubstring: String;
 begin
   Result := False;
   for LSubstring in fSubstrings do
-    if TStringCIStartsWith.Create(LSubstring).IsSatisfiedBy(item) then
+    if TStringStartsWithIgnoreCase.Create(LSubstring).IsSatisfiedBy(item) then
       Exit(True);
 end;
 
 { TStringCIEndsWithAny }
 
-constructor TStringCIEndsWithAny.Create(const ASubStrings: TArray<String>);
+constructor TStringEndsWithAnyIgnoreCase.Create(const ASubStrings: TArray<String>);
 begin
   fSubstrings := ASubStrings;
 end;
 
-function TStringCIEndsWithAny.IsSatisfiedBy(const item: String): Boolean;
+function TStringEndsWithAnyIgnoreCase.IsSatisfiedBy(const item: String): Boolean;
 var
   LSubstring: String;
 begin
   Result := False;
   for LSubstring in fSubstrings do
-    if TStringCIEndsWith.Create(LSubstring).IsSatisfiedBy(item) then
+    if TStringEndsWithIgnoreCase.Create(LSubstring).IsSatisfiedBy(item) then
       Exit(True);
 end;
 
 { TStringCIEndsWith }
 
-constructor TStringCIEndsWith.Create(const ASubString: String);
+constructor TStringEndsWithIgnoreCase.Create(const ASubString: String);
 begin
   fSubstring := ASubString;
 end;
 
-function TStringCIEndsWith.IsSatisfiedBy(const item: String): Boolean;
+function TStringEndsWithIgnoreCase.IsSatisfiedBy(const item: String): Boolean;
 begin
   Result := item.EndsWith(fSubstring, true);
 end;

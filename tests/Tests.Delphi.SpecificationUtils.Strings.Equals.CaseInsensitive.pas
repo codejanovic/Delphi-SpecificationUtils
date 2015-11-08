@@ -2,7 +2,7 @@ unit Tests.Delphi.SpecificationUtils.Strings.Equals.CaseInsensitive;
 
 interface
 uses
-  DUnitX.TestFramework, Spring.DesignPatterns, Delphi.SpecificationUtils, Delphi.SpecificationUtils.Strings.CaseInsensitive;
+  DUnitX.TestFramework, Spring.DesignPatterns, Delphi.SpecificationUtils, Delphi.SpecificationUtils.Strings.IgnoreCase;
 
 type
 
@@ -30,7 +30,7 @@ implementation
 
 procedure TTestStringEqualsCaseInsensitive.SetupSpecification(const AStringToEqual: String);
 begin
-  fStringEqualsCaseInsensitiveSpec := TStringCIEquals.Create(AStringToEqual);
+  fStringEqualsCaseInsensitiveSpec := TStringEqualsIgnoreCase.Create(AStringToEqual);
 end;
 
 procedure TTestStringEqualsCaseInsensitive.TestLeftEqualsRight(const ALeft,ARight: String);

@@ -29,10 +29,7 @@ end;
 
 function TSpecificationIntegerHelper.ToBoolean: Boolean;
 begin
-  if Self = 0 then
-    Result := true
-  else
-    Result := false;
+  Result := Self <> 0;
 end;
 
 function TSpecificationIntegerHelper.ToExtended: Extended;

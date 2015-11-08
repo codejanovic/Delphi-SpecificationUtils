@@ -20,7 +20,7 @@ uses
   Tests.Delphi.SpecificationUtils.Strings.ContainsAny.CaseSensitive in 'Tests.Delphi.SpecificationUtils.Strings.ContainsAny.CaseSensitive.pas',
   Tests.Delphi.SpecificationUtils.Strings.ContainsAny.CaseInsensitive in 'Tests.Delphi.SpecificationUtils.Strings.ContainsAny.CaseInsensitive.pas',
   Tests.Delphi.SpecificationUtils.Strings.EqualsAny.CaseSensitive in 'Tests.Delphi.SpecificationUtils.Strings.EqualsAny.CaseSensitive.pas',
-  Delphi.SpecificationUtils.Strings.CaseInsensitive in '..\Delphi.SpecificationUtils.Strings.CaseInsensitive.pas',
+  Delphi.SpecificationUtils.Strings.IgnoreCase in '..\Delphi.SpecificationUtils.Strings.IgnoreCase.pas',
   Tests.Delphi.SpecificationUtils.Strings.StartsWith.CaseSensitive in 'Tests.Delphi.SpecificationUtils.Strings.StartsWith.CaseSensitive.pas',
   Tests.Delphi.SpecificationUtils.Strings.StartsWith.CaseInsensitive in 'Tests.Delphi.SpecificationUtils.Strings.StartsWith.CaseInsensitive.pas',
   Tests.Delphi.SpecificationUtils.Strings.StartsWithAny.CaseSensitive in 'Tests.Delphi.SpecificationUtils.Strings.StartsWithAny.CaseSensitive.pas',
@@ -46,12 +46,14 @@ uses
   Tests.Delphi.SpecificationUtils.Arrays.Equals in 'Tests.Delphi.SpecificationUtils.Arrays.Equals.pas',
   Tests.Delphi.SpecificationUtils.Arrays.EqualsInSequence in 'Tests.Delphi.SpecificationUtils.Arrays.EqualsInSequence.pas',
   Tests.Delphi.SpecificationUtils.Arrays.EqualsInLength in 'Tests.Delphi.SpecificationUtils.Arrays.EqualsInLength.pas',
-  Delphi.SpecificationUtils.Boolean.Helper in '..\Delphi.SpecificationUtils.Boolean.Helper.pas',
+  Delphi.SpecificationUtils.Helper.Boolean in '..\Delphi.SpecificationUtils.Helper.Boolean.pas',
   Delphi.SpecificationUtils.Helper.DateTime in '..\Delphi.SpecificationUtils.Helper.DateTime.pas',
   Delphi.SpecificationUtils.DateTime in '..\Delphi.SpecificationUtils.DateTime.pas',
   Tests.Delphi.SpecificationUtils.Helper.DateTime in 'Tests.Delphi.SpecificationUtils.Helper.DateTime.pas',
   Delphi.SpecificationUtils.DateTime.Types in '..\Delphi.SpecificationUtils.DateTime.Types.pas',
-  Delphi.SpecificationUtils.Helper.Integer in '..\Delphi.SpecificationUtils.Helper.Integer.pas';
+  Delphi.SpecificationUtils.Helper.Integer in '..\Delphi.SpecificationUtils.Helper.Integer.pas',
+  Tests.Delphi.SpecificationUtils.Helper.Integer in 'Tests.Delphi.SpecificationUtils.Helper.Integer.pas',
+  Tests.Delphi.SpecificationUtils.Helper.Boolean in 'Tests.Delphi.SpecificationUtils.Helper.Boolean.pas';
 
 var
   runner : ITestRunner;

@@ -18,7 +18,7 @@ type
 
     [TestCase('test1', 'pewpewpew,pew,pewpew')]
     [TestCase('test1', 'pewpewpew,PEW,pewpew')]
-    procedure TestRemove(const AString: String; const ASubsString: String; const AExpectedResult: String);
+    procedure TestRemoveIgnoreCase(const AString: String; const ASubsString: String; const AExpectedResult: String);
 
     [TestCase('test1', 'pewpewpew;p,e,w;pewpew', ';')]
     [TestCase('test1', 'pewpewpew;P,E,W;pewpew', ';')]
@@ -26,7 +26,7 @@ type
 
     [TestCase('test1', 'pewpewpew,pew,pewpew')]
     [TestCase('test1', 'pewpewpew,PEW,pewpewpew')]
-    procedure TestRemoveCaseSensitive(const AString: String; const ASubsString: String; const AExpectedResult: String);
+    procedure TestRemove(const AString: String; const ASubsString: String; const AExpectedResult: String);
 
     [TestCase('test1', 'pewpewpew;p,e,w;pewpew', ';')]
     [TestCase('test1', 'pewpewpew;P,E,W;pewpewpew', ';')]
@@ -36,13 +36,13 @@ type
     [TestCase('test2', 'pewpewpewpow,PEW,pow')]
     [TestCase('test3', 'pewpewpewpow,pow,pewpewpew')]
     [TestCase('test4', 'pewpewpewpow,POW,pewpewpew')]
-    procedure TestRemoveAll(const AString: String; const ASubsString: String; const AExpectedResult: String);
+    procedure TestRemoveAllIgnoreCase(const AString: String; const ASubsString: String; const AExpectedResult: String);
 
     [TestCase('test1', 'pewpewpewpow;p,e,w;o', ';')]
     [TestCase('test2', 'pewpewpewpow;P,E,W;o', ';')]
     [TestCase('test3', 'pewpewpewpow;p,o,w;eee', ';')]
     [TestCase('test4', 'pewpewpewpow;P,O,W;eee', ';')]
-    procedure TestRemoveByArrayAll(const AString: String; const ASubsStrings: String; const AExpectedResult: String);
+    procedure TestRemoveByArrayAllIgnoreCase(const AString: String; const ASubsStrings: String; const AExpectedResult: String);
 
     [TestCase('test1', 'pewpewpewpow,pew,pow')]
     [TestCase('test2', 'pewpewpewpow,PEW,pewpewpewpow')]
@@ -54,7 +54,7 @@ type
     [TestCase('test2', 'pewpewpewpow;P,E,W;pewpewpewpow', ';')]
     [TestCase('test3', 'pewpewpewpow;p,o,w;eee', ';')]
     [TestCase('test4', 'pewpewpewpow;P,O,W;pewpewpewpow', ';')]
-    procedure TestRemoveByArrayAllCaseSensitive(const AString: String; const ASubsStrings: String; const AExpectedResult: String);
+    procedure TestRemoveByArrayAll(const AString: String; const ASubsStrings: String; const AExpectedResult: String);
 
     [TestCase('test1', 'Pew pew Pew pow,([A-Z])\w+, pew  pow')]
     procedure TestRemoveByRegex(const AString: String; const AExpression: String; const AExpectedResult: String);
@@ -248,19 +248,19 @@ begin
   Assert.AreEqual(Length(LArraySysUtils), Length(LArrayMyUtils));
 end;
 
-procedure TTestStringHelper.TestRemove(const AString, ASubsString, AExpectedResult: String);
+procedure TTestStringHelper.TestRemoveIgnoreCase(const AString, ASubsString, AExpectedResult: String);
 var
   LResult: String;
 begin
-  LResult := AString.Remove(ASubsString);
+  LResult := AString.RemoveIgnoreCase(ASubsString);
   Assert.AreEqual(AExpectedResult, LResult);
 end;
 
-procedure TTestStringHelper.TestRemoveAll(const AString, ASubsString, AExpectedResult: String);
+procedure TTestStringHelper.TestRemoveAllIgnoreCase(const AString, ASubsString, AExpectedResult: String);
 var
   LResult: String;
 begin
-  LResult := AString.RemoveAll(ASubsString);
+  LResult := AString.RemoveAllIgnoreCase(ASubsString);
   Assert.AreEqual(AExpectedResult, LResult);
 end;
 
@@ -268,31 +268,31 @@ procedure TTestStringHelper.TestRemoveAllCaseSensitive(const AString, ASubsStrin
 var
   LResult: String;
 begin
-  LResult := AString.RemoveAllCaseSensitive(ASubsString);
+  LResult := AString.RemoveAll(ASubsString);
   Assert.AreEqual(AExpectedResult, LResult);
 end;
 
 procedure TTestStringHelper.TestRemoveByArray(const AString, ASubsStrings, AExpectedResult: String);
 begin
-  Assert.AreEqual(AString.Remove(ASubsStrings.ToArray), AExpectedResult);
+  Assert.AreEqual(AString.RemoveIgnoreCase(ASubsStrings.ToArray), AExpectedResult);
 end;
 
-procedure TTestStringHelper.TestRemoveByArrayAll(const AString, ASubsStrings,
+procedure TTestStringHelper.TestRemoveByArrayAllIgnoreCase(const AString, ASubsStrings,
   AExpectedResult: String);
 begin
-  Assert.AreEqual(AString.RemoveAll(ASubsStrings.ToArray), AExpectedResult);
+  Assert.AreEqual(AString.RemoveAllIgnoreCase(ASubsStrings.ToArray), AExpectedResult);
 end;
 
-procedure TTestStringHelper.TestRemoveByArrayAllCaseSensitive(const AString,
+procedure TTestStringHelper.TestRemoveByArrayAll(const AString,
   ASubsStrings, AExpectedResult: String);
 begin
-  Assert.AreEqual(AString.RemoveAllCaseSensitive(ASubsStrings.ToArray), AExpectedResult);
+  Assert.AreEqual(AString.RemoveAll(ASubsStrings.ToArray), AExpectedResult);
 end;
 
 procedure TTestStringHelper.TestRemoveByArrayCaseSensitive(const AString,
   ASubsStrings, AExpectedResult: String);
 begin
-  Assert.AreEqual(AString.RemoveCaseSensitive(ASubsStrings.ToArray), AExpectedResult);
+  Assert.AreEqual(AString.Remove(ASubsStrings.ToArray), AExpectedResult);
 end;
 
 procedure TTestStringHelper.TestRemoveByRegex(const AString, AExpression, AExpectedResult: String);
@@ -303,11 +303,11 @@ begin
   Assert.AreEqual(AExpectedResult, LResult);
 end;
 
-procedure TTestStringHelper.TestRemoveCaseSensitive(const AString, ASubsString, AExpectedResult: String);
+procedure TTestStringHelper.TestRemove(const AString, ASubsString, AExpectedResult: String);
 var
   LResult: String;
 begin
-  LResult := AString.RemoveCaseSensitive(ASubsString);
+  LResult := AString.Remove(ASubsString);
   Assert.AreEqual(AExpectedResult, LResult);
 end;
 

@@ -92,7 +92,7 @@ implementation
 
 uses
   System.SysUtils, System.Rtti,
-  Delphi.SpecificationUtils.Strings.CaseInsensitive,
+  Delphi.SpecificationUtils.Strings.IgnoreCase,
   Spring.Collections;
 
 { TStringHasLength }

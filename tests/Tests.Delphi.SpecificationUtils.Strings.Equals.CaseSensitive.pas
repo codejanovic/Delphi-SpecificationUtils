@@ -27,7 +27,7 @@ implementation
 
 procedure TTestStringEqualsCaseSensitive.SetupSpecification(const AStringToEqual: String);
 begin
-  fStringEqualsCaseSensitiveSpec := TStringCSEquals.Create(AStringToEqual);
+  fStringEqualsCaseSensitiveSpec := TStringEquals.Create(AStringToEqual);
 end;
 
 procedure TTestStringEqualsCaseSensitive.TestLeftEqualsRight(const ALeft,ARight: String);

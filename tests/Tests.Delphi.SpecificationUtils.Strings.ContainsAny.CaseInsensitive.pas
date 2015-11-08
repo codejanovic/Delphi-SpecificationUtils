@@ -2,7 +2,7 @@ unit Tests.Delphi.SpecificationUtils.Strings.ContainsAny.CaseInsensitive;
 
 interface
 uses
-  DUnitX.TestFramework, Spring.DesignPatterns, Delphi.SpecificationUtils, Delphi.SpecificationUtils.Strings.CaseInsensitive;
+  DUnitX.TestFramework, Spring.DesignPatterns, Delphi.SpecificationUtils, Delphi.SpecificationUtils.Strings.IgnoreCase;
 
 type
 
@@ -48,7 +48,7 @@ begin
     LStringList.Free;
   end;
 
-  fStringCaseInsensitiveContainsAnySpec := TStringCIContainsAny.Create(LStringArray);
+  fStringCaseInsensitiveContainsAnySpec := TStringContainsAnyIgnoreCase.Create(LStringArray);
 end;
 
 procedure TTestStringContaintAnyCaseInsensitive.TestContainsAny(const AString, ASubStrings: string);

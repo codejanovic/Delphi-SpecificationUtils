@@ -47,7 +47,7 @@ begin
     LStringList.Free;
   end;
 
-  fStringCaseSensitiveContainsAnySpec := TStringCSContainsAny.Create(LStringArray);
+  fStringCaseSensitiveContainsAnySpec := TStringContainsAny.Create(LStringArray);
 end;
 
 procedure TTestStringContainsAnyCaseSensitive.TestContainsAny(const AString, ASubStrings: string);
