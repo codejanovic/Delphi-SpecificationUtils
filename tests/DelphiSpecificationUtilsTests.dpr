@@ -57,7 +57,8 @@ uses
   Delphi.SpecificationUtils.Arrays.Factory in '..\Delphi.SpecificationUtils.Arrays.Factory.pas',
   Delphi.SpecificationUtils.Strings.Factory in '..\Delphi.SpecificationUtils.Strings.Factory.pas',
   Delphi.SpecificationUtils.TGUID.Factory in '..\Delphi.SpecificationUtils.TGUID.Factory.pas',
-  Delphi.SpecificationUtils.DateTime.Factory in '..\Delphi.SpecificationUtils.DateTime.Factory.pas';
+  Delphi.SpecificationUtils.DateTime.Factory in '..\Delphi.SpecificationUtils.DateTime.Factory.pas',
+  Tests.Delphi.SpecificationUtils.Strings.Matches in 'Tests.Delphi.SpecificationUtils.Strings.Matches.pas';
 
 var
   runner : ITestRunner;
