@@ -3,7 +3,7 @@ unit Delphi.SpecificationUtils.Helper.Strings;
 interface
 
 uses
-  System.SysUtils;
+  System.SysUtils, System.RegularExpressions;
 
 type
   TSpecificationStringHelper = record helper for String
@@ -37,6 +37,10 @@ type
     function ConcatLeft(const AValue: String): string;
     function ConcatRight(const AValue: String): string;
 
+    function Matches(const AExpression: String): boolean; overload;
+    function Matches(const AExpression: String; const ARegexOptions: TRegExOptions): boolean; overload;
+    function MatchesIgnoreCase(const AExpression: String): boolean;
+
     function RemoveIgnoreCase(const AValue: String): String; overload;
     function RemoveIgnoreCase(const AValue: TArray<String>): String; overload;
     function Remove(const AValue: String): String; overload;
@@ -45,13 +49,17 @@ type
     function RemoveAllIgnoreCase(const AValue: TArray<String>): String; overload;
     function RemoveAll(const AValue: String): String; overload;
     function RemoveAll(const AValue: TArray<String>): String; overload;
-    function RemoveByRegex(const AExpression: String): String;
+    function RemoveByRegex(const AExpression: String): String; overload;
+    function RemoveByRegex(const AExpression: String; const ARegexOptions: TRegExOptions): String; overload;
+    function RemoveIgnoreCaseByRegex(const AExpression: String): String;
 
     function ReplaceIgnoreCase(const AOldValue: String; const ANewValue: String): String;
     function Replace(const AOldValue: String; const ANewValue: String): String;
     function ReplaceAllIgnoreCase(const AOldValue: String; const ANewValue: String): String;
     function ReplaceAll(const AOldValue: String; const ANewValue: String): String;
-    function ReplaceByRegex(const AExpression: String; const ANewValue: String): String;
+    function ReplaceByRegex(const AExpression: String; const ANewValue: String): String; overload;
+    function ReplaceByRegex(const AExpression: String; const ANewValue: String; const ARegexOptions: TRegExOptions): String; overload;
+    function ReplaceIgnoreCaseByRegex(const AExpression: String; const ANewValue: String): String;
 
     function EqualsIgnoreCase(const AValue: string): boolean;
     function Equals(const AValue: string): boolean;
@@ -80,7 +88,7 @@ uses
   Delphi.SpecificationUtils.Strings.CaseSensitive,
   Delphi.SpecificationUtils.Strings.IgnoreCase,
   Delphi.SpecificationUtils.Strings,
-  System.RegularExpressions, System.Classes;
+  System.Classes;
 
 { TSpecificationStringHelper }
 
@@ -209,6 +217,21 @@ begin
   Result := System.Length(Self);
 end;
 
+function TSpecificationStringHelper.Matches(const AExpression: String): boolean;
+begin
+  Result := Self.Matches(AExpression, [roNone]);
+end;
+
+function TSpecificationStringHelper.Matches(const AExpression: String; const ARegexOptions: TRegExOptions): boolean;
+begin
+  Result := TStringMatchesRegex.Create(AExpression, ARegexOptions).IsSatisfiedBy(Self);
+end;
+
+function TSpecificationStringHelper.MatchesIgnoreCase(const AExpression: String): boolean;
+begin
+  Result := Self.Matches(AExpression, [roIgnoreCase]);
+end;
+
 function TSpecificationStringHelper.RemoveIgnoreCase(const AValue: String): String;
 begin
   Result := Self.ReplaceIgnoreCase(AValue, '');
@@ -249,9 +272,22 @@ begin
   Result := System.SysUtils.StringReplace(Self, AOldValue, ANewValue, [rfIgnoreCase]);
 end;
 
+function TSpecificationStringHelper.ReplaceIgnoreCaseByRegex(const AExpression, ANewValue: String): String;
+begin
+  Result := Self.ReplaceByRegex(AExpression, ANewValue, [roIgnoreCase]);
+end;
+
 function TSpecificationStringHelper.ReplaceAllIgnoreCase(const AOldValue, ANewValue: String): String;
 begin
   Result := System.SysUtils.StringReplace(Self, AOldValue, ANewValue, [rfReplaceAll, rfIgnoreCase]);
+end;
+
+function TSpecificationStringHelper.ReplaceByRegex(const AExpression, ANewValue: String; const ARegexOptions: TRegExOptions): String;
+var
+  LRegex: TRegEx;
+begin
+  LRegex.Create(AExpression, ARegexOptions);
+  Result := LRegex.Replace(Self, ANewValue);
 end;
 
 function TSpecificationStringHelper.ReplaceAll(const AOldValue, ANewValue: String): String;
@@ -260,11 +296,8 @@ begin
 end;
 
 function TSpecificationStringHelper.ReplaceByRegex(const AExpression, ANewValue: String): String;
-var
-  LRegex: TRegEx;
 begin
-  LRegex.Create(AExpression, [roMultiLine]);
-  Result := LRegex.Replace(Self, ANewValue);
+  Result := Self.ReplaceByRegex(AExpression, ANewValue, [roNone]);
 end;
 
 function TSpecificationStringHelper.Replace(const AOldValue, ANewValue: String): String;
@@ -392,6 +425,11 @@ begin
     Result := Result.RemoveIgnoreCase(LSingleValue);
 end;
 
+function TSpecificationStringHelper.RemoveIgnoreCaseByRegex(const AExpression: String): String;
+begin
+  Result := Self.ReplaceIgnoreCaseByRegex(AExpression, '');
+end;
+
 function TSpecificationStringHelper.RemoveAllIgnoreCase(const AValue: TArray<String>): String;
 var
   LSingleValue: String;
@@ -400,6 +438,11 @@ begin
 
   for LSingleValue in AValue do
     Result := Result.RemoveAllIgnoreCase(LSingleValue);
+end;
+
+function TSpecificationStringHelper.RemoveByRegex(const AExpression: String; const ARegexOptions: TRegExOptions): String;
+begin
+  Result := Self.ReplaceByRegex(AExpression, '', ARegexOptions);
 end;
 
 function TSpecificationStringHelper.RemoveAll(const AValue: TArray<String>): String;
