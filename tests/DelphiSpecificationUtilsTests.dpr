@@ -62,7 +62,9 @@ uses
   Delphi.SpecificationUtils.TRttiType in '..\Delphi.SpecificationUtils.TRttiType.pas',
   Tests.Delphi.SpecificationUtils.RttiType in 'Tests.Delphi.SpecificationUtils.RttiType.pas',
   Tests.Delphi.SpecificationUtils.RttiType.Attribute in 'Tests.Delphi.SpecificationUtils.RttiType.Attribute.pas',
-  Delphi.SpecificationUtils.TObject in '..\Delphi.SpecificationUtils.TObject.pas';
+  Delphi.SpecificationUtils.TObject in '..\Delphi.SpecificationUtils.TObject.pas',
+  Delphi.SpecificationUtils.Common in '..\Delphi.SpecificationUtils.Common.pas',
+  Tests.Delphi.SpecificationUtils.Common.IsNull in 'Tests.Delphi.SpecificationUtils.Common.IsNull.pas';
 
 var
   runner : ITestRunner;
