@@ -61,7 +61,6 @@ type
     function IsSatisfiedBy(const item: TObject): Boolean; override;
   end;
 
-
 implementation
 
 uses
