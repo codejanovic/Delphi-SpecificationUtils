@@ -3,7 +3,7 @@ unit Delphi.SpecificationUtils.Helper.Strings;
 interface
 
 uses
-  System.SysUtils;
+  System.SysUtils, System.RegularExpressions;
 
 type
   TSpecificationStringHelper = record helper for String
@@ -36,6 +36,10 @@ type
     function Concat(const AValue: String): string;
     function ConcatLeft(const AValue: String): string;
     function ConcatRight(const AValue: String): string;
+
+    function Matches(const AExpression: String): boolean; overload;
+    function Matches(const AExpression: String; const ARegexOptions: TRegExOptions): boolean; overload;
+    function MatchesIgnoreCase(const AExpression: String): boolean;
 
     function RemoveIgnoreCase(const AValue: String): String; overload;
     function RemoveIgnoreCase(const AValue: TArray<String>): String; overload;
@@ -80,7 +84,7 @@ uses
   Delphi.SpecificationUtils.Strings.CaseSensitive,
   Delphi.SpecificationUtils.Strings.IgnoreCase,
   Delphi.SpecificationUtils.Strings,
-  System.RegularExpressions, System.Classes;
+  System.Classes;
 
 { TSpecificationStringHelper }
 
@@ -207,6 +211,21 @@ end;
 function TSpecificationStringHelper.Length: Integer;
 begin
   Result := System.Length(Self);
+end;
+
+function TSpecificationStringHelper.Matches(const AExpression: String): boolean;
+begin
+  Result := Self.Matches(AExpression, [roNone]);
+end;
+
+function TSpecificationStringHelper.Matches(const AExpression: String; const ARegexOptions: TRegExOptions): boolean;
+begin
+  Result := TStringMatchesRegex.Create(AExpression, ARegexOptions).IsSatisfiedBy(Self);
+end;
+
+function TSpecificationStringHelper.MatchesIgnoreCase(const AExpression: String): boolean;
+begin
+  Result := Self.Matches(AExpression, [roIgnoreCase]);
 end;
 
 function TSpecificationStringHelper.RemoveIgnoreCase(const AValue: String): String;
