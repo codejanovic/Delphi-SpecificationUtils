@@ -1,4 +1,4 @@
-unit Delphi.SpecificationUtils.RttiType;
+unit Delphi.SpecificationUtils.TRttiType;
 
 interface
 

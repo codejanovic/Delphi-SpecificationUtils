@@ -59,9 +59,10 @@ uses
   Delphi.SpecificationUtils.TGUID.Factory in '..\Delphi.SpecificationUtils.TGUID.Factory.pas',
   Delphi.SpecificationUtils.DateTime.Factory in '..\Delphi.SpecificationUtils.DateTime.Factory.pas',
   Tests.Delphi.SpecificationUtils.Strings.Matches in 'Tests.Delphi.SpecificationUtils.Strings.Matches.pas',
-  Delphi.SpecificationUtils.RttiType in '..\Delphi.SpecificationUtils.RttiType.pas',
+  Delphi.SpecificationUtils.TRttiType in '..\Delphi.SpecificationUtils.TRttiType.pas',
   Tests.Delphi.SpecificationUtils.RttiType in 'Tests.Delphi.SpecificationUtils.RttiType.pas',
-  Tests.Delphi.SpecificationUtils.RttiType.Attribute in 'Tests.Delphi.SpecificationUtils.RttiType.Attribute.pas';
+  Tests.Delphi.SpecificationUtils.RttiType.Attribute in 'Tests.Delphi.SpecificationUtils.RttiType.Attribute.pas',
+  Delphi.SpecificationUtils.TObject in '..\Delphi.SpecificationUtils.TObject.pas';
 
 var
   runner : ITestRunner;

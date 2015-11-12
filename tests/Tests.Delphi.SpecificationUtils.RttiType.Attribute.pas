@@ -43,7 +43,7 @@ implementation
 
 uses
   Delphi.SpecificationUtils.Strings.IgnoreCase,
-  Delphi.SpecificationUtils.RttiType;
+  Delphi.SpecificationUtils.TRttiType;
 
 
 { TTestRttiTypeAttributes }
