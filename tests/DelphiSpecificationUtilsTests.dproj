@@ -139,6 +139,9 @@
         <DCCReference Include="..\Delphi.SpecificationUtils.TGUID.Factory.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.DateTime.Factory.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.Matches.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.RttiType.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.RttiType.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.RttiType.Attribute.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
