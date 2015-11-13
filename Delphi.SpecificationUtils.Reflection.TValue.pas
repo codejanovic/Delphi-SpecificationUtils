@@ -5,10 +5,10 @@ interface
 uses
   Spring.DesignPatterns,
   System.Rtti,
-  Spring;
+  Spring,
+  Delphi.SpecificationUtils;
 
 type
-  TTypeKinds = set of TTypeKind;
 
   TValueIsOfTypeKind = class(TSpecificationBase<TValue>)
   protected

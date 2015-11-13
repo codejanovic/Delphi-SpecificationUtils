@@ -6,11 +6,10 @@ uses
   Spring.DesignPatterns,
   System.Rtti,
   Spring,
-  System.TypInfo;
+  System.TypInfo,
+  Delphi.SpecificationUtils;
 
 type
-  TMemberVisibilities = set of TMemberVisibility;
-
   TRttiMemberHasAttribute = class(TSpecificationBase<TRttiMember>)
   protected
     fNameSpecification: ISpecification<String>;
@@ -21,6 +20,14 @@ type
 
   TRttiMemberHasAttributeType<T: TCustomAttribute> = class(TSpecificationBase<TRttiMember>)
   public
+    function IsSatisfiedBy(const item: TRttiMember): Boolean; override;
+  end;
+
+  TRttiMemberHasAttributeType = class(TSpecificationBase<TRttiMember>)
+  protected
+    fClass: TClass;
+  public
+    constructor Create(const AValue: TClass);
     function IsSatisfiedBy(const item: TRttiMember): Boolean; override;
   end;
 
@@ -80,6 +87,19 @@ begin
   for LAttribute in LAttributes do
     if fNameSpecification.IsSatisfiedBy(LAttribute.ClassName.RemoveIgnoreCaseByRegex('attribute$')) then
       Exit(true);
+end;
+
+{ TRttiMemberHasAttributeType }
+
+constructor TRttiMemberHasAttributeType.Create(const AValue: TClass);
+begin
+  fClass := AValue;
+end;
+
+function TRttiMemberHasAttributeType.IsSatisfiedBy(const item: TRttiMember): Boolean;
+begin
+  Guard.CheckNotNull(item, 'missing item');
+  Result := Length(item.GetCustomAttributes(fClass)) > 0;
 end;
 
 end.

@@ -52,6 +52,14 @@ type
     function IsSatisfiedBy(const item: TRttiType): Boolean; override;
   end;
 
+  TRttiTypeHasAttributeType = class(TSpecificationBase<TRttiType>)
+  protected
+    fClass: TClass;
+  public
+    constructor Create(const AValue: TClass);
+    function IsSatisfiedBy(const item: TRttiType): Boolean; override;
+  end;
+
   TRttiTypeHasAttributeType<T: TCustomAttribute> = class(TSpecificationBase<TRttiType>)
   public
     function IsSatisfiedBy(const item: TRttiType): Boolean; override;
@@ -267,6 +275,19 @@ function TRttiTypeIsInstanceType.IsSatisfiedBy(const item: TRttiType): Boolean;
 begin
   Guard.CheckNotNull(item, 'missing item');
   Result := item is TRttiInstanceType;
+end;
+
+{ TRttiTypeHasAttributeType }
+
+constructor TRttiTypeHasAttributeType.Create(const AValue: TClass);
+begin
+  fClass := AValue;
+end;
+
+function TRttiTypeHasAttributeType.IsSatisfiedBy(const item: TRttiType): Boolean;
+begin
+  Guard.CheckNotNull(item, 'missing item');
+  Result := Length(item.GetCustomAttributes(fClass)) > 0;
 end;
 
 end.

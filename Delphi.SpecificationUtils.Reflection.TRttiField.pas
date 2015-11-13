@@ -8,6 +8,30 @@ uses
   Spring;
 
 type
+  TRttiFieldHasAttribute = class(TSpecificationBase<TRttiField>)
+  protected
+    fHasAttribute: ISpecification<TRttiMember>;
+  public
+    constructor Create(const ANameSpecification: ISpecification<String>);
+    function IsSatisfiedBy(const item: TRttiField): Boolean; override;
+  end;
+
+  TRttiFieldHasAttributeType<T: TCustomAttribute> = class(TSpecificationBase<TRttiField>)
+  protected
+  	fHasAttributeType: ISpecification<TRttiMember>;
+  public
+  	constructor Create;
+    function IsSatisfiedBy(const item: TRttiField): Boolean; override;
+  end;
+
+  TRttiFieldHasAttributeType = class(TSpecificationBase<TRttiField>)
+  protected
+    fHasAttributeType: ISpecification<TRttiMember>;
+  public
+    constructor Create(const AValue: TClass);
+    function IsSatisfiedBy(const item: TRttiField): Boolean; override;
+  end;
+
   TRttiFieldTypeIsManaged = class(TSpecificationBase<TRttiField>)
   protected
     fIsManaged: ISpecification<TRttiType>;
@@ -60,7 +84,7 @@ type
 implementation
 
 uses
-  Delphi.SpecificationUtils.Reflection.TRttiType;
+  Delphi.SpecificationUtils.Reflection.TRttiType, Delphi.SpecificationUtils.Reflection.TRttiMember;
 
 
 { TRttiFieldTypeIsManaged }
@@ -141,5 +165,41 @@ begin
   Result := fIsPublicType.IsSatisfiedBy(item.FieldType)
 end;
 
+{ TRttiFieldHasAttribute }
+
+constructor TRttiFieldHasAttribute.Create(const ANameSpecification: ISpecification<String>);
+begin
+  fHasAttribute := TRttiMemberHasAttribute.Create(ANameSpecification);
+end;
+
+function TRttiFieldHasAttribute.IsSatisfiedBy(const item: TRttiField): Boolean;
+begin
+  Guard.CheckNotNull(item, 'missing item');
+  Result := fHasAttribute.IsSatisfiedBy(item);
+end;
+
+{ TRttiFieldHasAttributeType<T> }
+
+constructor TRttiFieldHasAttributeType<T>.Create;
+begin
+  fHasAttributeType := TRttiMemberHasAttributeType<T>.Create;
+end;
+
+function TRttiFieldHasAttributeType<T>.IsSatisfiedBy(const item: TRttiField): Boolean;
+begin
+  Result := fHasAttributeType.IsSatisfiedBy(item);
+end;
+
+{ TRttiFieldHasAttributeType }
+
+constructor TRttiFieldHasAttributeType.Create(const AValue: TClass);
+begin
+  fHasAttributeType := TRttiMemberHasAttributeType.Create(AValue);
+end;
+
+function TRttiFieldHasAttributeType.IsSatisfiedBy(const item: TRttiField): Boolean;
+begin
+  Result := fHasAttributeType.IsSatisfiedBy(item);
+end;
 
 end.

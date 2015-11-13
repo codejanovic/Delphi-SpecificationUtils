@@ -5,9 +5,14 @@ interface
 uses
   Spring.DesignPatterns,
   System.Generics.Defaults,
-  System.RegularExpressions;
+  System.RegularExpressions,
+  System.TypInfo,
+  System.Rtti;
 
 type
+  TTypeKinds = set of TTypeKind;
+  TMemberVisibilities = set of TMemberVisibility;
+
   IArraySpecifications<T> = interface(IInvokable)
     ['{8864FF19-49D6-46A3-92CF-989E8408BEA6}']
     function HasLength(const ALength: Integer): TSpecification<TArray<T>>;
@@ -65,6 +70,89 @@ type
   IGUIDSpecifications = interface(IInvokable)
     ['{7D0C44E6-CF24-4B09-BA8D-2F642F5853EA}']
     function Equals(const AValue: TGUID): TSpecification<TGUID>;
+  end;
+
+  IReflectionObjectSpecifications = interface(IInvokable)
+    ['{00D25B87-612B-4D74-80E1-F1BA552EE0FA}']
+    function HasMemberThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
+    function HasPropertyThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
+    function HasFieldThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
+    function HasMethodThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
+    function HasAttributeThatSatisfied(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
+    function HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TObject>;
+  end;
+
+  IReflectionRttiTypeSpecifications = interface(IInvokable)
+    ['{E74117C0-1F38-4CC6-804F-3B5AB57A8143}']
+    function HasMemberThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiType>;
+    function HasPropertyThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiType>;
+    function HasFieldThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiType>;
+    function HasMethodThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiType>;
+    function HasAttributeThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiType>;    
+    function HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TRttiType>;    
+    function IsManaged: TSpecification<TRttiType>;
+    function IsInstance: TSpecification<TRttiType>;
+    function IsOrdinal: TSpecification<TRttiType>;
+    function IsRecord: TSpecification<TRttiType>;
+    function IsSet: TSpecification<TRttiType>;
+    function IsPublicType: TSpecification<TRttiType>;
+    function IsInstanceType: TSpecification<TRttiType>;
+  end;
+
+  IReflectionRttiMemberSpecifications = interface(IInvokable)
+    ['{82C2C346-D5ED-4A4D-B985-34F944DBE9F4}']
+    function HasAttributeThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiMember>;    
+    function HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TRttiMember>;
+    function HasVisibility(const AVisibilities: TMemberVisibilities): TSpecification<TRttiMember>;
+  end;
+
+  IReflectionRttiPropertySpecifications = interface(IInvokable)
+    ['{A175C25A-42AF-47F3-8437-4A41932DA5C5}']
+    function IsInstanceType: TSpecification<TRttiProperty>;
+    function IsManaged: TSpecification<TRttiProperty>;
+    function IsInstance: TSpecification<TRttiProperty>;
+    function IsOrdinal: TSpecification<TRttiProperty>;
+    function IsRecord: TSpecification<TRttiProperty>;
+    function IsSet: TSpecification<TRttiProperty>;
+    function IsPublicType: TSpecification<TRttiProperty>;
+  end;
+
+  IReflectionRttiFieldSpecifications = interface(IInvokable)
+    ['{9E332918-D96E-49E3-B561-6A5A38AC4701}']
+    function IsManaged: TSpecification<TRttiField>;
+    function IsInstance: TSpecification<TRttiField>;
+    function IsOrdinal: TSpecification<TRttiField>;
+    function IsRecord: TSpecification<TRttiField>;
+    function IsSet: TSpecification<TRttiField>;
+    function IsPublicType: TSpecification<TRttiField>;
+  end;
+
+  IReflectionRttiNamedObjectSpecifications = interface(IInvokable)
+    ['{8E18D6DA-210B-4B5D-AB1B-8A76F666F7BF}']
+   function HasNameThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiNamedObject>;
+  end;
+
+  IReflectionRttiValueSpecifications = interface(IInvokable)
+    ['{37343842-10A4-49DD-820E-68432DD0AE62}']
+    function IsOfTypeKind(const AValue: TTypeKinds): TSpecification<TValue>;
+    function IsEmpty: TSpecification<TValue>;
+    function IsObject: TSpecification<TValue>;
+    function IsClass: TSpecification<TValue>;
+    function IsOrdinal: TSpecification<TValue>;
+    function IsArray: TSpecification<TValue>;
+    function IsType(const AValue: PTypeInfo): TSpecification<TValue>;
+    function IsInstanceOf(const AValue: TClass): TSpecification<TValue>;
+  end;
+
+  IReflectionSpecifications = interface(IInvokable)
+    ['{330B3931-8DF7-4301-840F-C5DA9C49DE88}']
+    function Objects: IReflectionObjectSpecifications;
+    function RttiType: IReflectionRttiTypeSpecifications;
+    function RttiMember: IReflectionRttiMemberSpecifications;
+    function RttiProperty: IReflectionRttiPropertySpecifications;
+    function RttiField: IReflectionRttiFieldSpecifications;
+    function RttiNamedObject: IReflectionRttiNamedObjectSpecifications;
+    function RttiValue: IReflectionRttiValueSpecifications   ;
   end;
 
   TSpecificationUtils = class
