@@ -144,12 +144,24 @@ type
     [TestCase('test2', 'C:\Test\,C:\Test\')]
     procedure TestIncludeTrailingPathDelimiter(const AValue: string; const AExpected: String);
 
+    [TestCase('test1', 'this-is-a-string;-;this,is,a,string', ';')]
+    [TestCase('test2', 'this\is\a\string;\;this,is,a,string', ';')]
+    [TestCase('test3', 'this*is*a*string;*;this,is,a,string', ';')]
+    [TestCase('test4', 'anbNcnd;n;a,bNc,d', ';')]
+    procedure TestSplit(const AInput: String; const ASeparator: Char; const AExpected: string);
+
+    [TestCase('test1', 'anbNcnd;n;a,b,c,d', ';')]
+    procedure TestSplitIgnoreCase(const AInput: String; const ASeparator: Char; const AExpected: string);
+
   end;
 
 implementation
 
 uses
-  Tests.Helper.SysUtilsAccess;
+  Tests.Helper.SysUtilsAccess,
+  Delphi.SpecificationUtils.Arrays,
+  Spring.DesignPatterns,
+  System.Generics.Defaults;
 
 { TTestStringHelper }
 
@@ -317,6 +329,22 @@ var
 begin
   LResult := AString.ReplaceByRegex(AExpression, ANewValue);
   Assert.AreEqual(AExpectedResult, LResult);
+end;
+
+procedure TTestStringHelper.TestSplit(const AInput: String; const ASeparator: Char; const AExpected: string);
+var
+  IsEqualInSequence: ISpecification<TArray<string>>;
+begin
+  IsEqualInSequence := TArrayEqualsInSequence<String>.Create(AExpected.ToArray, TEqualityComparer<string>.Default);
+  Assert.IsTrue(IsEqualInSequence.IsSatisfiedBy(AInput.Split(ASeparator)));
+end;
+
+procedure TTestStringHelper.TestSplitIgnoreCase(const AInput: String; const ASeparator: Char; const AExpected: string);
+var
+  IsEqualInSequence: ISpecification<TArray<string>>;
+begin
+  IsEqualInSequence := TArrayEqualsInSequence<String>.Create(AExpected.ToArray, TEqualityComparer<string>.Default);
+  Assert.IsTrue(IsEqualInSequence.IsSatisfiedBy(AInput.SplitIgnoreCase(ASeparator)));
 end;
 
 procedure TTestStringHelper.TestStringToGUID(const AString: String);
