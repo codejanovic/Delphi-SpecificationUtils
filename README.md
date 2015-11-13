@@ -5,7 +5,6 @@ collection of useful implementations regarding the specification pattern (more i
 ## dependencies
 library  | repository | branch | environment variable | required
 ------------- | ------------- | ------------- | ------------- | -------------
-DUnitX | [github](https://github.com/VSoftTechnologies/DUnitX) | master | $(DUnitX) | **yes**
 Spring4D | [bitbucket](https://bitbucket.org/sglienke/spring4d) | master | $(Spring4D) | **yes**
 DSharp | [bitbucket](https://bitbucket.org/sglienke/dsharp) | master | $(DSharp) | **yes**
 
