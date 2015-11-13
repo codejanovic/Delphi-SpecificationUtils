@@ -10,7 +10,6 @@ uses
   System.Rtti;
 
 type
-  TTypeKinds = set of TTypeKind;
   TMemberVisibilities = set of TMemberVisibility;
 
   IArraySpecifications<T> = interface(IInvokable)
@@ -78,7 +77,7 @@ type
     function HasPropertyThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
     function HasFieldThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
     function HasMethodThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
-    function HasAttributeThatSatisfied(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
+    function HasAttributeThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
     function HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TObject>;
   end;
 
@@ -88,8 +87,8 @@ type
     function HasPropertyThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiType>;
     function HasFieldThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiType>;
     function HasMethodThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiType>;
-    function HasAttributeThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiType>;    
-    function HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TRttiType>;    
+    function HasAttributeThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiType>;
+    function HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TRttiType>;
     function IsManaged: TSpecification<TRttiType>;
     function IsInstance: TSpecification<TRttiType>;
     function IsOrdinal: TSpecification<TRttiType>;
@@ -108,6 +107,8 @@ type
 
   IReflectionRttiPropertySpecifications = interface(IInvokable)
     ['{A175C25A-42AF-47F3-8437-4A41932DA5C5}']
+    function HasAttributeThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiProperty>;
+    function HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TRttiProperty>;
     function IsInstanceType: TSpecification<TRttiProperty>;
     function IsManaged: TSpecification<TRttiProperty>;
     function IsInstance: TSpecification<TRttiProperty>;
@@ -119,6 +120,8 @@ type
 
   IReflectionRttiFieldSpecifications = interface(IInvokable)
     ['{9E332918-D96E-49E3-B561-6A5A38AC4701}']
+    function HasAttributeThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiField>;
+    function HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TRttiField>;
     function IsManaged: TSpecification<TRttiField>;
     function IsInstance: TSpecification<TRttiField>;
     function IsOrdinal: TSpecification<TRttiField>;
@@ -129,7 +132,7 @@ type
 
   IReflectionRttiNamedObjectSpecifications = interface(IInvokable)
     ['{8E18D6DA-210B-4B5D-AB1B-8A76F666F7BF}']
-   function HasNameThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiNamedObject>;
+    function HasNameThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiNamedObject>;
   end;
 
   IReflectionRttiValueSpecifications = interface(IInvokable)
@@ -161,6 +164,7 @@ type
     class function DateTimeSpecifications: IDateTimeSpecifications;
     class function StringSpecifications: IStringSpecifications;
     class function GUIDSpecifications: IGUIDSpecifications;
+    class function ReflectionSpecifications: IReflectionSpecifications;
   end;
 
 implementation
@@ -169,7 +173,7 @@ uses
   Delphi.SpecificationUtils.Arrays.Factory,
   Delphi.SpecificationUtils.Strings.Factory,
   Delphi.SpecificationUtils.TGUID.Factory,
-  Delphi.SpecificationUtils.DateTime.Factory;
+  Delphi.SpecificationUtils.DateTime.Factory, Delphi.SpecificationUtils.Reflection.Factory;
 
 { TSpecificationUtils }
 
@@ -181,6 +185,11 @@ end;
 class function TSpecificationUtils.GUIDSpecifications: IGUIDSpecifications;
 begin
   Result := TGUIDSpecificationsFactory.Create;
+end;
+
+class function TSpecificationUtils.ReflectionSpecifications: IReflectionSpecifications;
+begin
+  Result := TReflectionFactory.Create;
 end;
 
 class function TSpecificationUtils.StringSpecifications: IStringSpecifications;

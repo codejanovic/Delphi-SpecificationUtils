@@ -53,6 +53,14 @@ type
     function IsSatisfiedBy(const item: TObject): Boolean; override;
   end;
 
+  TObjectHasAttributeType = class(TSpecificationBase<TObject>)
+  protected
+    fHasAttributeType: ISpecification<TRttiType>;
+  public
+    constructor Create(const AValue: TClass);
+    function IsSatisfiedBy(const item: TObject): Boolean; override;
+  end;
+
   TObjectHasAttributeType<T: TCustomAttribute> = class(TSpecificationBase<TObject>)
   protected
     fHasAttributeType: ISpecification<TRttiType>;
@@ -150,6 +158,19 @@ begin
 end;
 
 function TObjectHasAttributeType<T>.IsSatisfiedBy(const item: TObject): Boolean;
+begin
+  Guard.CheckNotNull(item, 'missing item');
+  Result := fHasAttributeType.IsSatisfiedBy(item.GetType);
+end;
+
+{ TObjectHasAttributeType }
+
+constructor TObjectHasAttributeType.Create(const AValue: TClass);
+begin
+  fHasAttributeType := TRttiTypeHasAttributeType.Create(AValue);
+end;
+
+function TObjectHasAttributeType.IsSatisfiedBy(const item: TObject): Boolean;
 begin
   Guard.CheckNotNull(item, 'missing item');
   Result := fHasAttributeType.IsSatisfiedBy(item.GetType);

@@ -5,8 +5,8 @@ interface
 uses
   Spring.DesignPatterns,
   System.Rtti,
-  Spring,
-  Delphi.SpecificationUtils;
+  Delphi.SpecificationUtils,
+  System.TypInfo;
 
 type
 
@@ -65,6 +65,9 @@ type
   end;
 
 implementation
+
+uses
+  Spring;
 
 { TValueIsOfTypeKind }
 

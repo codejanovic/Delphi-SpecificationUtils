@@ -69,7 +69,15 @@ uses
   Delphi.SpecificationUtils.Reflection.TRttiNamedObject in '..\Delphi.SpecificationUtils.Reflection.TRttiNamedObject.pas',
   Delphi.SpecificationUtils.Reflection.TValue in '..\Delphi.SpecificationUtils.Reflection.TValue.pas',
   Delphi.SpecificationUtils.Reflection.TRttiProperty in '..\Delphi.SpecificationUtils.Reflection.TRttiProperty.pas',
-  Delphi.SpecificationUtils.Reflection.TRttiField in '..\Delphi.SpecificationUtils.Reflection.TRttiField.pas';
+  Delphi.SpecificationUtils.Reflection.TRttiField in '..\Delphi.SpecificationUtils.Reflection.TRttiField.pas',
+  Delphi.SpecificationUtils.Reflection.Factory in '..\Delphi.SpecificationUtils.Reflection.Factory.pas',
+  Delphi.SpecificationUtils.Reflection.TObject.Factory in '..\Delphi.SpecificationUtils.Reflection.TObject.Factory.pas',
+  Delphi.SpecificationUtils.Reflection.TRttiField.Factory in '..\Delphi.SpecificationUtils.Reflection.TRttiField.Factory.pas',
+  Delphi.SpecificationUtils.Reflection.TRttiMember.Factory in '..\Delphi.SpecificationUtils.Reflection.TRttiMember.Factory.pas',
+  Delphi.SpecificationUtils.Reflection.TRttiNamedObject.Factory in '..\Delphi.SpecificationUtils.Reflection.TRttiNamedObject.Factory.pas',
+  Delphi.SpecificationUtils.Reflection.TRttiProperty.Factory in '..\Delphi.SpecificationUtils.Reflection.TRttiProperty.Factory.pas',
+  Delphi.SpecificationUtils.Reflection.TRttiType.Factory in '..\Delphi.SpecificationUtils.Reflection.TRttiType.Factory.pas',
+  Delphi.SpecificationUtils.Reflection.TValue.Factory in '..\Delphi.SpecificationUtils.Reflection.TValue.Factory.pas';
 
 var
   runner : ITestRunner;
