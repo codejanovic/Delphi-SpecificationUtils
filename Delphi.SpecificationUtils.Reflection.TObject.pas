@@ -1,4 +1,4 @@
-unit Delphi.SpecificationUtils.TObject;
+unit Delphi.SpecificationUtils.Reflection.TObject;
 
 interface
 
@@ -65,7 +65,7 @@ implementation
 
 uses
   DSharp.Core.Reflection,
-  Delphi.SpecificationUtils.TRttiType;
+  Delphi.SpecificationUtils.Reflection.TRttiType;
 
 { TObjectHasProperty }
 
@@ -78,6 +78,7 @@ end;
 
 function TObjectHasProperty.IsSatisfiedBy(const item: TObject): Boolean;
 begin
+  Guard.CheckNotNull(item, 'missing item');
   Result := fHasProperty.IsSatisfiedBy(item.GetType);
 end;
 
@@ -92,6 +93,7 @@ end;
 
 function TObjectHasMember.IsSatisfiedBy(const item: TObject): Boolean;
 begin
+  Guard.CheckNotNull(item, 'missing item');
   Result := fHasMember.IsSatisfiedBy(item.GetType);
 end;
 
@@ -106,6 +108,7 @@ end;
 
 function TObjectHasField.IsSatisfiedBy(const item: TObject): Boolean;
 begin
+  Guard.CheckNotNull(item, 'missing item');
   Result := fHasField.IsSatisfiedBy(item.GetType);
 end;
 
@@ -120,6 +123,7 @@ end;
 
 function TObjectHasMethod.IsSatisfiedBy(const item: TObject): Boolean;
 begin
+  Guard.CheckNotNull(item, 'missing item');
   Result := fHasMethod.IsSatisfiedBy(item.GetType);
 end;
 
@@ -134,6 +138,7 @@ end;
 
 function TObjectHasAttribute.IsSatisfiedBy(const item: TObject): Boolean;
 begin
+  Guard.CheckNotNull(item, 'missing item');
   Result := fHasAttribute.IsSatisfiedBy(item.GetType);
 end;
 
@@ -146,6 +151,7 @@ end;
 
 function TObjectHasAttributeType<T>.IsSatisfiedBy(const item: TObject): Boolean;
 begin
+  Guard.CheckNotNull(item, 'missing item');
   Result := fHasAttributeType.IsSatisfiedBy(item.GetType);
 end;
 

@@ -54,7 +54,7 @@ type
 implementation
 
 uses
-  Delphi.SpecificationUtils.TRttiType,
+  Delphi.SpecificationUtils.Reflection.TRttiType,
   Delphi.SpecificationUtils.Strings.IgnoreCase,
   DSharp.Core.Reflection;
 

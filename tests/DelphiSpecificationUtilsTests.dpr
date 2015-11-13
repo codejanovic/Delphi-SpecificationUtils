@@ -59,12 +59,17 @@ uses
   Delphi.SpecificationUtils.TGUID.Factory in '..\Delphi.SpecificationUtils.TGUID.Factory.pas',
   Delphi.SpecificationUtils.DateTime.Factory in '..\Delphi.SpecificationUtils.DateTime.Factory.pas',
   Tests.Delphi.SpecificationUtils.Strings.Matches in 'Tests.Delphi.SpecificationUtils.Strings.Matches.pas',
-  Delphi.SpecificationUtils.TRttiType in '..\Delphi.SpecificationUtils.TRttiType.pas',
+  Delphi.SpecificationUtils.Reflection.TRttiType in '..\Delphi.SpecificationUtils.Reflection.TRttiType.pas',
   Tests.Delphi.SpecificationUtils.RttiType in 'Tests.Delphi.SpecificationUtils.RttiType.pas',
   Tests.Delphi.SpecificationUtils.RttiType.Attribute in 'Tests.Delphi.SpecificationUtils.RttiType.Attribute.pas',
-  Delphi.SpecificationUtils.TObject in '..\Delphi.SpecificationUtils.TObject.pas',
+  Delphi.SpecificationUtils.Reflection.TObject in '..\Delphi.SpecificationUtils.Reflection.TObject.pas',
   Delphi.SpecificationUtils.Common in '..\Delphi.SpecificationUtils.Common.pas',
-  Tests.Delphi.SpecificationUtils.Common.IsNull in 'Tests.Delphi.SpecificationUtils.Common.IsNull.pas';
+  Tests.Delphi.SpecificationUtils.Common.IsNull in 'Tests.Delphi.SpecificationUtils.Common.IsNull.pas',
+  Delphi.SpecificationUtils.Reflection.TRttiMember in '..\Delphi.SpecificationUtils.Reflection.TRttiMember.pas',
+  Delphi.SpecificationUtils.Reflection.TRttiNamedObject in '..\Delphi.SpecificationUtils.Reflection.TRttiNamedObject.pas',
+  Delphi.SpecificationUtils.Reflection.TValue in '..\Delphi.SpecificationUtils.Reflection.TValue.pas',
+  Delphi.SpecificationUtils.Reflection.TRttiProperty in '..\Delphi.SpecificationUtils.Reflection.TRttiProperty.pas',
+  Delphi.SpecificationUtils.Reflection.TRttiField in '..\Delphi.SpecificationUtils.Reflection.TRttiField.pas';
 
 var
   runner : ITestRunner;

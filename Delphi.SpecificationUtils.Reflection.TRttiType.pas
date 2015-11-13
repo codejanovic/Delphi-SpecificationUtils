@@ -1,4 +1,4 @@
-unit Delphi.SpecificationUtils.TRttiType;
+unit Delphi.SpecificationUtils.Reflection.TRttiType;
 
 interface
 
@@ -57,6 +57,42 @@ type
     function IsSatisfiedBy(const item: TRttiType): Boolean; override;
   end;
 
+  TRttiTypeIsManaged = class(TSpecificationBase<TRttiType>)
+  public
+    function IsSatisfiedBy(const item: TRttiType): Boolean; override;
+  end;
+
+  TRttiTypeIsInstance = class(TSpecificationBase<TRttiType>)
+  public
+    function IsSatisfiedBy(const item: TRttiType): Boolean; override;
+  end;
+
+  TRttiTypeIsOrdinal = class(TSpecificationBase<TRttiType>)
+  public
+    function IsSatisfiedBy(const item: TRttiType): Boolean; override;
+  end;
+
+  TRttiTypeIsRecord = class(TSpecificationBase<TRttiType>)
+  public
+    function IsSatisfiedBy(const item: TRttiType): Boolean; override;
+  end;
+
+  TRttiTypeIsSet = class(TSpecificationBase<TRttiType>)
+  public
+    function IsSatisfiedBy(const item: TRttiType): Boolean; override;
+  end;
+
+  TRttiTypeIsPublicType = class(TSpecificationBase<TRttiType>)
+  public
+    function IsSatisfiedBy(const item: TRttiType): Boolean; override;
+  end;
+
+  TRttiTypeIsInstanceType = class(TSpecificationBase<TRttiType>)
+  public
+    function IsSatisfiedBy(const item: TRttiType): Boolean; override;
+  end;
+
+
 implementation
 
 uses
@@ -95,7 +131,7 @@ function TRttiTypeHasProperty.IsSatisfiedBy(const item: TRttiType): Boolean;
 var
   LProperty: TRttiProperty;
 begin
-  Guard.CheckNotNull(item, 'missing RttiType');
+  Guard.CheckNotNull(item, 'missing item');
 
   Result := false;
 
@@ -116,7 +152,7 @@ function TRttiTypeHasField.IsSatisfiedBy(const item: TRttiType): Boolean;
 var
   LField: TRttiField;
 begin
-  Guard.CheckNotNull(item, 'missing RttiType');
+  Guard.CheckNotNull(item, 'missing item');
 
   Result := false;
 
@@ -137,7 +173,7 @@ function TRttiTypeHasMethod.IsSatisfiedBy(const item: TRttiType): Boolean;
 var
   LMethod: TRttiMethod;
 begin
-  Guard.CheckNotNull(item, 'missing RttiType');
+  Guard.CheckNotNull(item, 'missing item');
 
   Result := false;
 
@@ -159,7 +195,7 @@ var
   LAttributes: TArray<TCustomAttribute>;
   LAttribute: TCustomAttribute;
 begin
-  Guard.CheckNotNull(item, 'missing RttiType');
+  Guard.CheckNotNull(item, 'missing item');
 
   Result := false;
   LAttributes := item.GetCustomAttributes(TCustomAttribute, false);
@@ -173,8 +209,64 @@ end;
 
 function TRttiTypeHasAttributeType<T>.IsSatisfiedBy(const item: TRttiType): Boolean;
 begin
-  Guard.CheckNotNull(item, 'missing RttiType');
+  Guard.CheckNotNull(item, 'missing item');
   Result := Length(item.GetCustomAttributes<T>) > 0;
+end;
+
+{ TRttiTypeIsManaged }
+
+function TRttiTypeIsManaged.IsSatisfiedBy(const item: TRttiType): Boolean;
+begin
+  Guard.CheckNotNull(item, 'missing item');
+  Result := item.IsManaged;
+end;
+
+{ TRttiTypeIsInstance }
+
+function TRttiTypeIsInstance.IsSatisfiedBy(const item: TRttiType): Boolean;
+begin
+  Guard.CheckNotNull(item, 'missing item');
+  Result := item.IsInstance;
+end;
+
+{ TRttiTypeIsOrdinal }
+
+function TRttiTypeIsOrdinal.IsSatisfiedBy(const item: TRttiType): Boolean;
+begin
+  Guard.CheckNotNull(item, 'missing item');
+  Result := item.IsOrdinal;
+end;
+
+{ TRttiTypeIsRecord }
+
+function TRttiTypeIsRecord.IsSatisfiedBy(const item: TRttiType): Boolean;
+begin
+  Guard.CheckNotNull(item, 'missing item');
+  Result := item.IsRecord;
+end;
+
+{ TRttiTypeIsSet }
+
+function TRttiTypeIsSet.IsSatisfiedBy(const item: TRttiType): Boolean;
+begin
+  Guard.CheckNotNull(item, 'missing item');
+  Result := item.IsSet;
+end;
+
+{ TRttiTypeIsPublicType }
+
+function TRttiTypeIsPublicType.IsSatisfiedBy(const item: TRttiType): Boolean;
+begin
+  Guard.CheckNotNull(item, 'missing item');
+  Result := item.IsPublicType;
+end;
+
+{ TRttiTypeIsInstanceType }
+
+function TRttiTypeIsInstanceType.IsSatisfiedBy(const item: TRttiType): Boolean;
+begin
+  Guard.CheckNotNull(item, 'missing item');
+  Result := item is TRttiInstanceType;
 end;
 
 end.

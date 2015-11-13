@@ -139,12 +139,17 @@
         <DCCReference Include="..\Delphi.SpecificationUtils.TGUID.Factory.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.DateTime.Factory.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Strings.Matches.pas"/>
-        <DCCReference Include="..\Delphi.SpecificationUtils.TRttiType.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TRttiType.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.RttiType.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.RttiType.Attribute.pas"/>
-        <DCCReference Include="..\Delphi.SpecificationUtils.TObject.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TObject.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.Common.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Common.IsNull.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TRttiMember.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TRttiNamedObject.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TValue.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TRttiProperty.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TRttiField.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
