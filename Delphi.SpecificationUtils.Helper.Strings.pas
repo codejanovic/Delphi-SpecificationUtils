@@ -80,6 +80,12 @@ type
     function EndsWith(const AValue: string): boolean;
     function EndsWithAnyIgnoreCase(const AValues: TArray<string>): boolean;
     function EndsWithAny(const AValues: TArray<string>): boolean;
+
+    function Split(const ASeparator: Char): TArray<String>; overload;
+    function SplitIgnoreCase(const ASeparator: Char): TArray<String>; overload;
+    function Split(const ASeparatorRegex: String): TArray<String>; overload;
+    function Split(const ASeparatorRegex: String; const ARegexOptions: TRegExOptions): TArray<String>; overload;
+    function SplitIgnoreCase(const ASeparatorRegex: String): TArray<String>; overload;
   end;
 
 implementation
@@ -303,6 +309,40 @@ end;
 function TSpecificationStringHelper.Replace(const AOldValue, ANewValue: String): String;
 begin
   Result := System.SysUtils.StringReplace(Self, AOldValue, ANewValue, []);
+end;
+
+function TSpecificationStringHelper.Split(const ASeparator: Char): TArray<String>;
+var
+  LRegex: String;
+begin
+  LRegex := TRegEx.Escape(ASeparator);
+  Result := Self.Split(LRegex);
+end;
+
+function TSpecificationStringHelper.Split(const ASeparatorRegex: String): TArray<String>;
+begin
+  Result := Self.Split(ASeparatorRegex, [roNone]);
+end;
+
+function TSpecificationStringHelper.SplitIgnoreCase(const ASeparator: Char): TArray<String>;
+var
+  LRegex: String;
+begin
+  LRegex := TRegEx.Escape(ASeparator);
+  Result := Self.SplitIgnoreCase(LRegex);
+end;
+
+function TSpecificationStringHelper.SplitIgnoreCase(const ASeparatorRegex: String): TArray<String>;
+begin
+  Result := Self.Split(ASeparatorRegex, [roIgnoreCase]);
+end;
+
+function TSpecificationStringHelper.Split(const ASeparatorRegex: String; const ARegexOptions: TRegExOptions): TArray<String>;
+var
+  LRegex: TRegEx;
+begin
+  LRegex.Create(ASeparatorRegex, ARegexOptions);
+  Result := LRegex.Split(Self);
 end;
 
 function TSpecificationStringHelper.StartsWith(const AValue: string): boolean;
