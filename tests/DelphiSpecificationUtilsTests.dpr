@@ -62,7 +62,7 @@ uses
   Delphi.SpecificationUtils.Reflection.TRttiType in '..\Delphi.SpecificationUtils.Reflection.TRttiType.pas',
   Tests.Delphi.SpecificationUtils.RttiType in 'Tests.Delphi.SpecificationUtils.RttiType.pas',
   Tests.Delphi.SpecificationUtils.RttiType.Attribute in 'Tests.Delphi.SpecificationUtils.RttiType.Attribute.pas',
-  Delphi.SpecificationUtils.Reflection.TObject in '..\Delphi.SpecificationUtils.Reflection.TObject.pas',
+  Delphi.SpecificationUtils.Reflection.Instance in '..\Delphi.SpecificationUtils.Reflection.Instance.pas',
   Delphi.SpecificationUtils.Common in '..\Delphi.SpecificationUtils.Common.pas',
   Tests.Delphi.SpecificationUtils.Common.IsNull in 'Tests.Delphi.SpecificationUtils.Common.IsNull.pas',
   Delphi.SpecificationUtils.Reflection.TRttiMember in '..\Delphi.SpecificationUtils.Reflection.TRttiMember.pas',
@@ -71,13 +71,17 @@ uses
   Delphi.SpecificationUtils.Reflection.TRttiProperty in '..\Delphi.SpecificationUtils.Reflection.TRttiProperty.pas',
   Delphi.SpecificationUtils.Reflection.TRttiField in '..\Delphi.SpecificationUtils.Reflection.TRttiField.pas',
   Delphi.SpecificationUtils.Reflection.Factory in '..\Delphi.SpecificationUtils.Reflection.Factory.pas',
-  Delphi.SpecificationUtils.Reflection.TObject.Factory in '..\Delphi.SpecificationUtils.Reflection.TObject.Factory.pas',
+  Delphi.SpecificationUtils.Reflection.Instance.Factory in '..\Delphi.SpecificationUtils.Reflection.Instance.Factory.pas',
   Delphi.SpecificationUtils.Reflection.TRttiField.Factory in '..\Delphi.SpecificationUtils.Reflection.TRttiField.Factory.pas',
   Delphi.SpecificationUtils.Reflection.TRttiMember.Factory in '..\Delphi.SpecificationUtils.Reflection.TRttiMember.Factory.pas',
   Delphi.SpecificationUtils.Reflection.TRttiNamedObject.Factory in '..\Delphi.SpecificationUtils.Reflection.TRttiNamedObject.Factory.pas',
   Delphi.SpecificationUtils.Reflection.TRttiProperty.Factory in '..\Delphi.SpecificationUtils.Reflection.TRttiProperty.Factory.pas',
   Delphi.SpecificationUtils.Reflection.TRttiType.Factory in '..\Delphi.SpecificationUtils.Reflection.TRttiType.Factory.pas',
-  Delphi.SpecificationUtils.Reflection.TValue.Factory in '..\Delphi.SpecificationUtils.Reflection.TValue.Factory.pas';
+  Delphi.SpecificationUtils.Reflection.TValue.Factory in '..\Delphi.SpecificationUtils.Reflection.TValue.Factory.pas',
+  Tests.Delphi.SpecificationUtils.Reflection.Instance.Inherits in 'Tests.Delphi.SpecificationUtils.Reflection.Instance.Inherits.pas',
+  Delphi.SpecificationUtils.Reflection.TClass in '..\Delphi.SpecificationUtils.Reflection.TClass.pas',
+  Delphi.SpecificationUtils.Reflection.TRttiInstanceType in '..\Delphi.SpecificationUtils.Reflection.TRttiInstanceType.pas',
+  Tests.Delphi.SpecificationUtils.Reflection.Instance.Implements in 'Tests.Delphi.SpecificationUtils.Reflection.Instance.Implements.pas';
 
 var
   runner : ITestRunner;
@@ -90,6 +94,7 @@ begin
   exit;
 {$ENDIF}
   try
+    ReportMemoryLeaksOnShutdown := true;
     //Check command line options, will exit if invalid
     TDUnitX.CheckCommandLine;
     //Create the test runner

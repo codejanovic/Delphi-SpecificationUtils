@@ -16,7 +16,7 @@ type
                               IReflectionRttiNamedObjectSpecifications,
                               IReflectionRttiValueSpecifications)
   protected
-    fObjectsSpecifications: IReflectionObjectSpecifications;
+    fInstancesSpecifications: IReflectionObjectSpecifications;
     fRttiTypeSpecifications: IReflectionRttiTypeSpecifications;
     fRttiMemberSpecifications: IReflectionRttiMemberSpecifications;
     fRttiPropertySpecifications: IReflectionRttiPropertySpecifications;
@@ -24,7 +24,7 @@ type
     fRttiNamedObjectSpecifications: IReflectionRttiNamedObjectSpecifications;
     fRttiValueSpecifications: IReflectionRttiValueSpecifications;
 
-    property ObjectsDelegate: IReflectionObjectSpecifications read fObjectsSpecifications implements IReflectionObjectSpecifications;
+    property InstancesDelegate: IReflectionObjectSpecifications read fInstancesSpecifications implements IReflectionObjectSpecifications;
     property RttiTypeDelegate: IReflectionRttiTypeSpecifications read fRttiTypeSpecifications implements IReflectionRttiTypeSpecifications;
     property RttiMemberDelegate: IReflectionRttiMemberSpecifications read fRttiMemberSpecifications implements IReflectionRttiMemberSpecifications;
     property RttiPropertyDelegate: IReflectionRttiPropertySpecifications read fRttiPropertySpecifications implements IReflectionRttiPropertySpecifications;
@@ -34,7 +34,7 @@ type
   public
     constructor Create;
 
-    function Objects: IReflectionObjectSpecifications;
+    function Instances: IReflectionObjectSpecifications;
     function RttiType: IReflectionRttiTypeSpecifications;
     function RttiMember: IReflectionRttiMemberSpecifications;
     function RttiProperty: IReflectionRttiPropertySpecifications;
@@ -46,7 +46,7 @@ type
 implementation
 
 uses
-  Delphi.SpecificationUtils.Reflection.TObject.Factory,
+  Delphi.SpecificationUtils.Reflection.Instance.Factory,
   Delphi.SpecificationUtils.Reflection.TRttiField.Factory,
   Delphi.SpecificationUtils.Reflection.TRttiMember.Factory,
   Delphi.SpecificationUtils.Reflection.TRttiNamedObject.Factory,
@@ -58,7 +58,7 @@ uses
 
 constructor TReflectionFactory.Create;
 begin
-  fObjectsSpecifications := TReflectionObjectsFactory.Create;
+  fInstancesSpecifications := TReflectionInstanceFactory.Create;
   fRttiTypeSpecifications := TReflectionRttiTypeFactory.Create;
   fRttiMemberSpecifications := TReflectionRttiMemberFactory.Create;
   fRttiPropertySpecifications := TReflectionRttiPropertyFactory.Create;
@@ -67,9 +67,9 @@ begin
   fRttiValueSpecifications := TReflectionRttiValueFactory.Create;
 end;
 
-function TReflectionFactory.Objects: IReflectionObjectSpecifications;
+function TReflectionFactory.Instances: IReflectionObjectSpecifications;
 begin
-  Result := ObjectsDelegate;
+  Result := InstancesDelegate;
 end;
 
 function TReflectionFactory.RttiField: IReflectionRttiFieldSpecifications;

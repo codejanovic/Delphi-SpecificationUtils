@@ -1,11 +1,12 @@
-unit Delphi.SpecificationUtils.Reflection.TObject;
+unit Delphi.SpecificationUtils.Reflection.Instance;
 
 interface
 
 uses
   Spring.DesignPatterns,
   System.Rtti,
-  Spring;
+  Spring,
+  System.SysUtils;
 
 type
   TObjectHasMember = class(TSpecificationBase<TObject>)
@@ -69,11 +70,45 @@ type
     function IsSatisfiedBy(const item: TObject): Boolean; override;
   end;
 
+  TObjectInheritsFrom = class(TSpecificationBase<TObject>)
+  protected
+    fClass: TClass;
+  public
+    constructor Create(const AValue: TClass);
+    function IsSatisfiedBy(const item: TObject): Boolean; override;
+  end;
+
+  TObjectInheritsFromByName = class(TSpecificationBase<TObject>)
+  protected
+    fClassHasName: ISpecification<TClass>;
+  public
+    constructor Create(const ANameSpecification: ISpecification<String>);
+    function IsSatisfiedBy(const item: TObject): Boolean; override;
+  end;
+
+  TObjectImplementsByName = class(TSpecificationBase<TObject>)
+  protected
+    fImplements: ISpecification<TRttiInstanceType>;
+  public
+    constructor Create(const ANameSpecification: ISpecification<String>);
+    function IsSatisfiedBy(const item: TObject): Boolean; override;
+  end;
+
+  TInterfacedObjectImplementsByName = class(TSpecificationBase<IInterface>)
+  protected
+    fImplements: ISpecification<TObject>;
+  public
+    constructor Create(const ANameSpecification: ISpecification<String>);
+    function IsSatisfiedBy(const item: IInterface): Boolean; override;
+  end;
+
 implementation
 
 uses
   DSharp.Core.Reflection,
-  Delphi.SpecificationUtils.Reflection.TRttiType;
+  Delphi.SpecificationUtils.Reflection.TRttiType,
+  Delphi.SpecificationUtils.Reflection.TClass,
+  Delphi.SpecificationUtils.Reflection.TRttiInstanceType;
 
 { TObjectHasProperty }
 
@@ -174,6 +209,71 @@ function TObjectHasAttributeType.IsSatisfiedBy(const item: TObject): Boolean;
 begin
   Guard.CheckNotNull(item, 'missing item');
   Result := fHasAttributeType.IsSatisfiedBy(item.GetType);
+end;
+
+{ TObjectInheritsFrom }
+
+constructor TObjectInheritsFrom.Create(const AValue: TClass);
+begin
+  fClass := AValue;
+end;
+
+function TObjectInheritsFrom.IsSatisfiedBy(const item: TObject): Boolean;
+begin
+  Guard.CheckNotNull(item, 'missing item');
+  Result := item is fClass;
+end;
+
+{ TObjectInheritsFromByName }
+
+constructor TObjectInheritsFromByName.Create(const ANameSpecification: ISpecification<String>);
+begin
+  Guard.CheckNotNull(ANameSpecification, 'missing Specification');
+  fClassHasName := TClassHasName.Create(ANameSpecification);
+end;
+
+function TObjectInheritsFromByName.IsSatisfiedBy(const item: TObject): Boolean;
+var
+  LDescendant: TClass;
+begin
+  Guard.CheckNotNull(item, 'missing item');
+
+  Result := false;
+  LDescendant := item.ClassParent;
+  while Assigned(LDescendant) do
+  begin
+    if fClassHasName.IsSatisfiedBy(LDescendant) then
+      Exit(true);
+    LDescendant := LDescendant.ClassParent;
+  end;
+end;
+
+{ TObjectImplementsByName }
+
+constructor TObjectImplementsByName.Create(const ANameSpecification: ISpecification<String>);
+begin
+  Guard.CheckNotNull(ANameSpecification, 'missing Specification');
+  fImplements := TRttiInstanceTypeImplementsByName.Create(ANameSpecification);
+end;
+
+function TObjectImplementsByName.IsSatisfiedBy(const item: TObject): Boolean;
+begin
+  Guard.CheckNotNull(item, 'missing item');
+  Result := fImplements.IsSatisfiedBy(TRttiInstanceType(item.GetType));
+end;
+
+{ TInterfacedObjectImplementsByName }
+
+constructor TInterfacedObjectImplementsByName.Create(const ANameSpecification: ISpecification<String>);
+begin
+  Guard.CheckNotNull(ANameSpecification, 'missing Specification');
+  fImplements := TObjectImplementsByName.Create(ANameSpecification);
+end;
+
+function TInterfacedObjectImplementsByName.IsSatisfiedBy(const item: IInterface): Boolean;
+begin
+  Guard.CheckNotNull(item, 'missing item');
+  Result := fImplements.IsSatisfiedBy(item AS TObject);
 end;
 
 end.
