@@ -162,6 +162,7 @@
         <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TClass.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TRttiInstanceType.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Reflection.Instance.Implements.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Integers.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
