@@ -81,7 +81,8 @@ uses
   Tests.Delphi.SpecificationUtils.Reflection.Instance.Inherits in 'Tests.Delphi.SpecificationUtils.Reflection.Instance.Inherits.pas',
   Delphi.SpecificationUtils.Reflection.TClass in '..\Delphi.SpecificationUtils.Reflection.TClass.pas',
   Delphi.SpecificationUtils.Reflection.TRttiInstanceType in '..\Delphi.SpecificationUtils.Reflection.TRttiInstanceType.pas',
-  Tests.Delphi.SpecificationUtils.Reflection.Instance.Implements in 'Tests.Delphi.SpecificationUtils.Reflection.Instance.Implements.pas';
+  Tests.Delphi.SpecificationUtils.Reflection.Instance.Implements in 'Tests.Delphi.SpecificationUtils.Reflection.Instance.Implements.pas',
+  Delphi.SpecificationUtils.Integers in '..\Delphi.SpecificationUtils.Integers.pas';
 
 var
   runner : ITestRunner;
