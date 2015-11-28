@@ -10,7 +10,7 @@ type
   public
     function ToString: string;
     function ToBoolean: Boolean;
-    function ToHexString: string;
+    function ToHex(const ADigits: Integer): string;
     function ToExtended: Extended;
     function Equals(const AValue: Integer): boolean;
     function IsGreaterThan(const AValue: Integer): Boolean;
@@ -63,9 +63,9 @@ begin
   Result := Self;
 end;
 
-function TSpecificationIntegerHelper.ToHexString: string;
+function TSpecificationIntegerHelper.ToHex(const ADigits: Integer): string;
 begin
-  Result := System.SysUtils.IntToHex(Self, 0);
+  Result := System.SysUtils.IntToHex(Self, ADigits);
 end;
 
 function TSpecificationIntegerHelper.ToString: string;

@@ -19,10 +19,10 @@ type
     [TestCase('3','1,true')]
     procedure TestToBoolean(const AValue: Integer; const AExpected: Boolean);
 
-    [TestCase('1','0,0')]
-    [TestCase('2','1,1')]
+    [TestCase('1','0,000000')]
+    [TestCase('2','1,000001')]
     [TestCase('3','-1,FFFFFFFF')]
-    [TestCase('4','100,64')]
+    [TestCase('4','100,000064')]
     [TestCase('5','-100,FFFFFF9C')]
     procedure TestToHexString(const AValue: Integer; const AExpected: String);
 
@@ -105,7 +105,7 @@ end;
 procedure TTestIntegerHelper.TestToHexString(const AValue: Integer;
   const AExpected: String);
 begin
-  Assert.AreEqual(AExpected, AValue.ToHexString);
+  Assert.AreEqual(AExpected, AValue.ToHex(6));
 end;
 
 procedure TTestIntegerHelper.TestToString(const AValue: Integer;
