@@ -146,30 +146,6 @@ type
     [TestCase('test3', '01.01.2015 23:59:00,3600,02.01.2015 00:59:00')]
     procedure TestIncreaseSecond(const ADate: String; const ANumber: Integer; const AExpectedDate: String); overload;
 
-    [TestCase('test1', '')]
-    procedure TestDecreaseDay(const ADate: String; const AExpectedDate: String); overload;
-    [TestCase('test1', '')]
-    procedure TestDecreaseDay(const ADate: String; const ANumber: Integer; const AExpectedDate: String); overload;
-    [TestCase('test1', '')]
-    procedure TestDecreaseMonth(const ADate: String; const AExpectedDate: String); overload;
-    [TestCase('test1', '')]
-    procedure TestDecreaseMonth(const ADate: String; const ANumber: Integer; const AExpectedDate: String); overload;
-    [TestCase('test1', '')]
-    procedure TestDecreaseYear(const ADate: String; const AExpectedDate: String); overload;
-    [TestCase('test1', '')]
-    procedure TestDecreaseYear(const ADate: String; const ANumber: Integer; const AExpectedDate: String); overload;
-    [TestCase('test1', '')]
-    procedure TestDecreaseHour(const ADate: String; const AExpectedDate: String); overload;
-    [TestCase('test1', '')]
-    procedure TestDecreaseHour(const ADate: String; const ANumber: Integer; const AExpectedDate: String); overload;
-    [TestCase('test1', '')]
-    procedure TestDecreaseMinute(const ADate: String; const AExpectedDate: String); overload;
-    [TestCase('test1', '')]
-    procedure TestDecreaseMinute(const ADate: String; const ANumber: Integer; const AExpectedDate: String); overload;
-    [TestCase('test1', '')]
-    procedure TestDecreaseSecond(const ADate: String; const AExpectedDate: String); overload;
-    [TestCase('test1', '')]
-    procedure TestDecreaseSecond(const ADate: String; const ANumber: Integer; const AExpectedDate: String); overload;
   end;
 
 implementation
@@ -201,78 +177,6 @@ var
 begin
   LDayOfWeek := AExpectedDay;
   Assert.IsTrue(ADate.ToDate.DayOfWeek = LDayOfWeek);
-end;
-
-procedure TTestTDateTimeHelper.TestDecreaseDay(const ADate,
-  AExpectedDate: String);
-begin
-
-end;
-
-procedure TTestTDateTimeHelper.TestDecreaseDay(const ADate: String;
-  const ANumber: Integer; const AExpectedDate: String);
-begin
-
-end;
-
-procedure TTestTDateTimeHelper.TestDecreaseHour(const ADate: String;
-  const ANumber: Integer; const AExpectedDate: String);
-begin
-
-end;
-
-procedure TTestTDateTimeHelper.TestDecreaseHour(const ADate,
-  AExpectedDate: String);
-begin
-
-end;
-
-procedure TTestTDateTimeHelper.TestDecreaseMinute(const ADate: String;
-  const ANumber: Integer; const AExpectedDate: String);
-begin
-
-end;
-
-procedure TTestTDateTimeHelper.TestDecreaseMinute(const ADate,
-  AExpectedDate: String);
-begin
-
-end;
-
-procedure TTestTDateTimeHelper.TestDecreaseMonth(const ADate,
-  AExpectedDate: String);
-begin
-
-end;
-
-procedure TTestTDateTimeHelper.TestDecreaseMonth(const ADate: String;
-  const ANumber: Integer; const AExpectedDate: String);
-begin
-
-end;
-
-procedure TTestTDateTimeHelper.TestDecreaseSecond(const ADate,
-  AExpectedDate: String);
-begin
-
-end;
-
-procedure TTestTDateTimeHelper.TestDecreaseSecond(const ADate: String;
-  const ANumber: Integer; const AExpectedDate: String);
-begin
-
-end;
-
-procedure TTestTDateTimeHelper.TestDecreaseYear(const ADate,
-  AExpectedDate: String);
-begin
-
-end;
-
-procedure TTestTDateTimeHelper.TestDecreaseYear(const ADate: String;
-  const ANumber: Integer; const AExpectedDate: String);
-begin
-
 end;
 
 procedure TTestTDateTimeHelper.TestHour(const ADate: String;const AExpectedHour: Integer);

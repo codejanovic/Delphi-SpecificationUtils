@@ -149,7 +149,7 @@ type
 
   IReflectionSpecifications = interface(IInvokable)
     ['{330B3931-8DF7-4301-840F-C5DA9C49DE88}']
-    function Objects: IReflectionObjectSpecifications;
+    function Instances: IReflectionObjectSpecifications;
     function RttiType: IReflectionRttiTypeSpecifications;
     function RttiMember: IReflectionRttiMemberSpecifications;
     function RttiProperty: IReflectionRttiPropertySpecifications;
@@ -173,7 +173,8 @@ uses
   Delphi.SpecificationUtils.Arrays.Factory,
   Delphi.SpecificationUtils.Strings.Factory,
   Delphi.SpecificationUtils.TGUID.Factory,
-  Delphi.SpecificationUtils.DateTime.Factory, Delphi.SpecificationUtils.Reflection.Factory;
+  Delphi.SpecificationUtils.DateTime.Factory,
+  Delphi.SpecificationUtils.Reflection.Factory;
 
 { TSpecificationUtils }
 

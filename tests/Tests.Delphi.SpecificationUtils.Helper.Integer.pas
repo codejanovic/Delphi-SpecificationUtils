@@ -37,6 +37,23 @@ type
     [TestCase('4','-1,1,false')]
     [TestCase('5','1,-1,false')]
     procedure TestEquals(const Aleft: Integer; const ARight: Integer; const AExpected: boolean);
+
+    [TestCase('1', '2,1,true')]
+    [TestCase('2', '2,2,false')]
+    [TestCase('3', '1,2,false')]
+    procedure TestIsGreaterThan(const ALeft: Integer; const ARight: Integer; AExpected: boolean);
+    [TestCase('1', '2,1,true')]
+    [TestCase('2', '2,2,true')]
+    [TestCase('3', '1,2,false')]
+    procedure TestIsGreaterThanOrEquals(const ALeft: Integer; const ARight: Integer; AExpected: boolean);
+    [TestCase('1', '2,1,false')]
+    [TestCase('2', '2,2,false')]
+    [TestCase('3', '1,2,true')]
+    procedure TestIsLessThan(const ALeft: Integer; const ARight: Integer; AExpected: boolean);
+    [TestCase('1', '2,1,false')]
+    [TestCase('2', '2,2,true')]
+    [TestCase('3', '1,2,true')]
+    procedure TestIsLessThanOrEquals(const ALeft: Integer; const ARight: Integer; AExpected: boolean);
   end;
 
 implementation
@@ -51,6 +68,26 @@ procedure TTestIntegerHelper.TestEquals(const Aleft, ARight: Integer;
   const AExpected: boolean);
 begin
   Assert.AreEqual(AExpected, Aleft.Equals(Aright));
+end;
+
+procedure TTestIntegerHelper.TestIsGreaterThan(const ALeft, ARight: Integer; AExpected: boolean);
+begin
+  Assert.AreEqual(AExpected, ALeft.IsGreaterThan(ARight));
+end;
+
+procedure TTestIntegerHelper.TestIsGreaterThanOrEquals(const ALeft, ARight: Integer; AExpected: boolean);
+begin
+  Assert.AreEqual(AExpected, ALeft.IsGreaterThanOrEquals(ARight));
+end;
+
+procedure TTestIntegerHelper.TestIsLessThan(const ALeft, ARight: Integer; AExpected: boolean);
+begin
+   Assert.AreEqual(AExpected, ALeft.IsLessThan(ARight));
+end;
+
+procedure TTestIntegerHelper.TestIsLessThanOrEquals(const ALeft, ARight: Integer; AExpected: boolean);
+begin
+   Assert.AreEqual(AExpected, ALeft.IsLessThanOrEquals(ARight));
 end;
 
 procedure TTestIntegerHelper.TestToBoolean(const AValue: Integer;

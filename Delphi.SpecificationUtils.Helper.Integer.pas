@@ -13,18 +13,44 @@ type
     function ToHexString: string;
     function ToExtended: Extended;
     function Equals(const AValue: Integer): boolean;
+    function IsGreaterThan(const AValue: Integer): Boolean;
+    function IsGreaterThanOrEquals(const AValue: Integer): Boolean;
+    function IsLessThan(const AValue: Integer): Boolean;
+    function IsLessThanOrEquals(const AValue: Integer): Boolean;
   end;
 
 implementation
 
 uses
-  System.SysUtils;
+  System.SysUtils,
+  Delphi.SpecificationUtils.Integers,
+  Spring.DesignPatterns;
 
 { TSpecificationIntegerHelper }
 
 function TSpecificationIntegerHelper.Equals(const AValue: Integer): boolean;
 begin
   Result := Self = AValue;
+end;
+
+function TSpecificationIntegerHelper.IsGreaterThan(const AValue: Integer): Boolean;
+begin
+  Result := Self > AValue;
+end;
+
+function TSpecificationIntegerHelper.IsGreaterThanOrEquals(const AValue: Integer): Boolean;
+begin
+  Result := Self >= AValue;
+end;
+
+function TSpecificationIntegerHelper.IsLessThan(const AValue: Integer): Boolean;
+begin
+  Result := Self < AValue;
+end;
+
+function TSpecificationIntegerHelper.IsLessThanOrEquals(const AValue: Integer): Boolean;
+begin
+  Result := Self <= AValue;
 end;
 
 function TSpecificationIntegerHelper.ToBoolean: Boolean;

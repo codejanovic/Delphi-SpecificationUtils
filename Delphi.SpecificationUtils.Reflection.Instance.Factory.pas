@@ -1,4 +1,4 @@
-unit Delphi.SpecificationUtils.Reflection.TObject.Factory;
+unit Delphi.SpecificationUtils.Reflection.Instance.Factory;
 
 interface
 
@@ -7,7 +7,7 @@ uses
   Delphi.SpecificationUtils;
 
 type
-  TReflectionObjectsFactory = class(TInterfacedObject, IReflectionObjectSpecifications)
+  TReflectionInstanceFactory = class(TInterfacedObject, IReflectionObjectSpecifications)
   public
     function HasMemberThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
     function HasPropertyThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
@@ -20,36 +20,36 @@ type
 implementation
 
 uses
-  Delphi.SpecificationUtils.Reflection.TObject;
+  Delphi.SpecificationUtils.Reflection.Instance;
 
 { TReflectionObjectsFactory }
 
-function TReflectionObjectsFactory.HasAttributeThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
+function TReflectionInstanceFactory.HasAttributeThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
 begin
   Result := TObjectHasAttribute.Create(ANameSpecification);
 end;
 
-function TReflectionObjectsFactory.HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TObject>;
+function TReflectionInstanceFactory.HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TObject>;
 begin
   Result := TObjectHasAttributeType.Create(AClassOfAttribute);
 end;
 
-function TReflectionObjectsFactory.HasFieldThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
+function TReflectionInstanceFactory.HasFieldThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
 begin
   Result := TObjectHasField.Create(ANameSpecification);
 end;
 
-function TReflectionObjectsFactory.HasMemberThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
+function TReflectionInstanceFactory.HasMemberThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
 begin
   Result := TObjectHasMember.Create(ANameSpecification);
 end;
 
-function TReflectionObjectsFactory.HasMethodThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
+function TReflectionInstanceFactory.HasMethodThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
 begin
   Result := TObjectHasMethod.Create(ANameSpecification);
 end;
 
-function TReflectionObjectsFactory.HasPropertyThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
+function TReflectionInstanceFactory.HasPropertyThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
 begin
   Result := TObjectHasProperty.Create(ANameSpecification);
 end;
