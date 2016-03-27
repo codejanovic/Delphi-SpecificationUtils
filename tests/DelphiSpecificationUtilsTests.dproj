@@ -142,7 +142,7 @@
         <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TRttiType.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.RttiType.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.RttiType.Attribute.pas"/>
-        <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TObject.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.Instance.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.Common.pas"/>
         <DCCReference Include="Tests.Delphi.SpecificationUtils.Common.IsNull.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TRttiMember.pas"/>
@@ -151,13 +151,20 @@
         <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TRttiProperty.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TRttiField.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.Factory.pas"/>
-        <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TObject.Factory.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.Instance.Factory.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TRttiField.Factory.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TRttiMember.Factory.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TRttiNamedObject.Factory.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TRttiProperty.Factory.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TRttiType.Factory.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TValue.Factory.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Reflection.Instance.Inherits.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TClass.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Reflection.TRttiInstanceType.pas"/>
+        <DCCReference Include="Tests.Delphi.SpecificationUtils.Reflection.Instance.Implements.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Integers.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Integers.Factory.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Common.Factory.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

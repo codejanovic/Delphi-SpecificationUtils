@@ -5,7 +5,7 @@ interface
 uses
   Spring.DesignPatterns,
   System.Rtti,
-  Spring;
+  Spring, Delphi.SpecificationUtils;
 
 type
   TRttiFieldHasAttribute = class(TSpecificationBase<TRttiField>)
@@ -80,6 +80,13 @@ type
     function IsSatisfiedBy(const item: TRttiField): Boolean; override;
   end;
 
+  TRttiFieldHasVisibility = class(TSpecificationBase<TRttiField>)
+  protected
+    fHasVisibilities: ISpecification<TRttiMember>;
+  public
+    constructor Create(const AVisibilities: TMemberVisibilities);
+    function IsSatisfiedBy(const item: TRttiField): Boolean; override;
+  end;
 
 implementation
 
@@ -200,6 +207,18 @@ end;
 function TRttiFieldHasAttributeType.IsSatisfiedBy(const item: TRttiField): Boolean;
 begin
   Result := fHasAttributeType.IsSatisfiedBy(item);
+end;
+
+{ TRttiFieldHasVisibility }
+
+constructor TRttiFieldHasVisibility.Create(const AVisibilities: TMemberVisibilities);
+begin
+  fHasVisibilities := TRttiMemberHasVisibility.Create(AVisibilities);
+end;
+
+function TRttiFieldHasVisibility.IsSatisfiedBy(const item: TRttiField): Boolean;
+begin
+  Result := fHasVisibilities.IsSatisfiedBy(item);
 end;
 
 end.

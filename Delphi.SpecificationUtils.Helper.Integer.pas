@@ -10,21 +10,53 @@ type
   public
     function ToString: string;
     function ToBoolean: Boolean;
-    function ToHexString: string;
+    function ToHex(const ADigits: Integer): string;
     function ToExtended: Extended;
     function Equals(const AValue: Integer): boolean;
+    function IsGreaterThan(const AValue: Integer): Boolean;
+    function IsGreaterThanOrEquals(const AValue: Integer): Boolean;
+    function IsLessThan(const AValue: Integer): Boolean;
+    function IsLessThanOrEquals(const AValue: Integer): Boolean;
+    function IsBetween(const ALeft: Integer; const ARight: Integer): boolean;
   end;
 
 implementation
 
 uses
-  System.SysUtils;
+  System.SysUtils,
+  Delphi.SpecificationUtils.Integers,
+  Spring.DesignPatterns;
 
 { TSpecificationIntegerHelper }
 
 function TSpecificationIntegerHelper.Equals(const AValue: Integer): boolean;
 begin
   Result := Self = AValue;
+end;
+
+function TSpecificationIntegerHelper.IsBetween(const ALeft, ARight: Integer): boolean;
+begin
+  Result := Self.IsGreaterThan(ALeft) and Self.IsLessThan(ARight);
+end;
+
+function TSpecificationIntegerHelper.IsGreaterThan(const AValue: Integer): Boolean;
+begin
+  Result := Self > AValue;
+end;
+
+function TSpecificationIntegerHelper.IsGreaterThanOrEquals(const AValue: Integer): Boolean;
+begin
+  Result := Self >= AValue;
+end;
+
+function TSpecificationIntegerHelper.IsLessThan(const AValue: Integer): Boolean;
+begin
+  Result := Self < AValue;
+end;
+
+function TSpecificationIntegerHelper.IsLessThanOrEquals(const AValue: Integer): Boolean;
+begin
+  Result := Self <= AValue;
 end;
 
 function TSpecificationIntegerHelper.ToBoolean: Boolean;
@@ -37,9 +69,9 @@ begin
   Result := Self;
 end;
 
-function TSpecificationIntegerHelper.ToHexString: string;
+function TSpecificationIntegerHelper.ToHex(const ADigits: Integer): string;
 begin
-  Result := System.SysUtils.IntToHex(Self, 0);
+  Result := System.SysUtils.IntToHex(Self, ADigits);
 end;
 
 function TSpecificationIntegerHelper.ToString: string;
