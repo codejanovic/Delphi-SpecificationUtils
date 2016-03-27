@@ -1,0 +1,31 @@
+{
+    "search_pathes": 
+    [
+        {
+            "pathes": "",
+            "platforms": "Win32;Win64;OSX32"
+        }
+    ],
+    "browsing_pathes": 
+    [
+        {
+            "pathes": "",
+            "platforms": "Win32;Win64;OSX32"
+        }
+    ],
+
+    "source_folders":
+    [
+        {
+            "folder": "",
+            "base": "",
+            "recursive": false,
+            "filter": "*;*.*"
+        }
+    ],
+
+    "projects":
+    [
+        
+    ]
+}
