@@ -10,6 +10,7 @@ uses
   System.Rtti;
 
 type
+  {$REGION 'Factories'}
   TMemberVisibilities = set of TMemberVisibility;
 
   IArraySpecifications<T> = interface(IInvokable)
@@ -158,13 +159,30 @@ type
     function RttiValue: IReflectionRttiValueSpecifications   ;
   end;
 
-  TSpecificationUtils = class
+  ICommonSpecifications = interface(IInvokable)
+    ['{BEC1E628-28CD-4496-8E9C-9CC12F220001}']
+    function IsNull: TSpecification<TObject>;
+    function IsNulli: TSpecification<IInterface>;
+  end;
+
+  IIntegerSpecifications = interface(IInvokable)
+    ['{DB88F70A-7623-4FFD-AE8B-A85FB0E7171F}']
+    function IsGreaterThan(const AValue: Integer): TSpecification<Integer>;
+    function IsLessThan(const AValue: Integer): TSpecification<Integer>;
+    function IsBetween(const ALeft: Integer; const ARight: Integer): TSpecification<Integer>;
+    function Equals(const AValue: Integer): TSpecification<Integer>;
+  end;
+  {$ENDREGION}
+
+  Specs = class
   public
-    class function ArraySpecifications<T>: IArraySpecifications<T>;   
-    class function DateTimeSpecifications: IDateTimeSpecifications;
-    class function StringSpecifications: IStringSpecifications;
-    class function GUIDSpecifications: IGUIDSpecifications;
-    class function ReflectionSpecifications: IReflectionSpecifications;
+    class function Arrays<T>: IArraySpecifications<T>;
+    class function Date: IDateTimeSpecifications;
+    class function Strings: IStringSpecifications;
+    class function GUID: IGUIDSpecifications;
+    class function Reflection: IReflectionSpecifications;
+    class function Common: ICommonSpecifications;
+    class function Integers: IIntegerSpecifications;
   end;
 
 implementation
@@ -174,31 +192,43 @@ uses
   Delphi.SpecificationUtils.Strings.Factory,
   Delphi.SpecificationUtils.TGUID.Factory,
   Delphi.SpecificationUtils.DateTime.Factory,
-  Delphi.SpecificationUtils.Reflection.Factory;
+  Delphi.SpecificationUtils.Reflection.Factory,
+  Delphi.SpecificationUtils.Integers.Factory,
+  Delphi.SpecificationUtils.Common.Factory;
 
 { TSpecificationUtils }
 
-class function TSpecificationUtils.DateTimeSpecifications: IDateTimeSpecifications;
+class function Specs.Date: IDateTimeSpecifications;
 begin
   Result := TDateTimeSpecificationsFactory.Create;
 end;
 
-class function TSpecificationUtils.GUIDSpecifications: IGUIDSpecifications;
+class function Specs.GUID: IGUIDSpecifications;
 begin
   Result := TGUIDSpecificationsFactory.Create;
 end;
 
-class function TSpecificationUtils.ReflectionSpecifications: IReflectionSpecifications;
+class function Specs.Integers: IIntegerSpecifications;
+begin
+  Result := TIntegerSpecificationsFactory.Create;
+end;
+
+class function Specs.Common: ICommonSpecifications;
+begin
+  Result := TCommonSpecificationsFactory.Create;
+end;
+
+class function Specs.Reflection: IReflectionSpecifications;
 begin
   Result := TReflectionFactory.Create;
 end;
 
-class function TSpecificationUtils.StringSpecifications: IStringSpecifications;
+class function Specs.Strings: IStringSpecifications;
 begin
   Result := TStringSpecificationsFactory.Create;
 end;
 
-class function TSpecificationUtils.ArraySpecifications<T>: IArraySpecifications<T>;
+class function Specs.Arrays<T>: IArraySpecifications<T>;
 begin
   Result := TArraySpecificationsFactory<T>.Create;
 end;

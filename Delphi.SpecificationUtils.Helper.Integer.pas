@@ -17,6 +17,7 @@ type
     function IsGreaterThanOrEquals(const AValue: Integer): Boolean;
     function IsLessThan(const AValue: Integer): Boolean;
     function IsLessThanOrEquals(const AValue: Integer): Boolean;
+    function IsBetween(const ALeft: Integer; const ARight: Integer): boolean;
   end;
 
 implementation
@@ -31,6 +32,11 @@ uses
 function TSpecificationIntegerHelper.Equals(const AValue: Integer): boolean;
 begin
   Result := Self = AValue;
+end;
+
+function TSpecificationIntegerHelper.IsBetween(const ALeft, ARight: Integer): boolean;
+begin
+  Result := Self.IsGreaterThan(ALeft) and Self.IsLessThan(ARight);
 end;
 
 function TSpecificationIntegerHelper.IsGreaterThan(const AValue: Integer): Boolean;

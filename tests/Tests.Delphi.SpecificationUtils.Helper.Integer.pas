@@ -54,6 +54,14 @@ type
     [TestCase('2', '2,2,true')]
     [TestCase('3', '1,2,true')]
     procedure TestIsLessThanOrEquals(const ALeft: Integer; const ARight: Integer; AExpected: boolean);
+
+    [TestCase('1', '0,1,4,false')]
+    [TestCase('2', '1,1,4,false')]
+    [TestCase('3', '2,1,4,true')]
+    [TestCase('4', '3,1,4,true')]
+    [TestCase('5', '4,1,4,false')]
+    [TestCase('5', '5,1,4,false')]
+    procedure TestBetween(const AValue: Integer; const ABetweenLeft: Integer; const ABetweenRight: Integer; AExpected: boolean);
   end;
 
 implementation
@@ -63,6 +71,11 @@ uses
 
 
 { TTestIntegerHelper }
+
+procedure TTestIntegerHelper.TestBetween(const AValue: Integer; const ABetweenLeft: Integer; const ABetweenRight: Integer; AExpected: boolean);
+begin
+  Assert.AreEqual(AExpected, AValue.IsBetween(ABetweenLeft, ABetweenRight));
+end;
 
 procedure TTestIntegerHelper.TestEquals(const Aleft, ARight: Integer;
   const AExpected: boolean);

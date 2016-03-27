@@ -82,7 +82,9 @@ uses
   Delphi.SpecificationUtils.Reflection.TClass in '..\Delphi.SpecificationUtils.Reflection.TClass.pas',
   Delphi.SpecificationUtils.Reflection.TRttiInstanceType in '..\Delphi.SpecificationUtils.Reflection.TRttiInstanceType.pas',
   Tests.Delphi.SpecificationUtils.Reflection.Instance.Implements in 'Tests.Delphi.SpecificationUtils.Reflection.Instance.Implements.pas',
-  Delphi.SpecificationUtils.Integers in '..\Delphi.SpecificationUtils.Integers.pas';
+  Delphi.SpecificationUtils.Integers in '..\Delphi.SpecificationUtils.Integers.pas',
+  Delphi.SpecificationUtils.Integers.Factory in '..\Delphi.SpecificationUtils.Integers.Factory.pas',
+  Delphi.SpecificationUtils.Common.Factory in '..\Delphi.SpecificationUtils.Common.Factory.pas';
 
 var
   runner : ITestRunner;
