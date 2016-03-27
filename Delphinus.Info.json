@@ -1,0 +1,20 @@
+{
+    "id": "{DBC7FDCD-8505-49DD-9F2D-AAA40E999F21}",
+    "name": "Delphi-SpecificationUtils",
+    "picture": "Logo.jpg",
+    "license_type": "MIT",
+    "license_file": "License",
+    "platforms": "Win32;Win64",
+    "package_compiler_min": 27,
+    "package_compiler_max": 29,
+    "compiler_min": 27,
+    "compiler_max": 29,
+    "first_version": "v1.3",
+    "dependencies":
+     [
+       {
+         "id": "{37d21484-4195-44b0-85c7-fcd4bcb88f91}",
+         "version_min": "1.1.1"
+       }
+     ]
+}
