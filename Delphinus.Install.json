@@ -2,14 +2,14 @@
     "search_pathes": 
     [
         {
-            "pathes": "",
+            "pathes": ";",
             "platforms": "Win32;Win64;OSX32"
         }
     ],
     "browsing_pathes": 
     [
         {
-            "pathes": "",
+            "pathes": ";",
             "platforms": "Win32;Win64;OSX32"
         }
     ],
@@ -21,11 +21,33 @@
             "base": "",
             "recursive": false,
             "filter": "*;*.*"
+        },
+        {
+            "folder": "tests",
+            "base": "",
+            "recursive": false,
+            "filter": "*;*.*"
         }
+
     ],
 
     "projects":
     [
-        
+        {
+            "project": "tests\\DelphiSpecificationUtilsTests.dproj",
+            "compiler": 27
+        },
+        {
+            "project": "tests\\DelphiSpecificationUtilsTests.dproj",
+            "compiler": 28
+        },
+        {
+            "project": "tests\\DelphiSpecificationUtilsTests.dproj",
+            "compiler": 29
+        },
+        {
+            "project": "tests\\DelphiSpecificationUtilsTests.dproj",
+            "compiler": 30
+        }            
     ]
 }
