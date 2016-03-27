@@ -17,3 +17,6 @@ DSharp | [bitbucket](https://bitbucket.org/sglienke/dsharp) | master | $(DSharp)
 library  | repository | branch | environment variable | required
 ------------- | ------------- | ------------- | ------------- | -------------
 DUnitX | [github](https://github.com/VSoftTechnologies/DUnitX) | master | $(DUnitX) | **yes**
+
+# Delphinus-Support
+published through Delphinus
