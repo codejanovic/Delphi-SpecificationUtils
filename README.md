@@ -2,6 +2,9 @@
 ## description
 collection of useful implementations regarding the specification pattern (more info: [here](http://martinfowler.com/apsupp/spec.pdf)). this library depends on the specification pattern implementation of the Spring4D framework. 
 
+## wiki
+head over to our [wiki](https://github.com/traffino/Delphi-SpecificationUtils/wiki) to learn more about the project
+
 ## dependencies
 library  | repository | branch | environment variable | required
 ------------- | ------------- | ------------- | ------------- | -------------
