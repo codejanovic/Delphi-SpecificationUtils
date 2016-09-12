@@ -5,7 +5,7 @@ interface
 uses
   DUnitX.TestFramework,
   Spring.DesignPatterns,
-  System.Rtti, DSharp.Core.Reflection;
+  System.Rtti;
 
 type
   MyNewCustomAttributeAttribute = class(TCustomAttribute)
@@ -42,6 +42,7 @@ type
 implementation
 
 uses
+  Delphi.SpecificationUtils.Helper.TObject,
   Delphi.SpecificationUtils.Strings.IgnoreCase,
   Delphi.SpecificationUtils.Reflection.TRttiType;
 

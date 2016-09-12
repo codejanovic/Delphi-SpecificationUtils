@@ -3,6 +3,7 @@ unit Delphi.SpecificationUtils.Reflection.TRttiMember.Factory;
 interface
 
 uses
+  Spring,
   Spring.DesignPatterns,
   Delphi.SpecificationUtils,
   System.Rtti;
@@ -11,7 +12,7 @@ type
   TReflectionRttiMemberFactory = class(TInterfacedObject, IReflectionRttiMemberSpecifications)
   public
     function HasAttributeThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiMember>;
-    function HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TRttiMember>;
+    function HasAttributeType(const AClassOfAttribute: TAttributeClass): TSpecification<TRttiMember>;
     function HasVisibility(const AVisibilities: TMemberVisibilities): TSpecification<TRttiMember>;
   end;
 
@@ -27,7 +28,7 @@ begin
   Result := TRttiMemberHasAttribute.Create(ANameSpecification);
 end;
 
-function TReflectionRttiMemberFactory.HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TRttiMember>;
+function TReflectionRttiMemberFactory.HasAttributeType(const AClassOfAttribute: TAttributeClass): TSpecification<TRttiMember>;
 begin
   Result := TRttiMemberHasAttributeType.Create(AClassOfAttribute);
 end;

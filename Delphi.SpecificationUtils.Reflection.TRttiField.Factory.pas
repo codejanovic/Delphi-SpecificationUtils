@@ -3,6 +3,7 @@ unit Delphi.SpecificationUtils.Reflection.TRttiField.Factory;
 interface
 
 uses
+  Spring,
   Spring.DesignPatterns,
   Delphi.SpecificationUtils,
   System.Rtti;
@@ -11,7 +12,7 @@ type
   TReflectionRttiFieldFactory = class(TInterfacedObject, IReflectionRttiFieldSpecifications)
   public
     function HasAttributeThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiField>;
-    function HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TRttiField>;
+    function HasAttributeType(const AClassOfAttribute: TAttributeClass): TSpecification<TRttiField>;
     function IsManaged: TSpecification<TRttiField>;
     function IsInstance: TSpecification<TRttiField>;
     function IsOrdinal: TSpecification<TRttiField>;
@@ -32,7 +33,7 @@ begin
   Result := TRttiFieldHasAttribute.Create(ANameSpecification);
 end;
 
-function TReflectionRttiFieldFactory.HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TRttiField>;
+function TReflectionRttiFieldFactory.HasAttributeType(const AClassOfAttribute: TAttributeClass): TSpecification<TRttiField>;
 begin
   Result := TRttiFieldHasAttributeType.Create(AClassOfAttribute);
 end;

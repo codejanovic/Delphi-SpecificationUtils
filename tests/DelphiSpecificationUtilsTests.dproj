@@ -40,8 +40,8 @@
         <Base>true</Base>
     </PropertyGroup>
     <Import Project="Spring4D.optset" Condition="'$(Base)'!='' And Exists('Spring4D.optset')"/>
-    <Import Project="DSharp.optset" Condition="'$(Base)'!='' And Exists('DSharp.optset')"/>
     <PropertyGroup Condition="'$(Base)'!=''">
+        <DCC_Define>TESTINSIGHT;$(DCC_Define)</DCC_Define>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
         <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
         <DCC_UnitSearchPath>$(DUnitX);$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
@@ -54,7 +54,7 @@
         <DCC_S>false</DCC_S>
         <DCC_F>false</DCC_F>
         <DCC_K>false</DCC_K>
-        <CfgDependentOn>Spring4D.optset;DSharp.optset</CfgDependentOn>
+        <CfgDependentOn>Spring4D.optset</CfgDependentOn>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
@@ -165,6 +165,7 @@
         <DCCReference Include="..\Delphi.SpecificationUtils.Integers.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.Integers.Factory.pas"/>
         <DCCReference Include="..\Delphi.SpecificationUtils.Common.Factory.pas"/>
+        <DCCReference Include="..\Delphi.SpecificationUtils.Helper.TObject.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

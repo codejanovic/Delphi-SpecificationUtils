@@ -3,6 +3,7 @@ unit Delphi.SpecificationUtils;
 interface
 
 uses
+  Spring,
   Spring.DesignPatterns,
   System.Generics.Defaults,
   System.RegularExpressions,
@@ -79,7 +80,7 @@ type
     function HasFieldThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
     function HasMethodThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
     function HasAttributeThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
-    function HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TObject>;
+    function HasAttributeType(const AClassOfAttribute: TAttributeClass): TSpecification<TObject>;
   end;
 
   IReflectionRttiTypeSpecifications = interface(IInvokable)
@@ -89,7 +90,7 @@ type
     function HasFieldThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiType>;
     function HasMethodThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiType>;
     function HasAttributeThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiType>;
-    function HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TRttiType>;
+    function HasAttributeType(const AClassOfAttribute: TAttributeClass): TSpecification<TRttiType>;
     function IsManaged: TSpecification<TRttiType>;
     function IsInstance: TSpecification<TRttiType>;
     function IsOrdinal: TSpecification<TRttiType>;
@@ -102,14 +103,14 @@ type
   IReflectionRttiMemberSpecifications = interface(IInvokable)
     ['{82C2C346-D5ED-4A4D-B985-34F944DBE9F4}']
     function HasAttributeThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiMember>;    
-    function HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TRttiMember>;
+    function HasAttributeType(const AClassOfAttribute: TAttributeClass): TSpecification<TRttiMember>;
     function HasVisibility(const AVisibilities: TMemberVisibilities): TSpecification<TRttiMember>;
   end;
 
   IReflectionRttiPropertySpecifications = interface(IInvokable)
     ['{A175C25A-42AF-47F3-8437-4A41932DA5C5}']
     function HasAttributeThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiProperty>;
-    function HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TRttiProperty>;
+    function HasAttributeType(const AClassOfAttribute: TAttributeClass): TSpecification<TRttiProperty>;
     function IsInstanceType: TSpecification<TRttiProperty>;
     function IsManaged: TSpecification<TRttiProperty>;
     function IsInstance: TSpecification<TRttiProperty>;
@@ -122,7 +123,7 @@ type
   IReflectionRttiFieldSpecifications = interface(IInvokable)
     ['{9E332918-D96E-49E3-B561-6A5A38AC4701}']
     function HasAttributeThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiField>;
-    function HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TRttiField>;
+    function HasAttributeType(const AClassOfAttribute: TAttributeClass): TSpecification<TRttiField>;
     function IsManaged: TSpecification<TRttiField>;
     function IsInstance: TSpecification<TRttiField>;
     function IsOrdinal: TSpecification<TRttiField>;

@@ -6,7 +6,6 @@ collection of useful implementations regarding the specification pattern (more i
 library  | repository | branch | environment variable | required
 ------------- | ------------- | ------------- | ------------- | -------------
 Spring4D | [bitbucket](https://bitbucket.org/sglienke/spring4d) | master | $(Spring4D) | **yes**
-DSharp | [bitbucket](https://bitbucket.org/sglienke/dsharp) | master | $(DSharp) | **yes**
 
 ## features
 - specifications for basic types (primitives, arrays, rtti) 

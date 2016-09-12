@@ -25,9 +25,9 @@ type
 
   TRttiMemberHasAttributeType = class(TSpecificationBase<TRttiMember>)
   protected
-    fClass: TClass;
+    fClass: TAttributeClass;
   public
-    constructor Create(const AValue: TClass);
+    constructor Create(const AValue: TAttributeClass);
     function IsSatisfiedBy(const item: TRttiMember): Boolean; override;
   end;
 
@@ -42,7 +42,7 @@ type
 implementation
 
 uses
-  DSharp.Core.Reflection,
+  Spring.Reflection,
   Delphi.SpecificationUtils.Helper.Strings;
 
 { TRttiMemberHasVisibility }
@@ -63,7 +63,7 @@ end;
 function TRttiMemberHasAttributeType<T>.IsSatisfiedBy(const item: TRttiMember): Boolean;
 begin
   Guard.CheckNotNull(item, 'missing item');
-  Result := item.IsDefined<T>;
+  Result := item.HasCustomAttribute<T>;
 end;
 
 { TRttiMemberHasAttribute }
@@ -91,7 +91,7 @@ end;
 
 { TRttiMemberHasAttributeType }
 
-constructor TRttiMemberHasAttributeType.Create(const AValue: TClass);
+constructor TRttiMemberHasAttributeType.Create(const AValue: TAttributeClass);
 begin
   fClass := AValue;
 end;
