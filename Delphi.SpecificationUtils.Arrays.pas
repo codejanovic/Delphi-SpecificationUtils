@@ -119,7 +119,7 @@ begin
 
   Result := true;
 
-  for I := 0 to Length(fArray) do
+  for I := 0 to High(fArray) do
   begin
     LLeft := fArray[i];
     LRight := item[i];
