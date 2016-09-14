@@ -28,7 +28,7 @@ type
   protected
     fHasAttributeType: ISpecification<TRttiMember>;
   public
-    constructor Create(const AValue: TClass);
+    constructor Create(const AValue: TAttributeClass);
     function IsSatisfiedBy(const item: TRttiProperty): Boolean; override;
   end;
 
@@ -213,7 +213,7 @@ end;
 
 { TRttiPropertyHasAttributeType }
 
-constructor TRttiPropertyHasAttributeType.Create(const AValue: TClass);
+constructor TRttiPropertyHasAttributeType.Create(const AValue: TAttributeClass);
 begin
   fHasAttributeType := TRttiMemberHasAttributeType.Create(AValue);
 end;

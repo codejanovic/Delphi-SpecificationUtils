@@ -3,12 +3,12 @@ unit Delphi.SpecificationUtils.Reflection.TRttiType.Factory;
 interface
 
 uses
+  Spring,
   Spring.DesignPatterns,
   Delphi.SpecificationUtils,
   System.Rtti;
 
 type
-
   TReflectionRttiTypeFactory = class(TInterfacedObject, IReflectionRttiTypeSpecifications)
   public
     function HasMemberThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiType>;
@@ -16,7 +16,7 @@ type
     function HasFieldThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiType>;
     function HasMethodThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiType>;
     function HasAttributeThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TRttiType>;
-    function HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TRttiType>;
+    function HasAttributeType(const AClassOfAttribute: TAttributeClass): TSpecification<TRttiType>;
     function IsManaged: TSpecification<TRttiType>;
     function IsInstance: TSpecification<TRttiType>;
     function IsOrdinal: TSpecification<TRttiType>;
@@ -38,7 +38,7 @@ begin
 	Result := TRttiTypeHasAttribute.Create(ANameSpecification);
 end;
 
-function TReflectionRttiTypeFactory.HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TRttiType>;
+function TReflectionRttiTypeFactory.HasAttributeType(const AClassOfAttribute: TAttributeClass): TSpecification<TRttiType>;
 begin
 	Result := TRttiTypeHasAttributeType.Create(AClassOfAttribute);
 end;

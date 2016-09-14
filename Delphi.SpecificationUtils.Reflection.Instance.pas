@@ -58,7 +58,7 @@ type
   protected
     fHasAttributeType: ISpecification<TRttiType>;
   public
-    constructor Create(const AValue: TClass);
+    constructor Create(const AValue: TAttributeClass);
     function IsSatisfiedBy(const item: TObject): Boolean; override;
   end;
 
@@ -105,7 +105,7 @@ type
 implementation
 
 uses
-  DSharp.Core.Reflection,
+  Delphi.SpecificationUtils.Helper.TObject,
   Delphi.SpecificationUtils.Reflection.TRttiType,
   Delphi.SpecificationUtils.Reflection.TClass,
   Delphi.SpecificationUtils.Reflection.TRttiInstanceType;
@@ -200,7 +200,7 @@ end;
 
 { TObjectHasAttributeType }
 
-constructor TObjectHasAttributeType.Create(const AValue: TClass);
+constructor TObjectHasAttributeType.Create(const AValue: TAttributeClass);
 begin
   fHasAttributeType := TRttiTypeHasAttributeType.Create(AValue);
 end;

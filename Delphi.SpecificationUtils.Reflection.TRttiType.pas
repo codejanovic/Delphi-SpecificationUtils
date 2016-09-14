@@ -54,9 +54,9 @@ type
 
   TRttiTypeHasAttributeType = class(TSpecificationBase<TRttiType>)
   protected
-    fClass: TClass;
+    fClass: TAttributeClass;
   public
-    constructor Create(const AValue: TClass);
+    constructor Create(const AValue: TAttributeClass);
     function IsSatisfiedBy(const item: TRttiType): Boolean; override;
   end;
 
@@ -104,7 +104,7 @@ type
 implementation
 
 uses
-  DSharp.Core.Reflection,
+  Spring.Reflection,
   Delphi.SpecificationUtils.Helper.Strings;
 
 
@@ -279,7 +279,7 @@ end;
 
 { TRttiTypeHasAttributeType }
 
-constructor TRttiTypeHasAttributeType.Create(const AValue: TClass);
+constructor TRttiTypeHasAttributeType.Create(const AValue: TAttributeClass);
 begin
   fClass := AValue;
 end;

@@ -3,6 +3,7 @@ unit Delphi.SpecificationUtils.Reflection.Instance.Factory;
 interface
 
 uses
+  Spring,
   Spring.DesignPatterns,
   Delphi.SpecificationUtils;
 
@@ -14,7 +15,7 @@ type
     function HasFieldThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
     function HasMethodThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
     function HasAttributeThatSatisfies(const ANameSpecification: ISpecification<String>): TSpecification<TObject>;
-    function HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TObject>;
+    function HasAttributeType(const AClassOfAttribute: TAttributeClass): TSpecification<TObject>;
   end;
 
 implementation
@@ -29,7 +30,7 @@ begin
   Result := TObjectHasAttribute.Create(ANameSpecification);
 end;
 
-function TReflectionInstanceFactory.HasAttributeType(const AClassOfAttribute: TClass): TSpecification<TObject>;
+function TReflectionInstanceFactory.HasAttributeType(const AClassOfAttribute: TAttributeClass): TSpecification<TObject>;
 begin
   Result := TObjectHasAttributeType.Create(AClassOfAttribute);
 end;

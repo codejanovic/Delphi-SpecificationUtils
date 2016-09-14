@@ -54,9 +54,9 @@ type
 implementation
 
 uses
+  Delphi.SpecificationUtils.Helper.TObject,
   Delphi.SpecificationUtils.Reflection.TRttiType,
-  Delphi.SpecificationUtils.Strings.IgnoreCase,
-  DSharp.Core.Reflection;
+  Delphi.SpecificationUtils.Strings.IgnoreCase;
 
 
 { TTestRttiType }
